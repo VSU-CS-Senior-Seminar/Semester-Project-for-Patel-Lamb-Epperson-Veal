@@ -1,0 +1,307 @@
+body
+{
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	background-color: #eee;
+}
+
+.icon
+{
+	padding: 0 15;
+	margin: 0;
+    width: 15%;
+	float: left;
+    
+    border-style: solid;
+    border-width: 0;
+    border-color: #ff6400;
+    
+    background-image: linear-gradient(to top,
+                                      transparent,
+                                      transparent 50%,
+                                      #ff6400 50%,
+                                      #ff6400);
+    background-position: 100% 0;
+    background-size: 100% 200%;
+    transition: all .2s linear;    
+}
+
+.icon:hover
+{
+    background-color: #f83;
+    border-style: solid;
+    border-width: 0 0 28 0;
+    border-color: #f83;
+    margin-bottom: -25;
+
+    background-position: 0 100%;
+    transition: all .1s linear;   
+}
+
+.icon img
+{
+    width: 75px;
+    margin: 0;
+    padding: 0 50;
+}
+
+.title:hover
+{
+    height: 100;
+    transition: all .1s linear;   
+}
+
+.title:hover .nav
+{
+    visibility: visible;
+    opacity: 1;
+    
+    transition: all .1s linear;
+}
+
+.nav
+{
+    width: 100%;
+    visibility: hidden;
+    text-align: center;
+    clear: both;
+    opacity: 0;
+    
+    transition: all .2s linear;   
+}
+
+.nav ul
+{
+    list-style: none;
+}
+
+.nav li
+{
+    display: inline;   
+}
+
+.nav li a
+{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 7 25;
+}
+
+.nav li a:hover
+{
+    background-color: #f83;
+}
+
+h1
+{
+	padding: 15 75;
+	margin: 0;
+	float: left;
+}
+
+#user
+{
+	float: right;
+	padding: 15 75;
+}
+
+#user a
+{
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 5 10;
+    
+    background-image: linear-gradient(to right,
+                                      transparent,
+                                      transparent 50%,
+                                      #ff6400 50%,
+                                      #ff6400);
+    background-position: 100% 0;
+    background-size: 200% 100%;
+    transition: all .2s linear; 
+}
+
+#user a:hover
+{
+	background-color: #f83;
+    
+    background-position: 0 -100%;
+    transition: all .1s linear;  
+}
+
+.title
+{
+	color: #fff;
+	background-color: #ff6400;
+	height: 75px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	Z-index: 9;
+	border-style: solid;
+	border-width: 0 0 3 0;
+	border-color: #444;
+    
+    transition: all .2s linear;   
+}
+
+.titleSpace
+{
+	height: 75px;
+	margin: 0 0 3 0;
+	padding: 0;
+}
+
+.left
+{
+	height: 100%;
+	width: 15%;
+	background-color: #f83;
+	margin: 0;
+	padding: 0 15;
+	position: fixed;
+	color: #fff;
+}
+
+.leftSpace
+{
+	height: 100%;
+	width: 15%;
+	margin: 0;
+	padding: 0 15;
+	float: left;
+}
+
+.center
+{
+	float: right;
+	height: 100%;
+    width: 82%;
+	padding: 0;
+	color: #444;
+	overflow: auto;
+}
+
+.center::after
+{
+    content: "";
+    height: 250px;
+    width: 82%;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.right
+{
+    position: fixed;
+    z-index: 5;
+    right: -15%;
+    height: 100%;
+    width: 15%;
+    color: #fff;
+    background-color: rgba(255,136,51,.5);
+    margin: 0;
+    padding: 0 15;
+    
+    transition: all .2s linear; 
+}
+
+.right:hover
+{
+    background-color: rgba(255,136,51,1);
+    right: 0;
+    transition: all .1s linear; 
+}
+
+.right * 
+{
+    visibility: hidden;
+    opacity: 0;
+}
+
+.right:hover * 
+{
+    visibility: visible;
+    opacity: 1;
+}
+
+.post
+{
+	width: 300;
+	//height: 200;
+	background-color: #fff;
+	padding: 15;
+	margin: 15;
+	position:relative;
+    top: 0;
+    left: 0;
+	box-shadow: 3px 3px 5px -2px rgba(0,0,0,.6);
+	background: linear-gradient(135deg, transparent 10px, #fff 0) top left;
+	overflow:hidden;
+	float: left;
+}
+
+.post:before
+{
+    content:"";
+    position:absolute;
+	z-index: 2;
+    top:-1;
+    left:-1;
+    border-width:0px 0px 16px 16px;
+    border-style:solid;
+    border-color:#ddd rgba(0,0,0,0);
+	box-shadow: 1px 1px 3px -1px rgba(0,0,0,.4);
+}
+
+.post h3
+{
+	padding: 0;
+	background-color: #fff;
+}
+
+.post p
+{
+	padding-left: 25;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

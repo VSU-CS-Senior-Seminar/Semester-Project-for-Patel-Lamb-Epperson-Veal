@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Development</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Development</title>
+    <%= stylesheet_link_tag    'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="title">
+      <a href="#" class="icon"><%= image_tag "gazebo.png", height: "71", width: "71"%></a>
+      <p id="user">Welcome Back:
+        <a href="#" title="My Account">User_24601</a>
+      </p>
+      <div class="nav">
+        <ul>
+          <li>
+            <a href="#">Neighborhood</a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="#">Account</a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="#">Post</a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="titleSpace"></div>
 
-<%= yield %>
+    <div class="left">
+      <h2>Updates:</h2>
+      <ul>
+        <li>Mr. Jones lost his cat.</li>
+        <li>Bake sale on Saturday</li>
+      </ul>
+    </div>
+    <div class="leftSpace"></div>
+    <div class="center">
+      
+      <%= yield %>
 
-</body>
+    </div>
+
+    <div class="right">
+      <h2>All 3 of your friends:</h2>
+      <ul>
+        <li>Jim</li>
+        <li>Sue</li>
+        <li>Sue's Sister</li>
+      </ul>
+    </div>
+  </body>
 </html>
