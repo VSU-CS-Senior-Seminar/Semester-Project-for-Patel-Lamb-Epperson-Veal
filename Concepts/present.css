@@ -1,0 +1,199 @@
+body
+{
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	background-color: #eee;
+}
+
+.icon
+{
+	padding: 0 15;
+	margin: 0;
+    width: 15%;
+	float: left;
+}
+
+.icon:hover
+{
+    background-color: #f83;
+}
+
+.icon img
+{
+    width: 75px;
+    margin: 0;
+    padding: 0 50;
+}
+
+#user
+{
+	float: right;
+	padding: 15 75;
+}
+
+#user a
+{
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 5 10;
+}
+
+#user a:hover
+{
+	background-color: #f83;
+}
+
+.title
+{
+	color: #fff;
+	background-color: #ff6400;
+	height: 75px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	Z-index: 9;
+	border-style: solid;
+	border-width: 0 0 3 0;
+	border-color: #444;
+}
+
+.titleSpace
+{
+	height: 75px;
+	margin: 0 0 3 0;
+	padding: 0;
+}
+
+.left
+{
+	height: 100%;
+	width: 15%;
+	background-color: #f83;
+	margin: 0;
+	padding: 0 15;
+	position: fixed;
+	color: #fff;
+}
+
+.leftSpace
+{
+	height: 100%;
+	width: 15%;
+	margin: 0;
+	padding: 0 15;
+	float: left;
+}
+
+.center
+{
+	float:right;
+	height: 100%;
+    width: 82%;
+	padding: 0;
+	color: #444;
+	overflow: auto;
+    margin: 0;
+}
+
+.post
+{
+	width: 300;
+	height: 200;
+	background-color: #fff;
+	padding: 15;
+	margin: 15;
+	position:relative;
+    top: 0;
+    left: 0;
+	box-shadow: 3px 3px 5px -2px rgba(0,0,0,.6);
+	background: linear-gradient(135deg, transparent 10px, #fff 0) top left;
+	overflow:hidden;
+	float: left;
+}
+
+.post:before
+{
+    content:"";
+    position:absolute;
+	z-index: 2;
+    top:-1;
+    left:-1;
+    border-width:0px 0px 16px 16px;
+    border-style:solid;
+    border-color:#ddd rgba(0,0,0,0);
+	box-shadow: 1px 1px 3px -1px rgba(0,0,0,.4);
+}
+
+.post h3
+{
+	padding: 0;
+	background-color: #fff;
+}
+
+.post p
+{
+	padding-left: 25;
+}
+
+.center ul
+{
+    list-style: none;
+}
+
+.center ul p
+{
+    text-indent: 50px;
+}
+
+.center li
+{
+    border-style: solid;
+    border-color: #444;
+    border-width: 0 0 0 1;
+    padding: 1 15;
+    margin: 15 50 15 0;
+    background-color: rgba(0, 0, 0, .2);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
