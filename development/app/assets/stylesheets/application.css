@@ -21,11 +21,18 @@ body
 	background-color: #eee;
 }
 
+a
+{
+    padding: 0;
+    margin: 0;
+}
+
 .icon
 {
 	padding: 0px 15px;
-	margin: 0px;
-  width: 15%;
+	margin: 0px 0px 0px 0px;
+    width: 15%;
+    height: 75px;
 	float: left;
   border-style: solid;
   border-width: 0px;
@@ -43,11 +50,11 @@ body
 
 .icon:hover
 {
-    background-color: #f83;
+    background-color: #555;
     border-style: solid;
     border-width: 0px 0px 28px 0px;
-    border-color: #f83;
-    margin-bottom: -25px;
+    border-color: #555;
+    margin-bottom: -28px;
 
     background-position: 0% 100%;
     transition: all .1s linear;
@@ -84,12 +91,17 @@ body
 .nav
 {
     width: 100%;
+    position: relative;
+    top: -1px;
     visibility: hidden;
     text-align: center;
     clear: both;
+    padding: 0px;
+    margin-top: -15px;
+    height: 25px;
     opacity: 0;
 
-    transition: all .2s linear;
+    //transition: all .2s linear;
 }
 
 .nav ul
@@ -108,6 +120,19 @@ body
     color: #fff;
     font-weight: bold;
     padding: 7px 25px;
+    margin: 0px;
+    opacity:0; 
+    background-color: #ff6400;
+    transition: all .1s linear;
+}
+
+.title:hover .nav li a
+{
+    /*text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 7px 25px;*/
+    opacity:1;
 
     background-image: linear-gradient(to top,
                                       transparent,
@@ -116,12 +141,12 @@ body
                                       #ff6400);
     background-position: 100% 0px;
     background-size: 100% 200%;
-    transition: all .2s linear;
+    transition: all .1s linear .1s;
 }
 
-.nav li a:hover
+.title:hover .nav li a:hover
 {
-    background-color: #f83;
+    background-color: #555;
 
     background-position: 0% 100%;
     transition: all .1s linear;
@@ -138,6 +163,7 @@ h1
 {
 	float: right;
 	padding: 15px 75px;
+    margin-bottom:0px;
 }
 
 #user a
@@ -159,7 +185,7 @@ h1
 
 #user a:hover
 {
-	background-color: #f83;
+	background-color: #555;
 
     background-position: 0% -100%;
     transition: all .1s linear;
@@ -177,9 +203,9 @@ h1
 	Z-index: 9;
 	border-style: solid;
 	border-width: 0px 0px 3px 0px;
-	border-color: #444;
+	border-color: #333;
 
-    transition: all .2s linear;
+    transition: all .2s linear .1s;
 }
 
 .titleSpace
@@ -188,15 +214,16 @@ h1
 	margin: 0px 0px 3px 0px;
 	padding: 0px;
 
-	transition: all .2s linear;
+	transition: all .2s linear .1s;
 }
 
 .left
 {
 	height: 100%;
 	width: 15%;
-	background-color: #f83;
-	margin: 0px;
+	//background-color: #f83;
+	background-color: #555;
+    margin: 0px;
 	padding: 0px 15px;
 	position: fixed;
 	color: #fff;
@@ -217,7 +244,7 @@ h1
 	height: 100%;
   width: 82%;
 	padding: 0px 0px 0px 18%;
-	color: #444;
+	color: #555;
 	//overflow: auto;
 }
 
