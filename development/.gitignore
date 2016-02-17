@@ -15,3 +15,5 @@
 /log/*
 !/log/.keep
 /tmp
+#Ignore where password is kept
+/development/config/initializers/mail.rb
