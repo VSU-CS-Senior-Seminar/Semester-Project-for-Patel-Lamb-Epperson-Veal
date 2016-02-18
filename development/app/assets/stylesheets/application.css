@@ -52,8 +52,8 @@ a
 .title:hover .icon
 {
     border-style: solid;
-    border-width: 0px 0px 0px 0px;
-    border-color: #333;
+    border-width: 0px 0px 3px 0px;
+    border-color: rgba(0, 0, 0, 0);
     margin-bottom: -28px;
     
     height: 100px;
@@ -175,12 +175,12 @@ a
     transition: all .1s linear;
 }
 
-h1
+/*h1
 {
 	padding: 15px 75px;
 	margin: 0px;
 	float: left;
-}
+}*/
 
 #user
 {

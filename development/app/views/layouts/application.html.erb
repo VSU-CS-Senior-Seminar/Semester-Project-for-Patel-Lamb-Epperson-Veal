@@ -12,7 +12,7 @@
       <p id="user">
         <% if user_signed_in? %>
           <!-- If user is signed in, we display their name -->
-          <%= link_to "Welcome back, #{current_user.name}", edit_user_registration_path %>
+          <%= link_to "Welcome back, #{current_user.name}", account_account_path %>
         <% else %>
           <!-- Else, we give the option to allow them to join or create community -->
           <%= link_to 'Welcome, join a community!', new_user_registration_path %>
