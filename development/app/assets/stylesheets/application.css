@@ -121,7 +121,7 @@ a
     font-weight: bold;
     padding: 7px 25px;
     margin: 0px;
-    opacity:0; 
+    opacity:0;
     background-color: #ff6400;
     transition: all .1s linear;
 }
@@ -243,7 +243,7 @@ h1
 	float: left;
 	height: 100%;
   width: 82%;
-	padding: 0px 0px 0px 18%;
+	padding: 0px 0px 0px 17%;
 	color: #555;
 	//overflow: auto;
 }
@@ -256,6 +256,98 @@ h1
     float: left;
     margin: 0px;
     padding: 0px;
+}
+
+#alert
+{
+  background-color: rgba(255,136,51,.5);
+	padding: 10px 25px;
+	width: 80%;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+#alert marquee
+{
+	width: 95%;
+	padding-right: 17px;
+}
+
+#alert h2
+{
+	padding: 0px;
+	margin: 0px;
+}
+
+.potus marquee h2:before
+{
+	color: red;
+	content: "!!! POTUS ALERT !!!";
+	padding: 0px 75px 0px 0px;
+	margin: 0px;
+}
+
+.potus marquee h2:after
+{
+	color: red;
+	content: "!!! POTUS ALERT !!!";
+	padding: 0px 0px 0px 75px;
+	margin: 0px;
+}
+
+.amber marquee h2:before
+{
+	color: red;
+	content: "--- AMBER ALERT ---";
+	padding: 0px 75px 0px 0px;
+	margin: 0px;
+}
+
+.amber marquee h2:after
+{
+	color: red;
+	content: "--- AMBER ALERT ---";
+	padding: 0px 0px 0px 75px;
+	margin: 0px;
+}
+
+.weather marquee h2:before
+{
+	color: red;
+	content: "Severe Weather --";
+	padding: 0px 75px 0px 0px;
+	margin: 0px;
+}
+
+.weather marquee h2:after
+{
+	color: red;
+	content: "-- Severe Weather";
+	padding: 0px 0px 0px 75px;
+	margin: 0px;
+}
+
+.close
+{
+	background-color: #555;
+	color: #eee;
+	border-radius: 5px;
+	text-decoration: none;
+	font-family: sans-serif;
+	font-weight: bolder;
+	padding: 5px 10px;
+	margin: 0px;
+	float: right;
+
+	transition: all .2s linear;
+}
+
+.close:hover
+{
+	background-color: #333;
+	border-radius: 0px;
+
+	transition: all .1s linear;
 }
 
 .right
@@ -331,3 +423,34 @@ h1
 {
 	padding-left: 25px;
 }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.none
+{
+	display: none;
+}
