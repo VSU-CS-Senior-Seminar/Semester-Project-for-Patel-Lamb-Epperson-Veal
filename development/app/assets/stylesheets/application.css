@@ -19,6 +19,7 @@ body
 	margin: 0px;
 	//overflow: hidden;
 	background-color: #eee;
+    font-family: sans-serif;
 }
 
 a
@@ -48,13 +49,21 @@ a
     transition: all .2s linear;
 }
 
-.icon:hover
+.title:hover .icon
+{
+    border-style: solid;
+    border-width: 0px 0px 3px 0px;
+    border-color: #333;
+    margin-bottom: -28px;
+    
+    height: 100px;
+    transition: all .1s linear;
+}
+
+.title:hover .icon:hover
 {
     background-color: #555;
-    border-style: solid;
-    border-width: 0px 0px 28px 0px;
     border-color: #555;
-    margin-bottom: -28px;
 
     background-position: 0% 100%;
     transition: all .1s linear;
@@ -67,6 +76,17 @@ a
     left: 50%;
     margin: 0px 0px 0px -38px;
     padding: 0px;
+    
+    transition: all .2s linear .1s;
+}
+
+.title:hover img
+{
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+    
+    transition: all .1s linear;
 }
 
 .title:hover
@@ -244,7 +264,7 @@ h1
 {
 	float: left;
 	height: 100%;
-    width: 82%;
+    width: 80%;
 	padding: 0px;
     margin: 0px;
     margin-left: 18%;
@@ -372,7 +392,7 @@ h1
 
 .right:hover
 {
-    background-color: rgba(255,136,51,1);
+    background-color: rgba(255,136,51,.75);
     right: 0px;
     transition: all .1s linear;
 }
