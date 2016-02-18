@@ -29,9 +29,9 @@ a
 
 .icon
 {
-	padding: 0px 15px;
+	padding: 0px 0px;
 	margin: 0px 0px 0px 0px;
-    width: 15%;
+    width: 17%;
     height: 75px;
 	float: left;
   border-style: solid;
@@ -63,8 +63,10 @@ a
 .icon img
 {
     width: 75px;
-    margin: 0px;
-    padding: 0px 50px;
+    position: relative;
+    left: 50%;
+    margin: 0px 0px 0px -38px;
+    padding: 0px;
 }
 
 .title:hover
@@ -224,7 +226,7 @@ h1
 	//background-color: #f83;
 	background-color: #555;
     margin: 0px;
-	padding: 0px 15px;
+	padding: 0% 1%;
 	position: fixed;
 	color: #fff;
 }
@@ -234,7 +236,7 @@ h1
 	height: 100%;
 	width: 15%;
 	margin: 0px;
-	padding: 0px 15px;
+	padding: 0% 1%;
 	float: left;
 }
 
@@ -242,8 +244,10 @@ h1
 {
 	float: left;
 	height: 100%;
-  width: 82%;
-	padding: 0px 0px 0px 17%;
+    width: 82%;
+	padding: 0px;
+    margin: 0px;
+    margin-left: 18%;
 	color: #555;
 	//overflow: auto;
 }
@@ -269,7 +273,7 @@ h1
 
 #alert marquee
 {
-	width: 95%;
+	width: 90%;
 	padding-right: 17px;
 }
 
@@ -344,6 +348,7 @@ h1
 
 .close:hover
 {
+    color: #ff6400;
 	background-color: #333;
 	border-radius: 0px;
 
@@ -360,7 +365,7 @@ h1
     color: #fff;
     background-color: rgba(255,136,51,.5);
     margin: 0px;
-    padding: 0px 15px;
+    padding: 0% 1%;
 
     transition: all .2s linear;
 }

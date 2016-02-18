@@ -15,7 +15,7 @@
           <%= link_to "Welcome back, #{current_user.name}", edit_user_registration_path %>
         <% else %>
           <!-- Else, we give the option to allow them to join or create community -->
-          <%= link_to 'Welcome, create or join an existing community!', new_user_registration_path %>
+          <%= link_to 'Welcome, join a community!', new_user_registration_path %>
         <%end%>
       </p>
       <div class="nav">
@@ -45,9 +45,9 @@
     </div>
     <div class="leftSpace"></div>
     <div class="center">
-        <div id="alert" class="none">
+        <div id="alert" class="potus">,
           <marquee>
-              <h2></h2>
+              <h2>I'm The Press, BITCHES!</h2>
           </marquee>
           <a href="#" onclick="document.getElementById('alert').className = 'none';" class="close">
             <!--%= image_tag("close.png", height: "25px", width: "25px")%-->x
