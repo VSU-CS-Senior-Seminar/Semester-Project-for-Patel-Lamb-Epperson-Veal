@@ -12,10 +12,10 @@
       <p id="user">
         <% if user_signed_in? %>
           <!-- If user is signed in, we display their name -->
-          <%= link_to "Welcome back, #{current_user.name}", account_account_path %>
+          <%= link_to "Welcome back, #{current_user.nickname}" + " " + "#{current_user.lname}", account_account_path %>
         <% else %>
           <!-- Else, we give the option to allow them to join or create community -->
-          <%= link_to 'Welcome, join a community!', new_user_registration_path %>
+          <%= link_to 'Welcome, join a community!', account_join_path %>
         <%end%>
       </p>
       <div class="nav">
@@ -37,7 +37,7 @@
     <div class="titleSpace"></div>
 
     <div class="left">
-      <h2>Updates:</h2>
+      <h2>Announcements:</h2>
       <ul>
         <li>Mr. Jones lost his cat.</li>
         <li>Bake sale on Saturday</li>
@@ -53,7 +53,6 @@
             <!--%= image_tag("close.png", height: "25px", width: "25px")%-->x
           </a>
         </div>
-
       <%= yield %>
 
     </div>

@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212183107) do
+ActiveRecord::Schema.define(version: 20160302150809) do
+
+  create_table "leads", force: :cascade do |t|
+    t.integer "neighborhood"
+  end
+
+  create_table "neighborhoods", force: :cascade do |t|
+    t.string  "name"
+    t.integer "zip"
+  end
+
+  add_index "neighborhoods", ["name"], name: "sqlite_autoindex_neighborhoods_1", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
+    t.string   "fname"
+    t.string   "mname"
+    t.string   "lname"
+    t.string   "nickname"
+    t.string   "address"
+    t.string   "city"
+    t.integer  "zip"
+    t.integer  "neighborhood"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -31,7 +50,6 @@ ActiveRecord::Schema.define(version: 20160212183107) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.string   "name"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end

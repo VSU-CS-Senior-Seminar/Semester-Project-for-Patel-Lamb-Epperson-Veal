@@ -1,3 +1,2 @@
-<h1><%= current_user.name %></h1>
-
-<%= link_to "Edit your account", edit_user_registration_path %>
+<h1><%= current_user.nickname + " " + current_user.lname %></h1>
+<div align="left"><%= link_to "Edit your account", edit_user_registration_path %></div>
