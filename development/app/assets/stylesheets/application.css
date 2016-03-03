@@ -283,7 +283,7 @@ a
     padding: 0px;
 }
 
-#alert
+#alertTicker
 {
   background-color: rgba(255,136,51,.5);
 	padding: 10px 25px;
@@ -292,13 +292,13 @@ a
 	border-bottom-right-radius: 5px;
 }
 
-#alert marquee
+#alertTicker marquee
 {
 	width: 90%;
 	padding-right: 17px;
 }
 
-#alert h2
+#alertTicker h2
 {
 	padding: 0px;
 	margin: 0px;
@@ -378,6 +378,9 @@ a
 
 .right
 {
+
+		display: none;  /*For Presentation purposes only*/
+
     position: fixed;
     z-index: 5;
     right: -15%;
