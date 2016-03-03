@@ -1,2 +1,11 @@
 <h1><%= current_user.nickname + " " + current_user.lname %></h1>
-<div align="left"><%= link_to "Edit your account", edit_user_registration_path %></div>
+<div class="content">
+  <h3>Neighborhood:</h3>
+    <p>
+      <%= current_user.neighborhood.name%>
+    </p>
+  <br />
+  <div id="edit">
+    <%= link_to "Edit your account", edit_user_registration_path %>
+  </div>
+</div>

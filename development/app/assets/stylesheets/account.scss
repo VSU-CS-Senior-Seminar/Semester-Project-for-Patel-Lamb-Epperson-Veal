@@ -3,8 +3,38 @@ h1
     padding: 15px;
     margin: 15px;
     width: auto;
-    
+
     border-style: solid;
     border-color: #555;
     border-width: 0px 0px 1px 0px;
+}
+
+.content
+{
+  text-align: left;
+  padding: 0px 30px;
+
+  p
+  {
+    padding: 0px 15px;
+  }
+
+  a
+  {
+    text-decoration: none;
+    color: orange;
+    padding: 5px 30px;
+  }
+
+  a:hover
+  {
+    background-color: orange;
+    color: white;
+  }
+
+  #edit
+  {
+    position: absolute;
+    bottom: 25px;
+  }
 }

@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160302150809) do
     t.string   "address"
     t.string   "city"
     t.integer  "zip"
-    t.integer  "neighborhood"
+    t.integer  "neighborhood_id"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
