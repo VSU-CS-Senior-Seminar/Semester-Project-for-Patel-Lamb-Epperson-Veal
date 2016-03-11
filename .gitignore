@@ -17,3 +17,5 @@
 -/tmp
 -#Ignore where password is kept
 -/development/config/initializers/mail.rb
+
+-/development/tmp/*
