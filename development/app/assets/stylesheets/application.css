@@ -382,7 +382,7 @@ a
 .right
 {
 
-		display: none;  /*For Presentation purposes only*/
+		/*display: none;  /*For Presentation purposes only*/
 
     position: fixed;
     z-index: 5;
