@@ -52,7 +52,7 @@ a
     transition: all .2s linear;
 }
 
-.title:hover .icon
+.titleBar:hover .icon
 {
     border-style: solid;
     border-width: 0px 0px 3px 0px;
@@ -63,7 +63,7 @@ a
     transition: all .1s linear;
 }
 
-.title:hover .icon:hover
+.titleBar:hover .icon:hover
 {
     border-width: 0px 0px 3px 0px;
     background-color: #555;
@@ -84,7 +84,7 @@ a
     transition: all .2s linear .1s;
 }
 
-.title:hover img
+.titleBar:hover img
 {
     width: 100px;
     height: 100px;
@@ -93,13 +93,13 @@ a
     transition: all .1s linear;
 }
 
-.title:hover
+.titleBar:hover
 {
     height: 100px;
     transition: all .1s linear;
 }
 
-.title:hover .nav
+.titleBar:hover .nav
 {
     visibility: visible;
     opacity: 1;
@@ -107,7 +107,7 @@ a
     transition: all .1s linear;
 }
 
-.title:hover + .titleSpace
+.titleBar:hover + .titleSpace
 {
 	height: 100px;
 
@@ -152,7 +152,7 @@ a
     transition: all .1s linear;
 }
 
-.title:hover .nav li a
+.titleBar:hover .nav li a
 {
     /*text-decoration: none;
     color: #fff;
@@ -170,7 +170,7 @@ a
     transition: all .1s linear .1s;
 }
 
-.title:hover .nav li a:hover
+.titleBar:hover .nav li a:hover
 {
     background-color: #555;
 
@@ -217,7 +217,7 @@ a
     transition: all .1s linear;
 }
 
-.title
+.titleBar
 {
 	color: #fff;
 	background-color: #ff6400;
