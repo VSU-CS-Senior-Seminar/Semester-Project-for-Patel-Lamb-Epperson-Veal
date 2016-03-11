@@ -23,7 +23,9 @@
           <% if user_signed_in? %>
           <li><%= link_to 'Home', root_path%></li>
           <li>|</li>
-          <li><%= link_to 'Forum', root_path%></li>
+          <li><%= link_to 'Forum', forem_path %></li>
+          <li><%= link_to 'Forums', forem.forums_path %>  </li>
+
           <li>|</li>
           <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
         <% else %>
