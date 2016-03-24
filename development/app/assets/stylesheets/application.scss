@@ -382,7 +382,7 @@ a
 .right
 {
 
-		/*display: none;  /*For Presentation purposes only*/
+		display: none;  /*For Presentation purposes only*/
 
     position: fixed;
     z-index: 5;
@@ -472,14 +472,14 @@ a
     background-color: #aaa;
     color: #555;
     width: 97%;
-    
+
     /*a
     {
         color: #ff6400;
         font-weight: bold;
         text-decoration: none;
     }*/
-    
+
     /*a
     {
         text-decoration: none;
@@ -497,12 +497,12 @@ a
 
         transition: all .1s linear;
     }*/
-    
+
     .icon
     {
         display: none;
     }
-    
+
     th
     {
         background-color: #ff6400;
@@ -512,7 +512,7 @@ a
         border-color: #555;
         border-width: 0px 0px 1px 0px;
     }
-    
+
     td
     {
         padding: 5px 15px;
@@ -520,12 +520,12 @@ a
         border-color: #555;
         border-width: 0px 0px 1px 0px;
     }
-    
+
     tr
     {
         transition: all .2s linear;
         padding: 5px 15px;
-        
+
         a
         {
             text-decoration: none;
@@ -546,7 +546,7 @@ a
     {
         background-color: #ccc;
     }
-    
+
     tr:last-child
     {
         td
@@ -554,41 +554,41 @@ a
             border-width: 0px;
         }
     }
-    
+
     .started-by
     {
         font-size: .7em;
         padding: 5px 15px;
     }
-    
-    tr:hover
+
+    /*tr:hover
     {
         background-color: #ff6400;
         color: #fff;
-        
+
         transition: all .1s linear;
-        
+
         a
         {
             color: #fff;
         }
-    }
-    
+    }*/
+
     th:first-child
     {
         border-top-left-radius: 5px;
     }
-    
+
     th:last-child
     {
         border-top-right-radius: 5px;
     }
-    
+
     tr:last-child:first-child
     {
         border-bottom-left-radius: 5px;
     }
-    
+
     tr:last-child:last-child
     {
         border-bottom-right-radius: 5px;

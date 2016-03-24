@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Development</title>
+    <title>Gazebo</title>
     <%= stylesheet_link_tag    'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -21,7 +21,7 @@
       <div class="nav">
         <ul>
           <% if user_signed_in? %>
-          <li><%= link_to 'Home', root_path%></li>
+          <li><%= link_to 'Home', main_app.root_path%></li>
           <li>|</li>
 
           <li><%= link_to 'Forums', forem.forums_path %>  </li>
@@ -29,7 +29,7 @@
           <li>|</li>
           <li><%= link_to 'Log out', main_app.destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to 'Home', root_path%></li>
+          <li><%= link_to 'Home', main_app.root_path%></li>
           <li>|</li>
           <li><%= link_to 'Log In', new_user_session_path %></li>
         <% end %>
