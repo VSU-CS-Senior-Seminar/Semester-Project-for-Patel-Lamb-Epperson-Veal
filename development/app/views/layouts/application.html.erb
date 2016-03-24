@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Development</title>
+    <title>Gazebo</title>
     <%= stylesheet_link_tag    'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="title">
-      <%= link_to(image_tag("gazebo.png", height: "75px", width: "75px"), root_path, class: "icon")%>
+    <div class="titleBar">
+      <%= link_to(image_tag("gazebo.png", height: "75px", width: "75px"), main_app.root_path, class: "icon")%>
       <p id="user">
         <% if user_signed_in? %>
           <!-- If user is signed in, we display their name -->
-          <%= link_to "Welcome back, #{current_user.nickname}" + " " + "#{current_user.lname}", account_account_path %>
+          <%= link_to "Welcome back, #{current_user.nickname}" + " " + "#{current_user.lname}", main_app.account_account_path %>
         <% else %>
           <!-- Else, we give the option to allow them to join or create community -->
           <%= link_to 'Welcome, join a community!', account_join_path %>
@@ -21,13 +21,15 @@
       <div class="nav">
         <ul>
           <% if user_signed_in? %>
-          <li><%= link_to 'Home', root_path%></li>
+          <li><%= link_to 'Home', main_app.root_path%></li>
           <li>|</li>
-          <li><%= link_to 'Forum', root_path%></li>
+
+          <li><%= link_to 'Forums', forem.forums_path %>  </li>
+
           <li>|</li>
-          <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to 'Log out', main_app.destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to 'Home', root_path%></li>
+          <li><%= link_to 'Home', main_app.root_path%></li>
           <li>|</li>
           <li><%= link_to 'Log In', new_user_session_path %></li>
         <% end %>
@@ -37,7 +39,7 @@
     <div class="titleSpace"></div>
 
     <div class="left">
-      <h2>Announcements:</h2>
+      <h2>News:</h2>
       <ul>
         <li>Mr. Jones lost his cat.</li>
         <li>Bake sale on Saturday</li>
