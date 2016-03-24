@@ -1,5 +1,21 @@
 <h1><%= current_user.nickname + " " + current_user.lname %></h1>
 <div class="content">
+  <h3>Name:</h3>
+  <p>
+    <%= current_user.fname%>
+    <%= current_user.mname%>
+    <%= current_user.lname%>
+  </p>
+  <h3>Username/Nickname:</h3>
+  <p>
+    <%= current_user.nickname%>
+  </p>
+  <h3>Address:</h3>
+  <p>
+    <%= current_user.address%><br />
+    <%= current_user.city%>
+    <%= current_user.zip%>
+  </p>
   <h3>Neighborhood:</h3>
     <p>
       <%= current_user.neighborhood.name%>
