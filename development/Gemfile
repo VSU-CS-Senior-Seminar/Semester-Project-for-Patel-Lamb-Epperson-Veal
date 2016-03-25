@@ -35,6 +35,8 @@ gem 'forem-redcarpet', github: "radar/forem-redcarpet"
 
 gem 'will_paginate'
 
+# conversations
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

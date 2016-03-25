@@ -24,6 +24,14 @@ Rails.application.routes.draw do
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
 #  match 'users/:id', :to => "users#show", :as => :user
 
+  resources :conversations do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+  end
+
   resources :users
 
   # Example of regular route:
