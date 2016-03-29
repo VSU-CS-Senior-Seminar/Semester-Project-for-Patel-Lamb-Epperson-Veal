@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
 gem 'devise_invitable', '~> 1.5.2'
 gem 'ransack'
+gem 'mailboxer'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -33,6 +34,8 @@ gem 'forem-bootstrap', github: "radar/forem-bootstrap"
 gem 'forem-redcarpet', github: "radar/forem-redcarpet"
 
 gem 'will_paginate'
+
+# conversations
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
