@@ -1,290 +1,178 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
- @import 'forem/base';
+@import 'forem/base';
 
 body
 {
-	padding: 0px;
-	margin: 0px;
 	//overflow: hidden;
 	background-color: #eee;
-    font-family: sans-serif;
 }
 
-a
+.logoLink
 {
-    padding: 0;
-    margin: 0;
-}
-
-.icon
-{
-	padding: 0px 0px;
-	margin: 0px 0px 0px 0px;
-    width: 17%;
-    height: 75px;
-	float: left;
-  border-style: solid;
-  border-width: 0px;
-  border-color: #ff6400;
-
-    background-image: linear-gradient(to top,
-                                      transparent,
-                                      transparent 50%,
-                                      #ff6400 50%,
-                                      #ff6400);
-    background-position: 100% 0px;
-    background-size: 100% 200%;
-    transition: all .2s linear;
-}
-
-.titleBar:hover .icon
-{
-    border-style: solid;
-    border-width: 0px 0px 3px 0px;
-    border-color: rgba(0, 0, 0, 0);
-    margin-bottom: -28px;
-
-    height: 100px;
-    transition: all .1s linear;
-}
-
-.titleBar:hover .icon:hover
-{
-    border-width: 0px 0px 3px 0px;
-    background-color: #555;
-    border-color: #555;
-
-    background-position: 0% 100%;
-    transition: all .1s linear;
-}
-
-.icon img
-{
-    width: 75px;
-    position: relative;
-    left: 50%;
-    margin: 0px 0px 0px -38px;
-    padding: 0px;
-
-    transition: all .2s linear .1s;
-}
-
-.titleBar:hover img
-{
-    width: 100px;
-    height: 100px;
-    margin-left: -50px;
-
-    transition: all .1s linear;
-}
-
-.titleBar:hover
-{
-    height: 100px;
-    transition: all .1s linear;
-}
-
-.titleBar:hover .nav
-{
-    visibility: visible;
-    opacity: 1;
-
-    transition: all .1s linear;
-}
-
-.titleBar:hover + .titleSpace
-{
-	height: 100px;
-
-	transition: all .1s linear;
-}
-
-.nav
-{
-    width: 100%;
-    position: relative;
-    top: -1px;
-    visibility: hidden;
-    text-align: center;
-    clear: both;
-    padding: 0px;
-    margin-top: -15px;
-    height: 25px;
-    opacity: 0;
-
-    //transition: all .2s linear;
-}
-
-.nav ul
-{
-    list-style: none;
-}
-
-.nav li
-{
-    display: inline;
-}
-
-.nav li a
-{
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    padding: 7px 25px;
-    margin: 0px;
-    opacity:0;
-    background-color: #ff6400;
-    transition: all .1s linear;
-}
-
-.titleBar:hover .nav li a
-{
-    /*text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    padding: 7px 25px;*/
-    opacity:1;
-
-    background-image: linear-gradient(to top,
-                                      transparent,
-                                      transparent 50%,
-                                      #ff6400 50%,
-                                      #ff6400);
-    background-position: 100% 0px;
-    background-size: 100% 200%;
-    transition: all .1s linear .1s;
-}
-
-.titleBar:hover .nav li a:hover
-{
-    background-color: #555;
-
-    background-position: 0% 100%;
-    transition: all .1s linear;
-}
-
-/*h1
-{
-	padding: 15px 75px;
-	margin: 0px;
-	float: left;
-}*/
-
-#user
-{
-	float: right;
-	padding: 15px 75px;
-    margin: 15px 0px 0px 0px;
-}
-
-#user a
-{
-	color: #fff;
-	text-decoration: none;
-	font-weight: bold;
-	padding: 5px 10px;
-
     background-image: linear-gradient(to right,
-                                      transparent,
-                                      transparent 50%,
-                                      #ff6400 50%,
-                                      #ff6400);
-    background-position: 100% 0%;
+                  transparent,
+                  transparent 50%,
+                  #f60 50%,
+                  #f60);
+    background-position: 100% 0px;
     background-size: 200% 100%;
     transition: all .2s linear;
+    height: 50px;
+    padding: 15px 5px 17px 5px;
+    
+    .logo
+    {
+        margin: 5px 15px 5px 15px;
+    }
 }
 
-#user a:hover
+.logoLink:hover
 {
-	background-color: #555;
+    background-color: #555;
 
     background-position: 0% -100%;
     transition: all .1s linear;
 }
 
-.titleBar
+.navbar-default
 {
-	color: #fff;
-	background-color: #ff6400;
-	height: 75px;
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
-	position: fixed;
-	Z-index: 9;
-	border-style: solid;
-	border-width: 0px 0px 3px 0px;
-	border-color: #333;
+    background-color: #f60;
+    border-radius: 0px;
+    //height: 75px;
+    border-style: solid;
+    border-color: #333;
+    border-width: 0px 0px 3px 0px;
+    margin-bottom: 0px;
+    
+    .navbar-nav
+    {
+        li
+        {
+            a
+            {
+                color: #fff;
+                
+                background-image: linear-gradient(to right,
+                                  transparent,
+                                  transparent 50%,
+                                  #f60 50%,
+                                  #f60);
+                background-position: 100% 0px;
+                background-size: 200% 100%;
+                transition: all .2s linear;
+            }
+            
+            a:hover
+            {
+                color: #fff;
+                background-color: #555;
 
-    transition: all .2s linear .1s;
+                background-position: 0% -100%;
+                transition: all .1s linear;
+            }
+        }
+        
+        .active
+        {
+            a
+            {
+                /*background-image: linear-gradient(to right,
+                                  transparent,
+                                  transparent 50%,
+                                  #555 50%,
+                                  #555);*/
+                
+                background-image: linear-gradient(to right,
+                                  #555, #555);
+                
+                
+                color: #fff;
+            }
+            
+            a:hover
+            {
+                color: #fff;
+                background-color: #333;
+                
+                background-position: 0% -100%;
+                transition: all .1s linear;
+            }
+        }
+    }
+    
+    .navbar-toggle
+    {
+        border-color: #fff;
+        background-color: none;
+        
+        .icon-bar
+        {
+            background-color: #fff;
+            border-radius: 3px;
+        }
+    }
+    
+    .navbar-toggle:hover, .navbar-toggle:focus
+        {
+            background-color: #555;
+        }
 }
 
-.titleSpace
+.navbar-collapse
 {
-	height: 75px;
-	margin: 0px 0px 3px 0px;
-	padding: 0px;
-
-	transition: all .2s linear .1s;
+    border-style: solid;
+    border-width:0px;
 }
 
-.left
+.container
 {
-	height: 100%;
-	width: 15%;
-	//background-color: #f83;
+    width: 100%;
+    height: 100%;
+}
+
+
+.row.content
+{
+    height:100%;
+}
+
+.leftDiv
+{
+    position:fixed;
+    height: 100%;
 	background-color: #555;
-    margin: 0px;
-	padding: 0% 1%;
-	position: fixed;
 	color: #fff;
 }
 
-.leftSpace
-{
-	height: 100%;
-	width: 15%;
-	margin: 0px;
-	padding: 0% 1%;
-	float: left;
+@media screen and (max-width: 991px) {
+    .leftDiv
+    {
+        position: static;
+        height: auto;
+        padding: 15px;
+    }
+    .row.content
+    {
+        height:auto;
+    } 
 }
 
-.center
-{
-	float: left;
-	height: 100%;
-    width: 80%;
-	padding: 0px;
-    margin: 0px;
-    margin-left: 18%;
-	color: #555;
-	//overflow: auto;
-}
 
-.center:after
-{
-    content: "";
-    height: 250px;
-    width: 82%;
-    float: left;
-    margin: 0px;
-    padding: 0px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #alertTicker
 {
@@ -378,245 +266,6 @@ a
 
 	transition: all .1s linear;
 }
-
-.right
-{
-
-		display: none;  /*For Presentation purposes only*/
-
-    position: fixed;
-    z-index: 5;
-    right: -15%;
-    height: 100%;
-    width: 15%;
-    color: #fff;
-    background-color: rgba(255,136,51,.5);
-    margin: 0px;
-    padding: 0% 1%;
-
-    transition: all .2s linear;
-}
-
-.right:hover
-{
-    background-color: rgba(255,136,51,.75);
-    right: 0px;
-    transition: all .1s linear;
-}
-
-.right *
-{
-    visibility: hidden;
-    opacity: 0;
-}
-
-.right:hover *
-{
-    visibility: visible;
-    opacity: 1;
-}
-.notice {
-  color: red;
-}
-/*.post
-{
-	width: 300px;
-	//height: 200px;
-	background-color: #fff;
-	padding: 15px;
-	margin: 15px;
-	position:relative;
-  top: 0px;
-  left: 0px;
-	box-shadow: 3px 3px 5px -2px rgba(0,0,0,.6);
-	background: linear-gradient(135deg, transparent 10px, #fff 0px) top left;
-	overflow:hidden;
-	float: left;
-}
-
-.post:before
-{
-    content:"";
-    position:absolute;
-		z-index: 2;
-    top:-1px;
-    left:-1px;
-    border-width:0px 0px 16px 16px;
-    border-style:solid;
-    border-color:#ddd rgba(0,0,0,0);
-	box-shadow: 1px 1px 3px -1px rgba(0,0,0,.4);
-}
-
-.post h3
-{
-	padding: 0px;
-	background-color: #fff;
-}
-
-.post p
-{
-	padding-left: 25px;
-}*/
-
-
-/*
-
-    Forem Code
-
-*/
-
-.table-striped
-{
-    margin: 15px;
-    border-radius: 5px;
-    background-color: #aaa;
-    color: #555;
-    width: 97%;
-
-    /*a
-    {
-        color: #ff6400;
-        font-weight: bold;
-        text-decoration: none;
-    }*/
-
-    /*a
-    {
-        text-decoration: none;
-        color: #ff6400;
-        padding: 5px 15px;
-        margin-top: -5px;
-
-        transition: all .2s linear;
-    }
-
-    a:hover
-    {
-        background-color: #ff6400;
-        color: #fff;
-
-        transition: all .1s linear;
-    }*/
-
-    .icon
-    {
-        display: none;
-    }
-
-    th
-    {
-        background-color: #ff6400;
-        color: #fff;
-        padding: 5px 15px;
-        border-style: solid;
-        border-color: #555;
-        border-width: 0px 0px 1px 0px;
-    }
-
-    td
-    {
-        padding: 5px 15px;
-        border-style: solid;
-        border-color: #555;
-        border-width: 0px 0px 1px 0px;
-    }
-
-    tr
-    {
-        transition: all .2s linear;
-        padding: 5px 15px;
-
-        a
-        {
-            text-decoration: none;
-            color: #555;
-
-            transition: all .2s linear;
-        }
-
-        a:hover
-        {
-            color: #fff;
-
-            transition: all .1s linear;
-        }
-    }
-
-    tr:nth-child(odd)
-    {
-        background-color: #ccc;
-    }
-
-    tr:last-child
-    {
-        td
-        {
-            border-width: 0px;
-        }
-    }
-
-    .started-by
-    {
-        font-size: .7em;
-        padding: 5px 15px;
-    }
-
-    /*tr:hover
-    {
-        background-color: #ff6400;
-        color: #fff;
-
-        transition: all .1s linear;
-
-        a
-        {
-            color: #fff;
-        }
-    }*/
-
-    th:first-child
-    {
-        border-top-left-radius: 5px;
-    }
-
-    th:last-child
-    {
-        border-top-right-radius: 5px;
-    }
-
-    tr:last-child:first-child
-    {
-        border-bottom-left-radius: 5px;
-    }
-
-    tr:last-child:last-child
-    {
-        border-bottom-right-radius: 5px;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .none
 {
