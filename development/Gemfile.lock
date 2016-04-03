@@ -15,6 +15,12 @@ GIT
       redcarpet (= 3.0.0)
 
 GIT
+  remote: git://github.com/radar/forem-theme-base.git
+  revision: 218ddc3f021756858c1b642139dfe65747adec3d
+  specs:
+    forem-theme-base (0.0.1)
+
+GIT
   remote: git://github.com/radar/forem.git
   revision: 75cb9d7b5f0cb7a5a80f1c7c2c9b5ab8841b6196
   branch: rails4
@@ -275,6 +281,7 @@ DEPENDENCIES
   forem!
   forem-bootstrap!
   forem-redcarpet!
+  forem-theme-base!
   jbuilder (~> 2.0)
   jquery-rails
   mailboxer

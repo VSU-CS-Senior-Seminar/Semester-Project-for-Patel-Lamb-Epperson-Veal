@@ -11,10 +11,9 @@ class NeighborhoodsController < ApplicationController
     @neighborhood = Neighborhood.new(hood_params)
     respond_to do |format|
       if @neighborhood.save
-        format.html { redirect_to root_path, notice: "Neighborhood: #{@neighborhood.name} was successfully created." }
-        format.json { render :show, status: :created, location: @neighborhood }
+        format.html { redirect_to(new_registration_path(:user)) }
       else
-        format.html { redirect_to "/neighborhoods/new", notice: "Duplicate neighborhood, try again!" }
+        format.html { redirect_to new_registration_path(:user), notice: "Duplicate neighborhood, try again!" }
         format.json { render json: @neighborhood.errors, status: :unprocessable_entity }
       end
     end

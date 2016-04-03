@@ -1,13 +1,20 @@
 /*
 *= require chosen
+*= require 'forem/base'
 */
-@import 'forem/base';
+
 
 
 body
 {
 	//overflow: hidden;
 	background-color: #eee;
+}
+
+.commspace {
+    position:relative;
+		margin-top: 10px;
+
 }
 
 .logoLink
