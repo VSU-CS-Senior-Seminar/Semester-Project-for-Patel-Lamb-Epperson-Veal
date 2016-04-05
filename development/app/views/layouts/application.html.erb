@@ -17,11 +17,11 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <%= stylesheet_link_tag    'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', :media => "all", 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class="<%= controller.controller_name %>">
 
 
 
@@ -76,14 +76,14 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 leftDiv">
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 leftDiv">
               <h2>News:</h2>
               <ul>
                 <li>Mr. Jones lost his cat.</li>
                 <li>Bake sale on Saturday</li>
               </ul>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-md-offset-3 col-lg-offset-3 centerDiv">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2 centerDiv">
                 <div id="alertTicker" class="none">
                   <marquee>
                       <h2></h2>
