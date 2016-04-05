@@ -11,6 +11,10 @@ class NeighborhoodsController < ApplicationController
     @neighborhood = Neighborhood.new(hood_params)
     respond_to do |format|
       if @neighborhood.save
+        newForum = Forem::Category.new
+        newForum.name = @neighborhood.zip
+        newForum.position = 0
+        newForum.save
         format.html { redirect_to(new_registration_path(:user)) }
       else
         format.html { redirect_to new_registration_path(:user), notice: "Duplicate neighborhood, try again!" }
