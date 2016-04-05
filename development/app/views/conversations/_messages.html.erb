@@ -4,17 +4,18 @@
     <div class="media">
       <div class="media-left">
         <!-- user avators can go here -->
-        <a href="#">
+        <!--a href="#">
           <img class="media-object" src="http://placehold.it/64x64" alt="...">
-        </a>
+        </a-->
       </div>
       <div class="media-body">
         <h4 class="media-heading">
-          <%= message.sender.fname %> <br>
-          <small><b>Subject: </b><%= message.subject %></small><br>
-          <small><b>Date: </b><%=  message.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+            <%= message.sender.fname %> - <small><%=  message.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+            <br>
         </h4>
-        <%= message.body %>
+        <p>
+            <%= message.body %>
+        </p>
       </div>
     </div>
 <% end %>

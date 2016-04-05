@@ -6,8 +6,8 @@
   </div>
   <div class="media-body">
     <h4 class="media-heading">
-      <%= conversation.originator.fname%> <br>
-      <small><b>Subject: </b><%= conversation.subject %></small><br>
+      <%= conversation.originator.fname%> <br />
+      <small><b>Subject: </b><%= conversation.subject %><br></small>
       <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
     </h4>
     <%= truncate conversation.messages.last.body, length: 145 %>
