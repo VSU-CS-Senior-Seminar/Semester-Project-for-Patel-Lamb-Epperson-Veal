@@ -2,63 +2,112 @@
 <html>
   <head>
     <title>Gazebo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"-->
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag    'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="titleBar">
-      <%= link_to(image_tag("gazebo.png", height: "75px", width: "75px"), main_app.root_path, class: "icon")%>
-      <p id="user">
-        <% if user_signed_in? %>
-          <!-- If user is signed in, we display their name -->
-          <%= link_to "Welcome back, #{current_user.nickname}" + " " + "#{current_user.lname}", main_app.account_account_path %>
-        <% else %>
-          <!-- Else, we give the option to allow them to join or create community -->
-          <%= link_to 'Welcome, join a community!', account_join_path %>
-        <%end%>
-      </p>
-      <div class="nav">
-        <ul>
-          <% if user_signed_in? %>
-          <li><%= link_to 'Home', main_app.root_path%></li>
-          <li>|</li>
 
-          <li><%= link_to 'Forums', forem.forums_path %>  </li>
 
-          <li>|</li>
-          <li><%= link_to "Inbox", mailbox_inbox_path %></li>
 
-          <li>|</li>
-          <li><%= link_to 'Log out', main_app.destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to 'Home', main_app.root_path%></li>
-          <li>|</li>
-          <li><%= link_to 'Log In', new_user_session_path %></li>
-        <% end %>
-        </ul>
-      </div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <%= link_to(image_tag("gazebo.svg", height: "40px", width: "40px", class: "logo"), main_app.root_path, class: "logoLink")%>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <% if user_signed_in? %>
+                        <li><%= link_to 'Forums', forem.forums_path %>  </li>
+                        <li><%= link_to "Inbox", main_app.mailbox_inbox_path %></li>
+                        <% if current_user.forem_admin %>
+                        <li><%= link_to "Administrate", forem.admin_root_url %></li>
+                        <%  end %>
+                    <% else %>
+                    <% end %>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!--li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li-->
+
+                    <% if user_signed_in? %>
+                        <li>
+                            <%= link_to "Welcome back, #{current_user.nickname}" + " " + "#{current_user.lname}", main_app.account_account_path %>
+                        </li>
+                        <li>
+                            <%= link_to 'Log out', main_app.destroy_user_session_path, method: :delete %>
+                        </li>
+                    <% else %>
+                        <li>
+                            <%= link_to 'Welcome, join a community!', new_registration_path(:user), :data => { :no_turbolink => true }  %>
+                        </li>
+                        <li>
+                            <%= link_to 'Log In', new_user_session_path %>
+                        </li>
+                    <%end%>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="topSpace"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 leftDiv">
+              <h2>News:</h2>
+              <ul>
+                <li>Mr. Jones lost his cat.</li>
+                <li>Bake sale on Saturday</li>
+              </ul>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-md-offset-3 col-lg-offset-3 centerDiv">
+                <div id="alertTicker" class="none">
+                  <marquee>
+                      <h2></h2>
+                  </marquee>
+                  <a href="#" onclick="document.getElementById('alertTicker').className = 'none';" class="close">
+                    <!--%= image_tag("close.png", height: "25px", width: "25px")%-->x
+                  </a>
+                </div>
+                <%= yield %>
+            </div>
+        </div>
     </div>
-    <div class="titleSpace"></div>
+    <!--div class="leftSpace"></div-->
 
-    <div class="left">
-      <h2>News:</h2>
-      <ul>
-        <li>Mr. Jones lost his cat.</li>
-        <li>Bake sale on Saturday</li>
-      </ul>
-    </div>
-    <div class="leftSpace"></div>
-    <div class="center">
+    <!--div class="center">
         <div id="alertTicker" class="none">,
           <marquee>
               <h2></h2>
           </marquee>
-          <a href="#" onclick="document.getElementById('alertTicker').className = 'none';" class="close">
-            <!--%= image_tag("close.png", height: "25px", width: "25px")%-->x
+          <a href="#" onclick="document.getElementById('alertTicker').className = 'none';" class="close"-->
+            <!--%= image_tag("close.png", height: "25px", width: "25px")%-->
+      <!--x
           </a>
         </div>
-      <%= yield %>
 
     </div>
 
@@ -69,6 +118,6 @@
         <li>Sue</li>
         <li>Sue's Sister</li>
       </ul>
-    </div>
+    </div-->
   </body>
 </html>

@@ -167,9 +167,8 @@ ActiveRecord::Schema.define(version: 20160325200959) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
 
-  create_table "neighborhoods", force: :cascade do |t|
-    t.string  "name"
-    t.integer "zip"
+  create_table "neighborhoods", primary_key: "zip", force: :cascade do |t|
+    t.string "name"
   end
 
   add_index "neighborhoods", ["name"], name: "sqlite_autoindex_neighborhoods_1", unique: true
@@ -182,7 +181,6 @@ ActiveRecord::Schema.define(version: 20160325200959) do
     t.string   "nickname"
     t.string   "address"
     t.string   "city"
-    t.integer  "zip"
     t.integer  "neighborhood_id"
     t.string   "encrypted_password",     default: "",               null: false
     t.string   "reset_password_token"
