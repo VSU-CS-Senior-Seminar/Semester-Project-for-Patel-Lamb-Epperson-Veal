@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325200959) do
+ActiveRecord::Schema.define(version: 20160402211557) do
 
   create_table "forem_categories", force: :cascade do |t|
     t.string   "name",                   null: false
@@ -166,6 +166,13 @@ ActiveRecord::Schema.define(version: 20160325200959) do
 
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+
+  create_table "meetings", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "neighborhoods", primary_key: "zip", force: :cascade do |t|
     t.string "name"
