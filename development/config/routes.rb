@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :events
+  resources :events
   get 'pages/forem'
 
   # This line mounts Forem's routes at /forums by default.
