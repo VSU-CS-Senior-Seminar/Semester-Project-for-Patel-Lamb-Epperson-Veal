@@ -18,4 +18,5 @@
 -#Ignore where password is kept
 
 
-/development/tmp/*
+-/development/tmp/*
+-development/tmp/cache/assets/sprockets/v3.0/*
