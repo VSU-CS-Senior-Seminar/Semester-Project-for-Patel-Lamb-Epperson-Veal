@@ -30,9 +30,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'forem', github: "radar/forem", branch: "rails4"
 
-gem 'forem-bootstrap', github: "radar/forem-bootstrap"
-gem 'forem-theme-base', :github => 'radar/forem-theme-base'
-gem 'forem-redcarpet', github: "radar/forem-redcarpet"
+ gem 'forem-bootstrap', github: "radar/forem-bootstrap"
+# gem 'forem-theme-base', :github => 'radar/forem-theme-base'
+# gem 'forem-redcarpet', github: "radar/forem-redcarpet"
 
 gem 'will_paginate'
 
