@@ -3,6 +3,7 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-body">
+        <%= button_to "New Event", new_event_path, :id => "open-contacts-dialog-btn", :class => "btn btn-info btn-lg", :method => :get %>
         <%= month_calendar events: @events do |date, events| %>
         <%= date %>
         <% events.each do |event| %>
