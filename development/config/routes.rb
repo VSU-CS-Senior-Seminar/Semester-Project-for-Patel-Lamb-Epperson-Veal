@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :events
-  resources :events
   get 'pages/forem'
 
   # This line mounts Forem's routes at /forums by default.
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
   mount Forem::Engine, :at => '/forems'
 
   resources :neighborhoods
+  get '/administrates/:id', to: 'administrates#approve', as: 'admin'
   get 'account/account'
   get 'account/join'
   get 'calendar/view'
@@ -33,8 +33,6 @@ Rails.application.routes.draw do
       post :untrash
     end
   end
-
-  resources :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

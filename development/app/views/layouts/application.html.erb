@@ -42,6 +42,7 @@
                     <% if user_signed_in? %>
                         <li><%= link_to 'Forums', forem.forums_path %>  </li>
                         <li><%= link_to "Inbox", main_app.mailbox_inbox_path %></li>
+                        <li><%= link_to "Calendar", main_app.calendar_view_path %></li>
                         <% if current_user.forem_admin %>
                         <li><%= link_to "Administrate", forem.admin_root_url %></li>
                         <%  end %>
@@ -55,8 +56,7 @@
                     <% if user_signed_in? %>
                         <li>
                             <%= link_to "Welcome back, #{current_user.nickname}" + " " + "#{current_user.lname}", main_app.account_account_path %>
-                        </li>
-                        <li>
+                        </li>                        <li>
                             <%= link_to 'Log out', main_app.destroy_user_session_path, method: :delete %>
                         </li>
                     <% else %>

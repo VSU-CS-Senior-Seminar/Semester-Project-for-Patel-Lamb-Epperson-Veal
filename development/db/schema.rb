@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406200518) do
+ActiveRecord::Schema.define(version: 20160406235705) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -184,7 +184,8 @@ ActiveRecord::Schema.define(version: 20160406200518) do
   end
 
   create_table "neighborhoods", primary_key: "zip", force: :cascade do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "id",   default: 0
   end
 
   add_index "neighborhoods", ["name"], name: "sqlite_autoindex_neighborhoods_1", unique: true
@@ -219,6 +220,7 @@ ActiveRecord::Schema.define(version: 20160406200518) do
     t.boolean  "forem_admin",            default: false
     t.string   "forem_state",            default: "pending_review"
     t.boolean  "forem_auto_subscribe",   default: false
+    t.boolean  "approved"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
