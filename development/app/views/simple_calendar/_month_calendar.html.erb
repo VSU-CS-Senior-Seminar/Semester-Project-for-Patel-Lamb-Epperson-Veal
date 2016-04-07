@@ -3,7 +3,7 @@
   <h4><%= link_to calendar.url_for_previous_view do %>
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <%end%>
-  <strong><%= I18n.t("date.month_names")[start_date.month] %><%= start_date.year %></strong>
+  <strong><%= I18n.t("date.month_names") [start_date.month] %> <%= start_date.year %></strong>
   <%= link_to calendar.url_for_next_view do %>
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <%end%></h4>
