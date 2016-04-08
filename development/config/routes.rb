@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :neighborhoods
   get '/administrates/:id', to: 'administrates#approve', as: 'admin'
+  get '/reputations/:id', to: 'reputations#upvote', as: 'rep'
+
   get 'account/account'
   get 'account/join'
   get 'calendar/view'
