@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   belongs_to :neighborhood
+  geocoded_by :neighborhood_id
+  after_validation :geocode
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
 
@@ -23,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def inactive_message
-    if !approved? 
+    if !approved?
       :not_approved
     else
       super # Use whatever other message

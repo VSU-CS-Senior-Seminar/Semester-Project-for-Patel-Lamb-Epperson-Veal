@@ -24,6 +24,5 @@ module Development
     config.active_record.raise_in_transactional_callbacks = true
     config.beginning_of_week = :sunday
     config.time_zone = 'Central Time (US & Canada)'
-
   end
 end
