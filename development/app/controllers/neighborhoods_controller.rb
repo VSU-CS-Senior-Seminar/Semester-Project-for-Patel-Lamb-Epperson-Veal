@@ -27,6 +27,6 @@ class NeighborhoodsController < ApplicationController
 
   private
   def hood_params
-    params.require(:neighborhood).permit(:name,:zip)
+    params.require(:neighborhood).permit(:name,:zip,:latitude,:longitude)
   end
 end
