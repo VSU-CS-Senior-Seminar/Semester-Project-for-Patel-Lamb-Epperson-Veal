@@ -77,11 +77,50 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 leftDiv">
-              <h2>News:</h2>
-              <ul>
-                <li>Mr. Jones lost his cat.</li>
-                <li>Bake sale on Saturday</li>
-              </ul>
+              <h2>Today:</h2>
+                
+                
+                <!--%= calendar events: @events, number_of_days: 1 do |date, events| %>
+                    < % date %-->
+                
+                <% @today = Event.all %>
+                    <ul>
+                        <% @today.each do |event| %>
+                            <!--li onclick="details('detailer_< %=event.id%>', 1)"-->
+                            <% if(event.start_time.strftime('%Y-%m-%d') == Date.today.to_s) %>
+
+                                <li id="<%= event.id %>">
+                                    <!--span class="glyphicon glyphicon-triangle-right"></span-->
+                                    &bull; <%= event.name %>
+                                </li>
+
+
+                                <!-- Detailer -->
+                                <span id="detailer_<%=event.id%>" class="detailer" style="display: none;">
+                                    <span class="detailer-content">
+                                        <p>
+                                            <%= event.description %>
+                                        </p>
+                                        <%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
+                                    </span>
+                                </span>
+
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#<%= event.id %>").click(function(){
+                                            $("#detailer_<%= event.id %>").toggle(100, "linear");
+                                        });
+                                    });
+                                </script>
+
+                            <% else %>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                <!--% end %-->
+                
+
+                
             </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2 centerDiv">
                 <div id="alertTicker" class="none">

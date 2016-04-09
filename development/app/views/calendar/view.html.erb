@@ -1,41 +1,35 @@
 <div class="row">
-  <div class="spacer"></div>
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-body">
+    <div class="spacer"></div>
+    <div class="col-md-12">
         <%= button_to "New Event", new_event_path, :id => "open-contacts-dialog-btn", :class => "btn btn-info btn-lg", :method => :get %>
         <%= month_calendar events: @events do |date, events| %>
         <%= date %>
         <% events.each do |event| %>
-          <div>
+        <div>
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal_<%=event.id%>"><%= event.name %></button>
 
             <!-- Modal -->
             <div id="modal_<%=event.id%>" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Event: <%=event.name%></h4>
-                  </div>
-                  <div class="modal-description">
-                    <p><%= event.description %></p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
+                <div class="modal-dialog">
+                    
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Event: <%=event.name%></h4>
+                        </div>
+                        <div class="modal-description">
+                            <p><%= event.description %></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
-
-              </div>
             </div>
-
-          </div>
+        </div>
         <% end %>
-      <% end %>
-      </div>
+        <% end %>
     </div>
-  </div>
 </div>
