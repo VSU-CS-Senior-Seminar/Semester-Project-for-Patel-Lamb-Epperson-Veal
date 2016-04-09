@@ -192,7 +192,12 @@ ActiveRecord::Schema.define(version: 20160408161459) do
 
   add_index "neighborhoods", ["name"], name: "sqlite_autoindex_neighborhoods_1", unique: true
 
-  create_table "posts_liked", force: :cascade do |t|
+  create_table "posts_dislikeds", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "user_id", null: false
+  end
+
+  create_table "posts_likeds", force: :cascade do |t|
     t.integer "post_id", limit: 50, null: false
     t.integer "user_id", limit: 50, null: false
   end
