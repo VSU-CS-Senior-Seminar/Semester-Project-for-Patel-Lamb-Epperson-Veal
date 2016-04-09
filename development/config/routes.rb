@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :neighborhoods
   get '/administrates/:id', to: 'administrates#approve', as: 'admin'
   get '/reputations/:id', to: 'reputations#upvote', as: 'rep'
+  get "/reputations/:id/postid/:pid" => "reputations#upvote", :as => 'subgroup'
+
 
   get 'account/account'
   get 'account/join'

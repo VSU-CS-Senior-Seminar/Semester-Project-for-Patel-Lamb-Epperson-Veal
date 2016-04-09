@@ -23,9 +23,12 @@
             <%= t(:deleted) %>
           <% else %>
             <%= link_to_if Forem.user_profile_links, post.user.forem_name, [main_app, post.user] %>
-              <%= link_to main_app.rep_path(post.user.id) do %>
+            <% if (Posts_Liked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 0)%>
+              <%= link_to main_app.subgroup_path(post.user.id, post.id) do %>
                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
               <% end %>
+            <% else %>
+            <% end %>
 
           <% end %>
         </div>
