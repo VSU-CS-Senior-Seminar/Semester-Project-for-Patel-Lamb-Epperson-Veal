@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "/reputations/:id/postid/:pid" => "reputations#upvote", :as => 'repup'
   get "/reputations/:id/postsid/:pid" => "reputations#downvote", :as => 'repdown'
 
+
   get 'account/account'
   get 'account/join'
   get 'calendar/view'
