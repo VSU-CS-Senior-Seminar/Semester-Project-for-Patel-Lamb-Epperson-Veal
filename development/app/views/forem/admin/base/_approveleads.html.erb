@@ -19,9 +19,8 @@
         <td><%=user.nickname%></td>
         <td><%=user.neighborhood_id%></td>
         <td><%=user.reputation%></td>
-
         <td>
-          <%= link_to main_app.admin_path(user.id) do %>
+          <%= link_to main_app.leads_path(user.id) do %>
           <span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green"></span>
           <% end %>
         </td>
