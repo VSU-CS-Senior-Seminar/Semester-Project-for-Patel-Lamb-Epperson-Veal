@@ -1,0 +1,33 @@
+<% @unapprovedleads = User.where(:neighborhood_id => current_user.neighborhood_id, :forem_admin => false).where("reputation > ?",30) %>
+<div class="panel panel-default">
+  <div class="panel-body">
+<table class="table table-striped">
+    <h3>Eligible members for promotion to lead</h3>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Community</th>
+        <th>Reputation</th>
+        <th>Approve user</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @unapprovedleads.each do |user| %>
+      <tr>
+        <td><%=user.email%></td>
+        <td><%=user.nickname%></td>
+        <td><%=user.neighborhood_id%></td>
+        <td><%=user.reputation%></td>
+
+        <td>
+          <%= link_to main_app.admin_path(user.id) do %>
+          <span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green"></span>
+          <% end %>
+        </td>
+      </tr>
+      <%end%>
+</tbody>
+</table>
+</div>
+</div>
