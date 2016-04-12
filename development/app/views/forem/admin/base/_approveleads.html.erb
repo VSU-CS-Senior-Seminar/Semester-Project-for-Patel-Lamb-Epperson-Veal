@@ -1,4 +1,4 @@
-<% @unapprovedleads = User.where(:neighborhood_id => current_user.neighborhood_id, :forem_admin => false).where("reputation > ?",30) %>
+<% @unapprovedleads = User.where(:neighborhood_id => current_user.neighborhood_id, :forem_admin => false).where("reputation > ?",80) %>
 <div class="panel panel-default">
   <div class="panel-body">
 <table class="table table-striped">
