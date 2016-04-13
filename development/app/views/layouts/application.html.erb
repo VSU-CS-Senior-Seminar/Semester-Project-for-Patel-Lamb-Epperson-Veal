@@ -81,7 +81,7 @@
                 <% @counter = 0 %>                
                 <!--%= calendar events: @events, number_of_days: 1 do |date, events| %>
                     < % date %-->
-                <ul>
+                <ul class="eventList">
                 <% @today = Event.all %>
                         <% @today.each do |event| %>
                             <!--li onclick="details('detailer_< %=event.id%>', 1)"-->
@@ -139,35 +139,44 @@
                     </table-->
                     
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#neighborhood">Neighborhood</a></li>
-                        <li><a data-toggle="tab" href="#joe">Joe</a></li>
-                        <li><a data-toggle="tab" href="#hank">Hank</a></li>
+                        <li class="active" title="Neighborhood"><a data-toggle="tab" href="#neighborhood">Neighborhood</a></li>
+                        <li title="Joe"><a data-toggle="tab" href="#joe">Joe</a></li>
+                        <li title="Hank"><a data-toggle="tab" href="#hank">Hank</a></li>
                     </ul>
                     
                     <div class="tab-content">
-                        <div id="neighborhood" class="tab-pane fade in active">
-                            <h3>31602</h3>
-                            <ul>
-                                <li>Lorem</li>
-                                <li>Ipsum</li>
-                                <li>Dolor</li>
-                            </ul>
+                        <div id="neighborhood" class="tab-pane fade in active container">
+                            <div class="row">
+                                <div class="send col-lg-10">Mr. Jones lost his cat</div>
+                            </div>
+                            <div class="row">
+                                <div class="receive col-lg-10 col-lg-offset-2">Lol, sucks for him</div>
+                            </div>
+                            <div class="row">
+                                <div class="send col-lg-10">Rude!</div>
+                            </div>
                         </div>
-                        <div id="joe" class="tab-pane fade">
-                            <h3>Joe</h3>
-                            <ul>
-                                <li>Lorem</li>
-                                <li>Ipsum</li>
-                                <li>Dolor</li>
-                            </ul>
+                        <div id="joe" class="tab-pane fade container">
+                            <div class="row">
+                                <div class="send col-lg-10">Hi</div>
+                            </div>
+                            <div class="row">
+                                <div class="receive col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+                            </div>
+                            <div class="row">
+                                <div class="send col-lg-10">Ouch!</div>
+                            </div>
                         </div>
-                        <div id="hank" class="tab-pane fade">
-                            <h3>Hank</h3>
-                            <ul>
-                                <li>Lorem</li>
-                                <li>Ipsum</li>
-                                <li>Dolor</li>
-                            </ul>
+                        <div id="hank" class="tab-pane fade container">
+                            <div class="row">
+                                <div class="send col-lg-10">;)</div>
+                            </div>
+                            <div class="row">
+                                <div class="send col-lg-10">I have a 1150000 hour drive tomorrow</div>
+                            </div>
+                            <div class="row">
+                                <div class="receive col-lg-10 col-lg-offset-2">I doubt its that long.</div>
+                            </div>
                         </div>
                     </div>
                     

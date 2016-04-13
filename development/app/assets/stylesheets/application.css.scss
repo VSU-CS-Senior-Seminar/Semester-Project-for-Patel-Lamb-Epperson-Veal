@@ -166,7 +166,7 @@ body
 	background-color: #555;
 	color: #fff;
     
-    ul
+    .eventList
     {
         padding: 0px;
         margin: 0px;
@@ -373,6 +373,143 @@ body
             td
             {
                 padding: 3px 5px;
+            }
+        }
+    }
+}
+
+.nav-tabs
+{
+    margin-bottom: 5px;
+    li, li.active
+    {
+        margin: 0px 1px 0px 0px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-style: solid;
+        border-color: #333;
+        border-width: 0px 1px 0px 1px;
+        background-color: #eee;
+        padding: 0px;
+        
+        transition: all .2s linear 0s;
+        
+        a
+        {
+            color: #333;
+            padding: 1px 5px;
+            max-width: 25px;
+            overflow-x: hidden;
+            background-color: #eee;
+            border-style: solid;
+            border-width: 0px;
+            
+            transition: all .2s linear 0s;
+        }
+        
+        a:hover, a:focus
+        {
+            color: #eee;
+            
+            transition: all .1s linear 0s;
+        }
+    }
+    
+    li.active
+    {
+        a
+        {
+            max-width: 150px;
+            
+            transition: all .2s linear 0s;
+        }
+    }
+    
+    li:hover, li.active:hover, li.active
+    {
+        background-color: #333;
+        margin-top: -4px;
+        
+        transition: all .1s linear 0s;
+        
+        a, a:hover, a:focus
+        {
+            color: #eee;
+            padding-top: 5px;
+            background-color: #333;
+            border-style: solid;
+            border-width: 0px;
+            
+            transition: all .1s linear 0s;
+        }
+    }
+}
+
+.tab-content
+{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    
+    .tab-pane
+    {    
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        .row
+        {
+            margin: 0px 0px 3px 0px;
+            padding: 0px;
+
+            .send
+            {
+                margin: 0px;
+                padding: 3px 5px;
+                background-color: #333;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+            
+            .send::after
+            {
+                border-top: 10px solid #333;
+                border-right: 10px solid transparent;
+                width: 0;
+                height: 0;
+
+                content: "";
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0px;
+            }
+
+            .receive
+            {
+                margin: 0px;
+                padding: 3px 5px;
+                background-color: #eee;
+                color: #333;
+                border-top-right-radius: 5px;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                text-align: right;
+                float: right;
+            }
+            
+            .receive::after
+            {
+                border-top: 10px solid #eee;
+                border-left: 10px solid transparent;
+                width: 0;
+                height: 0;
+
+                content: "";
+                display: block;
+                position: absolute;
+                top: 100%;
+                right: 0px;
             }
         }
     }
