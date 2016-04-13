@@ -344,6 +344,7 @@ body
 	display: none;
 }
 
+<<<<<<< HEAD
 .chatter
 {
     position: fixed;
@@ -513,4 +514,14 @@ body
             }
         }
     }
+=======
+.liked
+{
+    color: green;
+}
+
+.disliked
+{
+  color: red;
+>>>>>>> 63dd72061fe9d03a54affb97b7f2795392608b16
 }
