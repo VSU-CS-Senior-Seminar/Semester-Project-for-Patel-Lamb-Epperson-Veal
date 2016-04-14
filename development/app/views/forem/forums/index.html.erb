@@ -1,6 +1,6 @@
 <div id='forums_container'>
   <h1 id='forums_title'><%= t('.title') %></h1>
-
+  <% @categories = Forem::Category.where(:name => current_user.neighborhood_id) %>
   <%= render @categories %>
 </div>
 

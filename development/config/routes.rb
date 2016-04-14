@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :events
   get 'pages/forem'
 
   # This line mounts Forem's routes at /forums by default.
@@ -10,9 +11,15 @@ Rails.application.routes.draw do
   mount Forem::Engine, :at => '/forems'
 
   resources :neighborhoods
+  get '/administrates/:id', to: 'administrates#approve', as: 'admin'
+  get '/reputations/:id', to: 'reputations#upvote', as: 'rep'
+  get "/reputations/:id/postid/:pid" => "reputations#upvote", :as => 'repup'
+  get "/reputations/:id/postsid/:pid" => "reputations#downvote", :as => 'repdown'
+
+
   get 'account/account'
   get 'account/join'
-
+  get 'calendar/view'
   devise_for :users, :controllers => { registrations: 'registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -31,8 +38,6 @@ Rails.application.routes.draw do
       post :untrash
     end
   end
-
-  resources :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

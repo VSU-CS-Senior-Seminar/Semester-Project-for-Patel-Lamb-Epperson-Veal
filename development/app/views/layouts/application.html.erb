@@ -13,15 +13,15 @@
 
     <!-- Latest compiled and minified JavaScript -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script-->
 
-    <%= stylesheet_link_tag    'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', :media => "all", 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class="<%= controller.controller_name %>">
 
 
 
@@ -42,6 +42,7 @@
                     <% if user_signed_in? %>
                         <li><%= link_to 'Forums', forem.forums_path %>  </li>
                         <li><%= link_to "Inbox", main_app.mailbox_inbox_path %></li>
+                        <li><%= link_to "Calendar", main_app.calendar_view_path %></li>
                         <% if current_user.forem_admin %>
                         <li><%= link_to "Administrate", forem.admin_root_url %></li>
                         <%  end %>
@@ -55,8 +56,7 @@
                     <% if user_signed_in? %>
                         <li>
                             <%= link_to "Welcome back, #{current_user.nickname}" + " " + "#{current_user.lname}", main_app.account_account_path %>
-                        </li>
-                        <li>
+                        </li>                        <li>
                             <%= link_to 'Log out', main_app.destroy_user_session_path, method: :delete %>
                         </li>
                     <% else %>
@@ -76,14 +76,116 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 leftDiv">
-              <h2>News:</h2>
-              <ul>
-                <li>Mr. Jones lost his cat.</li>
-                <li>Bake sale on Saturday</li>
-              </ul>
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 leftDiv">
+                
+                <% @counter = 0 %>                
+                <!--%= calendar events: @events, number_of_days: 1 do |date, events| %>
+                    < % date %-->
+                <ul class="eventList">
+                <% @today = Event.all %>
+                        <% @today.each do |event| %>
+                            <!--li onclick="details('detailer_< %=event.id%>', 1)"-->
+                        <% if(event.start_time.strftime('%Y-%m-%d') == Date.today.to_s) %>
+                            <% @counter = @counter+1 %>
+                                <% if(@counter == 1) %>
+                                    <h2>Today:</h2>
+                                <% else %>
+                                <% end %>
+
+                                <li id="<%= event.id %>">
+                                    <!--span class="glyphicon glyphicon-triangle-right"></span-->
+                                    &bull; <%= event.name %>
+                                </li>
+
+
+                                <!-- Detailer -->
+                                <span id="detailer_<%=event.id%>" class="detailer" style="display: none;">
+                                    <span class="detailer-content">
+                                        <p>
+                                            <%= event.description %>
+                                        </p>
+                                        <%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
+                                    </span>
+                                </span>
+
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#<%= event.id %>").click(function(){
+                                            $("#detailer_<%= event.id %>").toggle(100, "linear");
+                                        });
+                                    });
+                                </script>
+
+                            <% else %>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                <!--% end %-->
+                
+                <div class="chatter">
+                    <!--table>
+                        <thead>
+                            <th>
+                                Sussy Q.
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    This is a message, you punk Bitch!
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table-->
+                    
+                    <ul class="nav nav-tabs">
+                        <li class="active" title="Neighborhood"><a data-toggle="tab" href="#neighborhood">Neighborhood</a></li>
+                        <li title="Joe"><a data-toggle="tab" href="#joe">Joe</a></li>
+                        <li title="Hank"><a data-toggle="tab" href="#hank">Hank</a></li>
+                    </ul>
+                    
+                    <div class="tab-content">
+                        <div id="neighborhood" class="tab-pane fade in active container">
+                            <div class="row">
+                                <div class="send col-lg-10">Mr. Jones lost his cat</div>
+                            </div>
+                            <div class="row">
+                                <div class="receive col-lg-10 col-lg-offset-2">Lol, sucks for him</div>
+                            </div>
+                            <div class="row">
+                                <div class="send col-lg-10">Rude!</div>
+                            </div>
+                        </div>
+                        <div id="joe" class="tab-pane fade container">
+                            <div class="row">
+                                <div class="send col-lg-10">Hi</div>
+                            </div>
+                            <div class="row">
+                                <div class="receive col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+                            </div>
+                            <div class="row">
+                                <div class="send col-lg-10">Ouch!</div>
+                            </div>
+                        </div>
+                        <div id="hank" class="tab-pane fade container">
+                            <div class="row">
+                                <div class="send col-lg-10">;)</div>
+                            </div>
+                            <div class="row">
+                                <div class="send col-lg-10">I have a 1150000 hour drive tomorrow</div>
+                            </div>
+                            <div class="row">
+                                <div class="receive col-lg-10 col-lg-offset-2">I doubt its that long.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+
+                
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-md-offset-3 col-lg-offset-3 centerDiv">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2 centerDiv">
                 <div id="alertTicker" class="none">
                   <marquee>
                       <h2></h2>
