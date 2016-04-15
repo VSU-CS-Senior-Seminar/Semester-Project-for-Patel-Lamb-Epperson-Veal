@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
 
   get 'account/account'
+  get 'account/chat'
   get 'account/join'
   get 'calendar/view'
   devise_for :users, :controllers => { registrations: 'registrations' }

@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   after_validation :geocode
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
+    
+    has_many :chats, :foreign_key => :sender_id
 
   def forem_name
       nickname
