@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require chat
 //= require turbolinks
 //= require underscore
 //= require gmaps/google
