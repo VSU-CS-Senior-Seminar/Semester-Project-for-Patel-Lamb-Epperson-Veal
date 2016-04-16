@@ -4,6 +4,27 @@
     <title>Gazebo</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="description" content="">
+	  <meta name="author" content="">
+	  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
+	  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
+	  <%= csrf_meta_tags %>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -230,6 +251,30 @@
                     <!--%= image_tag("close.png", height: "25px", width: "25px")%-->x
                   </a>
                 </div>
+		    
+		    
+		    	<% if user_signed_in? %>
+			<% @users = User.all %>
+			<% @users.each_with_index do |user, index| %>
+				<tr>
+					<td><%= index +=1 %></td>
+					<td><%= user.fname %></td>
+					<td>
+						<%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-chat",
+						"data-sid" => current_user.id, "data-rip" => user.id %>
+					</td>
+				</tr>
+			<% end %>
+		    
+		    <audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
+		    <% else %>
+		    <% end %>
+		    
+		    
+		    
+		    
+		    
+		    
                 <%= yield %>
             </div>
         </div>

@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   mount Forem::Engine, :at => '/forems'
 
   resources :neighborhoods
+	
+	resources :chats do
+		resources :messages
+	end
+	
   get '/administrates/:id', to: 'administrates#approve', as: 'admin'
   get '/reputations/:id', to: 'reputations#upvote', as: 'rep'
   get "/reputations/:id/postid/:pid" => "reputations#upvote", :as => 'repup'
@@ -18,7 +23,7 @@ Rails.application.routes.draw do
 
 
   get 'account/account'
-  get 'account/chat'
+	get 'account/chat'
   get 'account/join'
   get 'calendar/view'
   devise_for :users, :controllers => { registrations: 'registrations' }

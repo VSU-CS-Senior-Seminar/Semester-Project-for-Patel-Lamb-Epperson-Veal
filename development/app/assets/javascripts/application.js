@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require chat
+//= require private_pub
 //= require turbolinks
 //= require underscore
 //= require gmaps/google

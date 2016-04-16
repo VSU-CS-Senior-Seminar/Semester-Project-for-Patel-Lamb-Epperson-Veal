@@ -12,6 +12,9 @@ class ChatsController < ApplicationController
 
     render json: { chat_id: @chat.id }
   end
+	
+	def index
+	end
 
   def show
     @chat = Chat.find(params[:id])
