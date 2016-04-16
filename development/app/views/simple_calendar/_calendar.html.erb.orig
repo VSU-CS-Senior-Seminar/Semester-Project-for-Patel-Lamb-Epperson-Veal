@@ -1,17 +1,13 @@
 <div class="simple-calendar">
-  <center>
-  <h4><%= link_to calendar.url_for_previous_view do %>
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <%end%>
-  <strong><%= I18n.t("date.month_names") [start_date.month] %> <%= start_date.year %></strong>
-  <%= link_to calendar.url_for_next_view do %>
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <%end%></h4>
-</center>
-
-
-
-  <table class="table ">
+    <!--%= link_to calendar.url_for_previous_view do %>
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    < %end%>
+    < %= I18n.t("date.month_names")[start_date.month] %> < %= start_date.year %>
+    < %= link_to calendar.url_for_next_view do %>
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    < %end%-->
+    
+  <table class="table table-striped">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
@@ -27,10 +23,10 @@
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(block) %>
                 <% capture_haml do %>
-                  <% block.call day.strftime("%d"), sorted_events.fetch(day, []) %>
+                  <% block.call day, sorted_events.fetch(day, []) %>
                 <% end %>
               <% else %>
-                <% block.call day.strftime("%d"), sorted_events.fetch(day, []) %>
+                <% block.call day, sorted_events.fetch(day, []) %>
               <% end %>
             <% end %>
           <% end %>

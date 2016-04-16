@@ -190,7 +190,7 @@ ActiveRecord::Schema.define(version: 20160408161459) do
     t.float   "longitude"
   end
 
-  add_index "neighborhoods", ["name"], name: "sqlite_autoindex_neighborhoods_1", unique: true
+  add_index "neighborhoods", ["name"]
 
   create_table "posts_dislikeds", force: :cascade do |t|
     t.integer "post_id", null: false
