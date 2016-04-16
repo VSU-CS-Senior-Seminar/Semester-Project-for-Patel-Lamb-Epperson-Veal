@@ -108,9 +108,9 @@
                                         <% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
                                             <%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
                                         <% else %>
-                                            <%= event.start_time.strftime('%I:%M %p - %B %e') %>
+                                            <%= event.start_time.strftime('%B %e, %I:%M %p') %>
                                             <br />
-                                            <%= event.end_time.strftime('%I:%M %p - %B %e') %>
+                                            <%= event.end_time.strftime('%B %e, %I:%M %p') %>
                                         <% end %>
                                     </span>
                                 </span>
@@ -129,68 +129,97 @@
                     </ul>
                 <!--% end %-->
                 
-                <div class="chatter">
-                    <!--table>
-                        <thead>
-                            <th>
-                                Sussy Q.
-                            </th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    This is a message, you punk Bitch!
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table-->
-                    
-                    <ul class="nav nav-tabs">
-                        <li class="active" title="Neighborhood"><a data-toggle="tab" href="#neighborhood">Neighborhood</a></li>
-                        <li title="Joe"><a data-toggle="tab" href="#joe">Joe</a></li>
-                        <li title="Hank"><a data-toggle="tab" href="#hank">Hank</a></li>
-                    </ul>
-                    
-                    <div class="tab-content">
-                        <div id="neighborhood" class="tab-pane fade in active container">
-                            <div class="row">
-                                <div class="send col-lg-10">Mr. Jones lost his cat</div>
-                            </div>
-                            <div class="row">
-                                <div class="receive col-lg-10 col-lg-offset-2">Lol, sucks for him</div>
-                            </div>
-                            <div class="row">
-                                <div class="send col-lg-10">Rude!</div>
-                            </div>
-                        </div>
-                        <div id="joe" class="tab-pane fade container">
-                            <div class="row">
-                                <div class="send col-lg-10">Hi</div>
-                            </div>
-                            <div class="row">
-                                <div class="receive col-lg-10 col-lg-offset-2">I stubbed my toe</div>
-                            </div>
-                            <div class="row">
-                                <div class="send col-lg-10">Ouch!</div>
-                            </div>
-                        </div>
-                        <div id="hank" class="tab-pane fade container">
-                            <div class="row">
-                                <div class="send col-lg-10">;)</div>
-                            </div>
-                            <div class="row">
-                                <div class="send col-lg-10">I have a 1150000 hour drive tomorrow</div>
-                            </div>
-                            <div class="row">
-                                <div class="receive col-lg-10 col-lg-offset-2">I doubt its that long.</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
+                <div class="chatter row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			    <ul class="nav nav-tabs">
+				<li class="active" title="Neighborhood"><a data-toggle="tab" href="#neighborhood">Neighborhood</a></li>
+				<li title="Joe"><a data-toggle="tab" href="#joe">Joe</a></li>
+				<li title="Hank"><a data-toggle="tab" href="#hank">Hank</a></li>
+			    </ul>
 
-                
+			<div class="tab-content">
+			    <div id="neighborhood" class="tab-pane fade in active">
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Mr. Jones lost his cat</div>
+				</div>
+				<div class="row">
+				    <div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">Lol, sucks for him</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Rude!</div>
+				</div>
+			    </div>
+			    <div id="joe" class="tab-pane fade">
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+				</div>
+				<div class="row">
+				    <div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+				</div>
+				<div class="row">
+				    <div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+				</div>
+				<div class="row">
+				    <div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+				</div>
+				<div class="row">
+				    <div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+				</div>
+				<div class="row">
+				    <div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+				</div>
+				<div class="row">
+				    <div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+				</div>
+			    </div>
+			    <div id="hank" class="tab-pane fade">
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">;)</div>
+				</div>
+				<div class="row">
+				    <div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">I have a 1150000 hour drive tomorrow</div>
+				</div>
+				<div class="row">
+				    <div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I doubt its that long.</div>
+				</div>
+			    </div>
+			</div>
+			<input id="chatMessage" type="text" name="message" />
+		    </div>
+                </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2 centerDiv">
                 <div id="alertTicker" class="none">

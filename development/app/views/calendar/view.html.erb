@@ -4,16 +4,48 @@
         
         <% @events = Event.all %>
         
-        <%= button_to "New Event", new_event_path, :id => "open-contacts-dialog-btn", :class => "btn btn-info btn-lg", :method => :get %>
+        <%= button_to "New Event", new_event_path, :id => "open-contacts-dialog-btn", :class => "btn btn-info btn-sm", :method => :get %>
         <%= month_calendar do |date| %>
-            <%= date.strftime('%d') %>
+	    <a href="#" class="calDate" type="button" data-toggle="modal" data-target="#modal_<%= date.strftime('%d') %>"><%= date.strftime('%d') %></a>
+	    
+	    
+		<div id="modal_<%= date.strftime('%d') %>" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">New Event</h4>
+				</div>
+				<div class="modal-description">
+					<!--%= render 'events/form', :method => :get, :collection => @events %-->
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+				</div>
+				</div>
+			</div>
+		</div>
+	    
         
         <% @events.each do |event| %>
         
         <% if((event.start_time.strftime('%Y-%m-%d') <= date.strftime('%Y-%m-%d')) && (event.end_time.strftime('%Y-%m-%d') >= date.strftime('%Y-%m-%d'))) %>
-            <div>
+            <div class="eventHolder">
             <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal_<%=event.id%>"><%= event.name %></button>
+		    <a href="#" type="button" class="calEvent event_<%=event.id%>" data-toggle="modal" data-target="#modal_<%=event.id%>"><%= event.name %></a>
+		    
+		    <script>
+			$(document).ready(function() {     
+				$('.event_<%=event.id%>').hover(function(){     
+					$('.event_<%=event.id%>').addClass('eventHover');    
+				},     
+				function(){    
+					$('.event_<%=event.id%>').removeClass('eventHover');     
+				});
+			}); 
+		    </script>
 
             <!-- Modal -->
             <div id="modal_<%=event.id%>" class="modal fade" role="dialog">
@@ -23,13 +55,19 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Event: <%=event.name%></h4>
+                            <h4 class="modal-title"><%=event.name%></h4>
                         </div>
                         <div class="modal-description">
+				<% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
+				    <%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
+				<% else %>
+				    <%= event.start_time.strftime('%B %e, %I:%M %p') %> - 
+				    <%= event.end_time.strftime('%B %e, %I:%M %p') %>
+				<% end %>
                             <p><%= event.description %></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

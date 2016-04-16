@@ -21,3 +21,15 @@
 //= require chosen-jquery
 //= require scaffold
 //= require_tree .
+
+(function($){
+	$(window).load(function(){
+		$(".tab-pane").mCustomScrollbar(
+			{
+				scrollInertia:200,
+				autoHideScrollbar: 'true',
+				scrollTo: 'bottom'
+			}
+		);
+	});
+})(jQuery);

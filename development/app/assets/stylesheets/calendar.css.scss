@@ -50,7 +50,106 @@
     .day
     {
         height: 80px;
+	padding: 0px;
+	padding-bottom: 5px;
+	    
+	transition: all .2s linear 0s;
+	    
+	.calDate, .calDate:focus
+	{
+		padding: 3px 5px;
+		font-weight: normal;
+		text-decoration: none;
+		color: #333;
+		
+		transition: all .2s linear 0s;
+	}
+	
+	.eventHolder
+	{
+		width: 100%;
+		padding: 0px;
+		margin: 0px;
+
+
+		.calEvent, .calEvent:focus
+		{
+			text-decoration: none;
+			width: 100%;
+			display: inline-block;
+			padding: 0px 5px;
+			margin: 5px 0px 0px 0px;
+
+			background-color: #bfb;
+			border-style: solid;
+			border-color: #080;
+			border-width: 1px 0px;
+			
+			transition: all .2s linear 0s;
+		}
+		
+		.eventHover, .eventHover:focus
+		{
+			color: #fff;
+			background-color: #080;
+			border-color: #050;
+			
+			transition: all .1s linear 0s;
+		}
+		
+		.modal
+		{
+			.modal-content
+			{
+				background-color: #eee;
+				color: #333;
+				
+				.modal-header
+				{
+					border-color: #ddd;
+				}
+				
+				.modal-description
+				{
+					padding: 15px;
+					
+					p
+					{
+						margin-top: 15px;
+					}
+				}
+				
+				.modal-footer
+				{
+					border-color: #ddd;
+				}
+			}
+		}
+	}
     }
+	
+	.day:hover
+	{
+		background-color: #ccc;
+		
+		transition: all .1s linear 0s;
+		
+		.calDate
+		{
+			text-decoration: underline;
+			
+			transition: all .1s linear 0s;
+		}
+		
+		.calDate:hover
+		{
+			background-color: #333;
+			color: #eee;
+			cursor: pointer;
+			
+			transition: all .2s linear 0s;
+		}
+	}
 
     .wday-0 {}
     .wday-1 {}
@@ -84,3 +183,38 @@
 
     .has-events {}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
