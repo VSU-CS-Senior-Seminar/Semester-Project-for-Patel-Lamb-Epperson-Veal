@@ -19,7 +19,7 @@
 					<h4 class="modal-title">New Event</h4>
 				</div>
 				<div class="modal-description">
-					<!--%= render 'events/form', :method => :get, :collection => @events %-->
+					<%= render :partial => '/events/form', :event => @event = Event.new %>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>

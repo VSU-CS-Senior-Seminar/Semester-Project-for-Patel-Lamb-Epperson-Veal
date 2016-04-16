@@ -1,2 +1,7 @@
 # Semester-Project-for-Patel-Lamb-Epperson-Veal
-test
+
+
+rails s
+rackup private_pub.ru -s thin -E production
+
+To start with chat functionality

@@ -150,7 +150,7 @@
                     </ul>
                 <!--% end %-->
                 
-                <div class="chatter row">
+                <!--div class="chatter row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			    <ul class="nav nav-tabs">
 				<li class="active" title="Neighborhood"><a data-toggle="tab" href="#neighborhood">Neighborhood</a></li>
@@ -240,7 +240,77 @@
 			</div>
 			<input id="chatMessage" type="text" name="message" />
 		    </div>
-                </div>
+                </div-->
+		    
+		    
+		<div class="userList row">
+		<% if user_signed_in? %>
+			<% @users = User.all %>
+			<ul>
+			<% @users.each_with_index do |user, index| %>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+				<li>
+					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+				</li>
+			<% end %>
+
+			<audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
+			</ul>
+		<% else %>
+		<% end %>
+		</div>
+		    
+		    
             </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2 centerDiv">
                 <div id="alertTicker" class="none">
@@ -253,22 +323,22 @@
                 </div>
 		    
 		    
-		    	<% if user_signed_in? %>
-			<% @users = User.all %>
-			<% @users.each_with_index do |user, index| %>
+		<!-- % if user_signed_in? %>
+			< % @users = User.all %>
+			< % @users.each_with_index do |user, index| %>
 				<tr>
-					<td><%= index +=1 %></td>
-					<td><%= user.fname %></td>
+					<td>< %= index +=1 %></td>
+					<td>< %= user.fname %></td>
 					<td>
-						<%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-chat",
+						< %= link_to "Send Message", "#", class: "btn btn-success btn-xs start-chat",
 						"data-sid" => current_user.id, "data-rip" => user.id %>
 					</td>
 				</tr>
-			<% end %>
-		    
-		    <audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
-		    <% else %>
-		    <% end %>
+			< % end %>
+
+			<audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
+		< % else %>
+		< % end % -->
 		    
 		    
 		    
