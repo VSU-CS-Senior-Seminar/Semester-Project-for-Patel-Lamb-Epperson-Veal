@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
     
     has_many :chats, :foreign_key => :sender_id
-	has_many :events
+
 
   def forem_name
       nickname

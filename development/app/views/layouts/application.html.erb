@@ -111,10 +111,13 @@
 			
 			
 			<!--% @today = Event.all.where(:neighborhood_id => current_user.neighborhood_id) %-->
-			<% @today = Event.all.where(:user_id.neighborhood_id == current_user.neighborhood_id) %>
-			
-                <!--% @today = Event.all %-->
-                        <% @today.each do |event| %>
+
+                    <% @today = Event.joins(:user).where(users: {:neighborhood_id => current_user.neighborhood_id}) %>
+                <!-- % @today = Event.all % -->
+                    
+                        
+                    
+                        <% @today.each do |event| %>                    
                             <!--li onclick="details('detailer_< %=event.id%>', 1)"-->
                     <% if((event.start_time.strftime('%Y-%m-%d') <= Date.today.to_s) && (event.end_time.strftime('%Y-%m-%d') >= Date.today.to_s)) %>
                             <% @counter = @counter+1 %>
