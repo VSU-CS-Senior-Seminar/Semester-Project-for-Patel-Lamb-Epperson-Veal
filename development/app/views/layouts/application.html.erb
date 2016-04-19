@@ -76,13 +76,16 @@
 
                     <% if user_signed_in? %>
                         <li>
-                            <%= link_to "Welcome back, #{current_user.nickname}" + " " + "#{current_user.lname}", main_app.account_account_path %>
-                        </li>                        <li>
+                            <%= link_to "Welcome back, #{current_user.nickname}" + " " + "#{current_user.lname}", main_app.account_account_path, :data => { :no_turbolink => true }%>
+                        </li>
+                        <li>
                             <%= link_to 'Log out', main_app.destroy_user_session_path, method: :delete %>
                         </li>
                     <% else %>
                         <li>
-                            <%= link_to 'Welcome, join a community!', new_registration_path(:user), :data => { :no_turbolink => true }  %>
+                            
+                            <%= link_to 'Welcome, join a community!', account_accttype_path, :data => { :no_turbolink => true }  %>
+                            <!--%= link_to 'Welcome, join a community!', new_registration_path(:user), :data => { :no_turbolink => true }  %-->
                         </li>
                         <li>
                             <%= link_to 'Log In', new_user_session_path %>

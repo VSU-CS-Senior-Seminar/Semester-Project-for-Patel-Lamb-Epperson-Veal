@@ -21,9 +21,9 @@ Rails.application.routes.draw do
   get "/reputations/:id/postid/:pid" => "reputations#upvote", :as => 'repup'
   get "/reputations/:id/postsid/:pid" => "reputations#downvote", :as => 'repdown'
 
-
+  get 'account/accttype'
   get 'account/account'
-	get 'account/chat'
+  get 'account/chat'
   get 'account/join'
   get 'calendar/view'
   devise_for :users, :controllers => { registrations: 'registrations' }
