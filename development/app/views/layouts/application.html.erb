@@ -108,12 +108,12 @@
 			
 			
 			
-			<%= f.select(:recipients, User.all.where(:neighborhood_id => current_user.neighborhood_id).collect {|p| [ p.fname, p.id ] }, {}, { multiple: true , class: "form-control" })%>
+			
 			
 			<!--% @today = Event.all.where(:neighborhood_id => current_user.neighborhood_id) %-->
-			<!--% @today = Event.all.where(:user_id.neighborhood_id => current_user.neighborhood_id) %-->
+			<% @today = Event.all.where(:user_id.neighborhood_id == current_user.neighborhood_id) %>
 			
-                <% @today = Event.all %>
+                <!--% @today = Event.all %-->
                         <% @today.each do |event| %>
                             <!--li onclick="details('detailer_< %=event.id%>', 1)"-->
                     <% if((event.start_time.strftime('%Y-%m-%d') <= Date.today.to_s) && (event.end_time.strftime('%Y-%m-%d') >= Date.today.to_s)) %>
