@@ -6,581 +6,468 @@
 *= require_self
 */
 
-body
-{
+body {
 	//overflow: hidden;
 	background-color: #eee;
+	/*a {
+		color: red;
+		text-decoration: none;
+		background: green;
+		&:hover {
+			color: blue;
+			background-color: yellow;
+		}
+	}*/
+	
+	.row.first
+	{
+		margin-top: 15px;
+	}
+	
+	.btn-default
+	{
+		background-color: #f60;
+		border-syle: solid;
+		border-width: 0px;
+		border-color: #f60;
+		border-radius: 3px;
+		color: #eee;
+		
+		transition: all .2s linear 0s;
+		
+		&:hover
+		{
+			background-color: #555;
+			border-color: #555;
+			color: #eee;
+			
+			transition: all .1s linear 0s;
+		}
+	}
 }
 
 .commspace {
-    position:relative;
-		margin-top: 10px;
-
+	position: relative;
+	margin-top: 10px;
 }
 
-.logoLink
-{
-    background-image: linear-gradient(to right,
-                  transparent,
-                  transparent 50%,
-                  #f60 50%,
-                  #f60);
-    background-position: 100% 0px;
-    background-size: 200% 100%;
-    transition: all .2s linear;
-    height: 50px;
-    padding: 15px 5px 17px 5px;
-
-    .logo
-    {
-        margin: 5px 15px 5px 15px;
-    }
+.logoLink {
+	background-image: linear-gradient(to right, transparent, transparent 50%, #f60 50%, #f60);
+	background-position: 100% 0px;
+	background-size: 200% 100%;
+	transition: all .2s linear;
+	height: 50px;
+	padding: 15px 5px 17px 5px;
+	.logo {
+		margin: 5px 15px 5px 15px;
+	}
 }
 
-.logoLink:hover
-{
-    background-color: #555;
-
-    background-position: 0% -100%;
-    transition: all .1s linear;
+.logoLink:hover {
+	background-color: #555;
+	background-position: 0% -100%;
+	transition: all .1s linear;
 }
 
-.topSpace
-{
-    height: 50px;
-    width: 100%;
-    padding: 0px;
-    margin: 0px 0px 3px 0px;
+.topSpace {
+	height: 50px;
+	width: 100%;
+	padding: 0px;
+	margin: 0px 0px 3px 0px;
 }
 
-.navbar-default
-{
-    position: fixed;
-    width: 100%;
-    top: 0px;
-    z-index: 99;
-    background-color: #f60;
-    border-radius: 0px;
-    //height: 75px;
-    border-style: solid;
-    border-color: #333;
-    border-width: 0px 0px 3px 0px;
-    margin-bottom: 0px;
-
-    .navbar-nav
-    {
-        li
-        {
-            a
-            {
-                color: #fff;
-
-                background-image: linear-gradient(to right,
-                                  transparent,
-                                  transparent 50%,
-                                  #f60 50%,
-                                  #f60);
-                background-position: 100% 0px;
-                background-size: 200% 100%;
-                transition: all .2s linear;
-            }
-
-            a:hover
-            {
-                color: #fff;
-                background-color: #555;
-
-                background-position: 0% -100%;
-                transition: all .1s linear;
-            }
-        }
-
-        .active
-        {
-            a
-            {
-                /*background-image: linear-gradient(to right,
+.navbar-default {
+	position: fixed;
+	width: 100%;
+	top: 0px;
+	z-index: 99;
+	background-color: #f60;
+	border-radius: 0px;
+	//height: 75px;
+	border-style: solid;
+	border-color: #333;
+	border-width: 0px 0px 3px 0px;
+	margin-bottom: 0px;
+	.logoLink {
+		padding: 18px 5px;
+	}
+	.navbar-nav {
+		li {
+			a {
+				color: #fff;
+				background-image: linear-gradient(to right, transparent, transparent 50%, #f60 50%, #f60);
+				background-position: 100% 0px;
+				background-size: 200% 100%;
+				transition: all .2s linear;
+			}
+			a:hover {
+				color: #fff;
+				background-color: #555;
+				background-position: 0% -100%;
+				transition: all .1s linear;
+			}
+		}
+		.active {
+			a {
+				/*background-image: linear-gradient(to right,
                                   transparent,
                                   transparent 50%,
                                   #555 50%,
                                   #555);*/
-
-                background-image: linear-gradient(to right,
-                                  #555, #555);
-
-
-                color: #fff;
-            }
-
-            a:hover
-            {
-                color: #fff;
-                background-color: #333;
-
-                background-position: 0% -100%;
-                transition: all .1s linear;
-            }
-        }
-    }
-
-    .navbar-toggle
-    {
-        border-color: #fff;
-        background-color: none;
-
-        .icon-bar
-        {
-            background-color: #fff;
-            border-radius: 3px;
-        }
-    }
-
-    .navbar-toggle:hover, .navbar-toggle:focus
-        {
-            background-color: #555;
-        }
+				background-image: linear-gradient(to right, #555, #555);
+				color: #fff;
+			}
+			a:hover {
+				color: #fff;
+				background-color: #333;
+				background-position: 0% -100%;
+				transition: all .1s linear;
+			}
+		}
+	}
+	.navbar-toggle {
+		border-color: #fff;
+		background-color: none;
+		.icon-bar {
+			background-color: #fff;
+			border-radius: 3px;
+		}
+	}
+	.navbar-toggle:hover,
+	.navbar-toggle:focus:hover {
+		background-color: #555;
+	}
+	.navbar-toggle:focus {
+		background-color: #f60;
+	}
 }
 
-.navbar-collapse
-{
-    border-style: solid;
-    border-width:0px;
+.navbar-collapse {
+	border-style: solid;
+	border-width: 0px;
 }
 
-.container
-{
-    width: 100%;
-    height: 100%;
+.container {
+	width: 100%;
+	height: 100%;
 }
 
-
-.row.content
-{
-    height:100%;
+.row.content {
+	height: 100%;
 }
 
-.leftDiv
-{
-    position:fixed;
-    height: 100%;
+.leftDiv {
+	position: fixed;
+	height: 100%;
 	background-color: #555;
 	color: #fff;
-
-    .eventList
-    {
-        padding: 0px;
-        margin: 0px;
-
-        li
-        {
-            font-weight: bold;
-            font-size: 1.15em;
-            cursor: pointer;
-            padding: 2px 15px;
-            list-style-type: none;
-
-            background-image: linear-gradient(to right,
-                              transparent,
-                              transparent 50%,
-                              #555 50%,
-                              #555);
-            background-position: 100% 0px;
-            background-size: 200% 100%;
-
-            transition: all .2s linear 0s;
-        }
-
-        li:hover
-        {
-            background-color: #f60;
-
-            background-position: 0% -100%;
-
-            transition: all .1s linear 0s;
-        }
-
-        .detailer
-        {
-            margin: 0px 45px;
-            font-size: 1em;
-        }
-    }
-
-    .chatter.row
-    {
-	position: absolute;
-	left:0px;
-	bottom: 15px;
-	height: 350px;
-	width: 100%;
-
-	margin: 50px 0px;
-
-	padding: 0px;
-
-	.nav-tabs
-	{
-	    margin-bottom: 5px;
-	    li, li.active
-	    {
-		margin: 0px 1px 0px 0px;
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		border-style: solid;
-		border-color: #333;
-		border-width: 0px 1px 0px 1px;
-		background-color: #eee;
+	overflow: hidden;
+	.eventList {
 		padding: 0px;
-
-		transition: all .2s linear 0s;
-
-		a
-		{
-		    color: #333;
-		    padding: 1px 5px;
-		    max-width: 25px;
-		    overflow-x: hidden;
-		    background-color: #eee;
-		    border-style: solid;
-		    border-width: 0px;
-
-		    transition: all .2s linear 0s;
-		}
-
-		a:hover, a:focus
-		{
-		    color: #eee;
-
-		    transition: all .1s linear 0s;
-		}
-	    }
-
-	    li.active
-	    {
-
-		a
-		{
-		    max-width: 50px;
-
-		    transition: all .2s linear 0s;
-		}
-	    }
-
-
-
-	    li:hover, li.active:hover, li.active
-	    {
-		background-color: #333;
-		margin-top: -4px;
-
-		transition: all .1s linear 0s;
-
-		a, a:hover, a:focus
-		{
-		    color: #eee;
-		    padding-top: 5px;
-		    background-color: #333;
-		    border-style: solid;
-		    border-width: 0px;
-
-		    transition: all .1s linear 0s;
-		}
-	    }
-	}
-
-	.tab-content
-	{
-	    margin: 0px;
-	    padding: 0px;
-	    width: 100%;
-
-	    .tab-pane
-	    {
-		width: 100%;
-		height: 100%;
-		max-height: 300px;
 		margin: 0px;
-		padding: 0px;
-		overflow:auto;
-
-		.row
-		{
-		    margin: 0px 0px 3px 0px;
-		    padding: 0px;
-
-		    .send
-		    {
-			margin: 0px;
-			padding: 3px 5px;
-			background-color: #333;
-			border-top-left-radius: 5px;
-			border-top-right-radius: 5px;
-			border-bottom-right-radius: 5px;
-		    }
-
-		    .send::after
-		    {
-			border-top: 10px solid #333;
-			border-right: 10px solid transparent;
-			width: 0;
-			height: 0;
-
-			content: "";
-			display: block;
-			position: absolute;
-			top: 100%;
-			left: 0px;
-		    }
-
-		    .receive
-		    {
-			margin: 0px;
-			padding: 3px 5px;
-			background-color: #eee;
-			color: #333;
-			border-top-right-radius: 5px;
-			border-top-left-radius: 5px;
-			border-bottom-left-radius: 5px;
-			text-align: right;
-			float: right;
-		    }
-
-		    .receive::after
-		    {
-			border-top: 10px solid #eee;
-			border-left: 10px solid transparent;
-			width: 0;
-			height: 0;
-
-			content: "";
-			display: block;
-			position: absolute;
-			top: 100%;
-			right: 0px;
-		    }
+		li {
+			font-weight: bold;
+			font-size: 1.15em;
+			cursor: pointer;
+			padding: 2px 15px;
+			list-style-type: none;
+			background-image: linear-gradient(to right, transparent, transparent 50%, #555 50%, #555);
+			background-position: 100% 0px;
+			background-size: 200% 100%;
+			transition: all .2s linear 0s;
 		}
-	    }
+		li:hover {
+			background-color: #f60;
+			background-position: 0% -100%;
+			transition: all .1s linear 0s;
+		}
+		.detailer {
+			margin: 0px 45px;
+			font-size: 1em;
+		}
 	}
-
-	#chatMessage
-	{
-	    color: #333;
-	    background-color: #eee;
-	    margin-top: 5px;
-	    width: 100%;
-	    border-style: solid;
-	    border-width: 1px;
-	    border-color: #333;
-	    border-radius: 3px;
+	.chatter.row {
+		position: absolute;
+		left: 0px;
+		bottom: 15px;
+		height: 350px;
+		width: 100%;
+		margin: 50px 0px;
+		padding: 0px;
+		.nav-tabs {
+			margin-bottom: 5px;
+			li,
+			li.active {
+				margin: 0px 1px 0px 0px;
+				border-top-left-radius: 3px;
+				border-top-right-radius: 3px;
+				border-style: solid;
+				border-color: #333;
+				border-width: 0px 1px 0px 1px;
+				background-color: #eee;
+				padding: 0px;
+				transition: all .2s linear 0s;
+				a {
+					color: #333;
+					padding: 1px 5px;
+					max-width: 25px;
+					overflow-x: hidden;
+					background-color: #eee;
+					border-style: solid;
+					border-width: 0px;
+					transition: all .2s linear 0s;
+				}
+				a:hover,
+				a:focus {
+					color: #eee;
+					transition: all .1s linear 0s;
+				}
+			}
+			li.active {
+				a {
+					max-width: 50px;
+					transition: all .2s linear 0s;
+				}
+			}
+			li:hover,
+			li.active:hover,
+			li.active {
+				background-color: #333;
+				margin-top: -4px;
+				transition: all .1s linear 0s;
+				a,
+				a:hover,
+				a:focus {
+					color: #eee;
+					padding-top: 5px;
+					background-color: #333;
+					border-style: solid;
+					border-width: 0px;
+					transition: all .1s linear 0s;
+				}
+			}
+		}
+		.tab-content {
+			margin: 0px;
+			padding: 0px;
+			width: 100%;
+			.tab-pane {
+				width: 100%;
+				height: 100%;
+				max-height: 300px;
+				margin: 0px;
+				padding: 0px;
+				overflow: auto;
+				.row {
+					margin: 0px 0px 3px 0px;
+					padding: 0px;
+					.send {
+						margin: 0px;
+						padding: 3px 5px;
+						background-color: #333;
+						border-top-left-radius: 5px;
+						border-top-right-radius: 5px;
+						border-bottom-right-radius: 5px;
+					}
+					.send::after {
+						border-top: 10px solid #333;
+						border-right: 10px solid transparent;
+						width: 0;
+						height: 0;
+						content: "";
+						display: block;
+						position: absolute;
+						top: 100%;
+						left: 0px;
+					}
+					.receive {
+						margin: 0px;
+						padding: 3px 5px;
+						background-color: #eee;
+						color: #333;
+						border-top-right-radius: 5px;
+						border-top-left-radius: 5px;
+						border-bottom-left-radius: 5px;
+						text-align: right;
+						float: right;
+					}
+					.receive::after {
+						border-top: 10px solid #eee;
+						border-left: 10px solid transparent;
+						width: 0;
+						height: 0;
+						content: "";
+						display: block;
+						position: absolute;
+						top: 100%;
+						right: 0px;
+					}
+				}
+			}
+		}
+		#chatMessage {
+			color: #333;
+			background-color: #eee;
+			margin-top: 5px;
+			width: 100%;
+			border-style: solid;
+			border-width: 1px;
+			border-color: #333;
+			border-radius: 3px;
+			&:hover,
+			&:focus {
+				border-color: #f60;
+				box-shadow: 0px 0px 5px -2px #f60;
+			}
+		}
 	}
-
-	#chatMessage:hover, #chatMessage:focus
-	{
-		border-color: #f60;
-		box-shadow: 0px 0px 5px -2px #f60;
-	}
-    }
-
-	.users
-	{
+	.users {
 		position: absolute;
 		bottom: 75px;
 		left: 0px;
 		height: 100%;
 		max-height: 350px;
-		width: 100%;
 		overflow: hidden;
 		padding: 0px;
 		padding-left: 15px;
-
-		ul.userList
-		{
+		ul.userList {
 			height: 100%;
-			width: 100%;
 			overflow: scroll;
 			list-style: none;
 			padding: 0px;
 			margin: 0px;
-
-			li
-			{
+			width: unquote("-webkit-calc(100% + 15px)");
+			width: unquote("-moz-calc(100% + 13px)");
+			width: unquote("-calc(100% + 15px)");
+			li {
 				margin: 0px;
-
-				a
-				{
+				a {
 					display: inline-block;
 					width: 100%;
 					padding: 3px 15px;
-
 					color: #eee;
-
-					background-image: linear-gradient(to right,
-					transparent,
-					transparent 50%,
-					#555 50%,
-					#555);
+					background-image: linear-gradient(to right, transparent, transparent 50%, #555 50%, #555);
 					background-position: 100% 0px;
 					background-size: 200% 100%;
-
 					transition: all .2s linear 0s;
-
-					&:hover
-					{
+					&:hover {
 						text-decoration: none;
 						background-color: #333;
 						background-position: 0% -100%;
-
 						transition: all .1s linear 0s;
 					}
 				}
 			}
-
 			&:before {
 				display: block;
 				position: absolute;
 				z-index: 99;
-
 				top: 20;
 				left: 0;
-				height: 20px; /* or height: 100%; */
+				height: 20px;
+				/* or height: 100%; */
 				width: 100%;
-
 				background-image: linear-gradient(#555, #555 1%, transparent);
-				content:'';
-
+				content: '';
 				overflow: hidden;
 			}
-
 			&:after {
 				display: block;
 				position: absolute;
 				z-index: 99;
-
 				bottom: 0;
 				left: 0;
-				height: 20px; /* or height: 100%; */
+				height: 20px;
+				/* or height: 100%; */
 				width: 100%;
-
-				background-image: linear-gradient(transparent,#555 99%, #555);
-				content:'';
-
+				background-image: linear-gradient(transparent, #555 99%, #555);
+				content: '';
 				overflow: hidden;
 			}
 		}
 	}
-
 }
 
 @media screen and (max-width: 991px) {
-    .navbar-default
-    {
-        position: static;
-    }
-    .topSpace, .chatter, .userList
-    {
-        display: none;
-    }
-    .leftDiv
-    {
-        position: static;
-        height: auto;
-        padding: 15px;
-    }
-    .row.content
-    {
-        height:auto;
-    }
+	.navbar-default {
+		position: static;
+	}
+	.topSpace,
+	.chatter,
+	.users {
+		display: none;
+	}
+	.leftDiv {
+		position: static;
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#alertTicker
-{
-  background-color: rgba(255,136,51,.5);
+#alertTicker {
+	background-color: rgba(255, 136, 51, .5);
 	padding: 10px 25px;
 	width: 80%;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
 
-#alertTicker marquee
-{
+#alertTicker marquee {
 	width: 90%;
 	padding-right: 17px;
 }
 
-#alertTicker h2
-{
+#alertTicker h2 {
 	padding: 0px;
 	margin: 0px;
 }
 
-.potus marquee h2:before
-{
+.potus marquee h2:before {
 	color: red;
 	content: "!!! POTUS ALERT !!!";
 	padding: 0px 75px 0px 0px;
 	margin: 0px;
 }
 
-.potus marquee h2:after
-{
+.potus marquee h2:after {
 	color: red;
 	content: "!!! POTUS ALERT !!!";
 	padding: 0px 0px 0px 75px;
 	margin: 0px;
 }
 
-.amber marquee h2:before
-{
+.amber marquee h2:before {
 	color: red;
 	content: "--- AMBER ALERT ---";
 	padding: 0px 75px 0px 0px;
 	margin: 0px;
 }
 
-.amber marquee h2:after
-{
+.amber marquee h2:after {
 	color: red;
 	content: "--- AMBER ALERT ---";
 	padding: 0px 0px 0px 75px;
 	margin: 0px;
 }
 
-.weather marquee h2:before
-{
+.weather marquee h2:before {
 	color: red;
 	content: "Severe Weather --";
 	padding: 0px 75px 0px 0px;
 	margin: 0px;
 }
 
-.weather marquee h2:after
-{
+.weather marquee h2:after {
 	color: red;
 	content: "-- Severe Weather";
 	padding: 0px 0px 0px 75px;
 	margin: 0px;
 }
 
-.close
-{
+.close {
 	background-color: #555;
 	color: #eee;
 	border-radius: 5px;
@@ -590,32 +477,24 @@ body
 	padding: 5px 10px;
 	margin: 0px;
 	float: right;
-
 	transition: all .2s linear;
 }
 
-.close:hover
-{
-    color: #ff6400;
+.close:hover {
+	color: #ff6400;
 	background-color: #333;
 	border-radius: 0px;
-
 	transition: all .1s linear;
 }
 
-.none
-{
+.none {
 	display: none;
 }
 
-
-
-.liked
-{
-    color: green;
+.liked {
+	color: green;
 }
 
-.disliked
-{
-  color: red;
+.disliked {
+	color: red;
 }

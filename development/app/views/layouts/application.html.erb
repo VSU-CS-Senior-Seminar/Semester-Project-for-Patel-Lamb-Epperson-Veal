@@ -98,11 +98,21 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 leftDiv">
+		    
+		<% if user_signed_in? %>
 
                 <% @counter = 0 %>
                 <!--%= calendar events: @events, number_of_days: 1 do |date, events| %>
                     < % date %-->
                 <ul class="eventList">
+			
+			
+			
+			<%= f.select(:recipients, User.all.where(:neighborhood_id => current_user.neighborhood_id).collect {|p| [ p.fname, p.id ] }, {}, { multiple: true , class: "form-control" })%>
+			
+			<!--% @today = Event.all.where(:neighborhood_id => current_user.neighborhood_id) %-->
+			<!--% @today = Event.all.where(:user_id.neighborhood_id => current_user.neighborhood_id) %-->
+			
                 <% @today = Event.all %>
                         <% @today.each do |event| %>
                             <!--li onclick="details('detailer_< %=event.id%>', 1)"-->
@@ -139,7 +149,7 @@
                                 <script>
                                     $(document).ready(function(){
                                         $("#<%= event.id %>").click(function(){
-                                            $("#detailer_<%= event.id %>").toggle(100, "linear");
+                                            $("#detailer_<%= event.id %>").slideToggle(100, "linear");
                                         });
                                     });
                                 </script>
@@ -244,17 +254,17 @@
 
 
 		<div class="row">
-  		<% if user_signed_in? %>
-  			<% @users = User.all %>
+  			<!--% @users = User.all %-->
+			<% @users = User.all.where(:neighborhood_id => current_user.neighborhood_id) %>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 users">
           <h4>Online Now:</h4>
     			<ul class="userList">
-            <br />
+				<br />
       			<% @users.each_with_index do |user, index| %>
-      				<li>
+				<li>
       					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
       				</li>
-              <li>
+				<li>
       					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
       				</li>
       				<li>
@@ -303,10 +313,15 @@
     			</ul>
       </div>
       <audio id="chatAudio"><source src="/assets/notification.mp3" type="audio/mpeg"></audio>
-  		<% else %>
-  		<% end %>
 		</div>
-
+  		<% else %>
+			<div class="big">
+				<h2><%= link_to 'Log In', new_user_session_path %></h2>
+				<p>
+					Log in to see Neighborhood events and chat with friends.
+				</p>
+			</div>
+  		<% end %>
 
             </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2 centerDiv">

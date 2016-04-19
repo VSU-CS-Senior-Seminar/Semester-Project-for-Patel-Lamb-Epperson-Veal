@@ -1,16 +1,37 @@
 <div class="media">
-  <div class="media-left">
+  <!--div class="media-left">
     <a href="#">
       <img class="media-object" src="http://placehold.it/64x64" alt="...">
     </a>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading">
-      <%= conversation.originator.fname%> <br />
-      <small><b>Subject: </b><%= conversation.subject %><br></small>
-      <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
-    </h4>
-    <%= truncate conversation.messages.last.body, length: 145 %>
-    <%= link_to "View", conversation_path(conversation)  %>
-  </div>
+  </div-->
+	
+	<%= link_to conversation_path(conversation) do %>
+		<div class="media-body inbod">
+			<!--h4 class="media-heading">
+			< %= conversation.originator.fname%> <br />
+			<small><b>Subject: </b>< %= conversation.subject %><br></small>
+			<small><b>Date: </b>< %=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+			</h4-->
+
+			<% if conversation.messages.last.created_at <= 1.week.ago %>
+				<% @date = "%A at %I:%M %p" %>
+			<% else %>
+				<% @date = "%m/%d/%y at %I:%M %p" %>
+			<% end %>
+
+			<div class="media-heading">
+				<h4>
+					<%= conversation.originator.fname%>
+				</h4>
+				<h5>
+					<%= conversation.subject %>
+				</h5>
+				<h5>
+					<%=  conversation.messages.last.created_at.strftime(@date) %>
+				</h5>
+			</div>
+
+			<%= truncate conversation.messages.last.body, length: 145 %>
+		</div>
+	<% end %>
 </div>

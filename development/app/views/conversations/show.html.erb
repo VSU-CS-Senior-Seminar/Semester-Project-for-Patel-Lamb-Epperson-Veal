@@ -1,45 +1,56 @@
-<div class="row">
-  <div class="spacer"></div>
-  <div class="col-md-6">
-    <%= link_to "Compose", new_conversation_path, class: "btn btn-success" %>
-  </div>
-  <div class="col-md-6 text-right">
-    <% if conversation.is_trashed?(current_user) %>
-        <%= link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
-    <% else %>
-        <%= link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-danger', method: :post,
-                    data: {confirm: 'Are you sure?'} %>
-    <% end %>
-  </div>
-</div>
+<div class="row first">
+	<div class="col-md-2">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<%= link_to "New Message", new_conversation_path, class: "btn btn-default btn-md" %>
+				<%= render 'mailbox/folders' %>
+			</div>
+		</div>
+	</div>
 
-<div class="row">
-  <div class="spacer"></div>
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= render 'mailbox/folders' %>
-      </div>
-    </div>
-  </div>
+	<div class="col-md-10">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4 class="fleft"><%= conversation.subject %></h4>
 
-  <div class="col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-body">
-          <h4><%= conversation.subject %></h4>
-        <%= render partial: 'messages' %>
-      </div>
-      <div class="panel-footer">
-        <!-- Reply Form -->
-        <%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
-            <div class="form-group">
-              <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
-            </div>
-            <%= f.submit "Reply", class: 'btn btn-danger pull-right' %>
-        <% end %>
-        <div class="clearfix"></div>
-      </div>
-    </div>
-  </div>
-
+				<div class="mailFunctions fright">
+				<% if conversation.is_trashed?(current_user) %>
+					<%= link_to untrash_conversation_path(conversation), method: :post do %>
+						<span class="glyphicon glyphicon-envelope" title="Send to Inbox"></span>
+					<% end %>
+				<% else %>
+					<a href="#" id="showReply"><span class="glyphicon glyphicon-share-alt" title="Reply"></span> </a>
+					<%= link_to trash_conversation_path(conversation), method: :post, data: {confirm: 'Are you sure?'} do %>
+						<span class="glyphicon glyphicon-trash" title="Send to Trash"></span> 
+					<% end %>
+				<% end %>
+					
+				<script>
+					$(document).ready(function(){
+						$("#showReply").click(function(){
+							$("#replyFooter").slideToggle(100, "linear");
+						});
+					});
+				</script>
+					
+				</div>
+				<div class="flear">
+					<%= render partial: 'messages' %>
+				</div>
+			</div>
+			<div class="panel-footer" id="replyFooter">
+				<!-- Reply Form -->
+				<%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
+				<div class="form-group">
+					<%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
+				</div>
+				<!-- %= f.submit do % -->
+				<%= button_tag(type: 'submit', class: "glyphButton") do %>
+					<span class="glyphicon glyphicon-send" title="Reply"></span>
+				<% end %>
+				<% end %>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
 </div>

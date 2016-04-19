@@ -1,23 +1,18 @@
-<ul class="">
-  <li class="<%= active_page(:inbox) %>">
-    <%= link_to mailbox_inbox_path do  %>
-        <span class="label label-danger pull-right"><%=unread_messages_count%></span>
-        <em class=""></em>
-        <span>Inbox</span>
-    <% end %>
-  </li>
-  <li class="<%= active_page(:sent) %>">
-    <%= link_to mailbox_sent_path do %>
-
-        <em class=""></em>
-        <span>Sent</span>
-    <% end %>
-  </li>
-
-  <li class="<%= active_page(:trash) %>">
-    <%= link_to mailbox_trash_path do %>
-        <em class=""></em>
-        <span>Trash</span>
-    <% end %>
-  </li>
+<ul class="inboxFunctions">
+	<li title="Inbox">
+	    <%= link_to mailbox_inbox_path do  %>
+		 <!-- %=unread_messages_count%> This Displays how many mails -->
+		<span class="glyphicon glyphicon-inbox"></span> Inbox
+	    <% end %>
+	</li>
+	<li title="Sent">
+	    <%= link_to mailbox_sent_path do %>
+		<span class="glyphicon glyphicon-send"></span> Sent
+	    <% end %>
+	</li>
+	<li title="Trash">
+	    <%= link_to mailbox_trash_path do %>
+		<span class="glyphicon glyphicon-trash"></span> Trash
+	    <% end %>
+	</li>
 </ul>
