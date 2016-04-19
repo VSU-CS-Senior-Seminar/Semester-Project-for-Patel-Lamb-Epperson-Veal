@@ -165,12 +165,12 @@ body
     height: 100%;
 	background-color: #555;
 	color: #fff;
-    
+
     .eventList
     {
         padding: 0px;
         margin: 0px;
-        
+
         li
         {
             font-weight: bold;
@@ -178,7 +178,7 @@ body
             cursor: pointer;
             padding: 2px 15px;
             list-style-type: none;
-            
+
             background-image: linear-gradient(to right,
                               transparent,
                               transparent 50%,
@@ -186,26 +186,26 @@ body
                               #555);
             background-position: 100% 0px;
             background-size: 200% 100%;
-            
+
             transition: all .2s linear 0s;
         }
-        
+
         li:hover
         {
             background-color: #f60;
 
             background-position: 0% -100%;
-            
+
             transition: all .1s linear 0s;
         }
-        
+
         .detailer
         {
             margin: 0px 45px;
             font-size: 1em;
         }
     }
-    
+
     .chatter.row
     {
 	position: absolute;
@@ -213,11 +213,11 @@ body
 	bottom: 15px;
 	height: 350px;
 	width: 100%;
-	
+
 	margin: 50px 0px;
 
 	padding: 0px;
-    
+
 	.nav-tabs
 	{
 	    margin-bottom: 5px;
@@ -257,7 +257,7 @@ body
 
 	    li.active
 	    {
-		
+
 		a
 		{
 		    max-width: 50px;
@@ -265,8 +265,8 @@ body
 		    transition: all .2s linear 0s;
 		}
 	    }
-	    
-	    
+
+
 
 	    li:hover, li.active:hover, li.active
 	    {
@@ -295,14 +295,14 @@ body
 	    width: 100%;
 
 	    .tab-pane
-	    {    
+	    {
 		width: 100%;
 		height: 100%;
 		max-height: 300px;
 		margin: 0px;
 		padding: 0px;
 		overflow:auto;
-		
+
 		.row
 		{
 		    margin: 0px 0px 3px 0px;
@@ -361,7 +361,7 @@ body
 		}
 	    }
 	}
-	
+
 	#chatMessage
 	{
 	    color: #333;
@@ -373,13 +373,102 @@ body
 	    border-color: #333;
 	    border-radius: 3px;
 	}
-	
+
 	#chatMessage:hover, #chatMessage:focus
 	{
 		border-color: #f60;
 		box-shadow: 0px 0px 5px -2px #f60;
 	}
     }
+
+	.users
+	{
+		position: absolute;
+		bottom: 75px;
+		left: 0px;
+		height: 100%;
+		max-height: 350px;
+		width: 100%;
+		overflow: hidden;
+		padding: 0px;
+		padding-left: 15px;
+
+		ul.userList
+		{
+			height: 100%;
+			width: 100%;
+			overflow: scroll;
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+
+			li
+			{
+				margin: 0px;
+
+				a
+				{
+					display: inline-block;
+					width: 100%;
+					padding: 3px 15px;
+
+					color: #eee;
+
+					background-image: linear-gradient(to right,
+					transparent,
+					transparent 50%,
+					#555 50%,
+					#555);
+					background-position: 100% 0px;
+					background-size: 200% 100%;
+
+					transition: all .2s linear 0s;
+
+					&:hover
+					{
+						text-decoration: none;
+						background-color: #333;
+						background-position: 0% -100%;
+
+						transition: all .1s linear 0s;
+					}
+				}
+			}
+
+			&:before {
+				display: block;
+				position: absolute;
+				z-index: 99;
+
+				top: 20;
+				left: 0;
+				height: 20px; /* or height: 100%; */
+				width: 100%;
+
+				background-image: linear-gradient(#555, #555 1%, transparent);
+				content:'';
+
+				overflow: hidden;
+			}
+
+			&:after {
+				display: block;
+				position: absolute;
+				z-index: 99;
+
+				bottom: 0;
+				left: 0;
+				height: 20px; /* or height: 100%; */
+				width: 100%;
+
+				background-image: linear-gradient(transparent,#555 99%, #555);
+				content:'';
+
+				overflow: hidden;
+			}
+		}
+	}
+
 }
 
 @media screen and (max-width: 991px) {
@@ -387,7 +476,7 @@ body
     {
         position: static;
     }
-    .topSpace, .chatter
+    .topSpace, .chatter, .userList
     {
         display: none;
     }

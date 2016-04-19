@@ -4,13 +4,13 @@
     <title>Gazebo</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+
+
+
+
+
+
+
 	  <meta charset="utf-8">
 	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	  <meta name="description" content="">
@@ -18,13 +18,13 @@
 	  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
 	  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
 	  <%= csrf_meta_tags %>
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+
+
+
+
+
+
+
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -98,8 +98,8 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 leftDiv">
-                
-                <% @counter = 0 %>                
+
+                <% @counter = 0 %>
                 <!--%= calendar events: @events, number_of_days: 1 do |date, events| %>
                     < % date %-->
                 <ul class="eventList">
@@ -125,7 +125,7 @@
                                         <p>
                                             <%= event.description %>
                                         </p>
-                                        
+
                                         <% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
                                             <%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
                                         <% else %>
@@ -149,7 +149,7 @@
                         <% end %>
                     </ul>
                 <!--% end %-->
-                
+
                 <!--div class="chatter row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			    <ul class="nav nav-tabs">
@@ -241,76 +241,73 @@
 			<input id="chatMessage" type="text" name="message" />
 		    </div>
                 </div-->
-		    
-		    
-		<div class="userList row">
-		<% if user_signed_in? %>
-			<% @users = User.all %>
-			<ul>
-			<% @users.each_with_index do |user, index| %>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-				<li>
-					<%= link_to user.fname, "#", class: "btn btn-success btn-xs start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-				</li>
-			<% end %>
 
-			<audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
-			</ul>
-		<% else %>
-		<% end %>
+
+		<div class="row">
+  		<% if user_signed_in? %>
+  			<% @users = User.all %>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 users">
+          <h4>Online Now:</h4>
+    			<ul class="userList">
+            <br />
+      			<% @users.each_with_index do |user, index| %>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+              <li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      				<li>
+      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+      				</li>
+      			<% end %>
+            <br />
+            <br />
+            <br />
+    			</ul>
+      </div>
+      <audio id="chatAudio"><source src="/assets/notification.mp3" type="audio/mpeg"></audio>
+  		<% else %>
+  		<% end %>
 		</div>
-		    
-		    
+
+
             </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2 centerDiv">
                 <div id="alertTicker" class="none">
@@ -321,8 +318,8 @@
                     <!--%= image_tag("close.png", height: "25px", width: "25px")%-->x
                   </a>
                 </div>
-		    
-		    
+
+
 		<!-- % if user_signed_in? %>
 			< % @users = User.all %>
 			< % @users.each_with_index do |user, index| %>
@@ -339,12 +336,12 @@
 			<audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
 		< % else %>
 		< % end % -->
-		    
-		    
-		    
-		    
-		    
-		    
+
+
+
+
+
+
                 <%= yield %>
             </div>
         </div>

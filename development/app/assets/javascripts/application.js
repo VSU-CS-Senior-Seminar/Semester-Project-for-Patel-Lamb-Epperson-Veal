@@ -25,11 +25,12 @@
 
 (function($){
 	$(window).load(function(){
-		$(".tab-pane").mCustomScrollbar(
+		$(".userList, .tab-pane").mCustomScrollbar(
 			{
 				scrollInertia:200,
 				autoHideScrollbar: 'true',
-				scrollTo: 'bottom'
+				scrollTo: 'bottom',
+				scrollbarPosition: "inside"
 			}
 		);
 	});
