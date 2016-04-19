@@ -1,13 +1,45 @@
 <div class="simple-calendar">
-  <center>
-  <h4><%= link_to calendar.url_for_previous_view do %>
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <%end%>
-  <strong><%= I18n.t("date.month_names") [start_date.month] %> <%= start_date.year %></strong>
-  <%= link_to calendar.url_for_next_view do %>
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <%end%></h4>
-</center>
+    <div class="row">
+        <div class="col-md-2">
+            <!--%= button_to "New Event", new_event_path, :id => "open-contacts-dialog-btn", :class => "btn btn-default btn-sm", :method => :get %-->
+        <a href="#" class="btn btn-default btn-sm" type="button" data-toggle="modal" data-target="#newEvent">New Event</a>
+		<div id="newEvent" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">New Event</h4>
+				</div>
+				<div class="modal-description">
+					<%= render :partial => '/events/form', :event => @event = Event.new %>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+				</div>
+				</div>
+			</div>
+		</div>
+            
+            
+            
+            
+            
+            
+        </div>
+        <div class="col-md-10">
+            <h4 class="calTitle">
+                <%= link_to calendar.url_for_previous_view do %>
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <%end%>
+                <strong><%= I18n.t("date.month_names") [start_date.month] %> <%= start_date.year %></strong>
+                <%= link_to calendar.url_for_next_view do %>
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <%end%>
+            </h4>
+        </div>
+    </div>
 
 
 

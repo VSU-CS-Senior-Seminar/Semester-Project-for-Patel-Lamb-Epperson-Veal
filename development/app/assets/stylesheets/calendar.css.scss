@@ -1,5 +1,30 @@
 .simple-calendar
 {
+    
+    .calTitle
+    {
+        text-align: right;
+        padding: 0px 50px;
+        margin: 0px;
+        
+        margin-bottom: 15px;
+    }
+    
+    a
+    {
+        color: #333;
+        text-decoration: none;
+        
+        transition: all .2s linear 0s;
+    
+        &:hover
+        {
+            color: #f60;
+
+            transition: all .1s linear 0s;
+        }
+    }
+    
     table
     {
         -webkit-border-horizontal-spacing: 0px;
@@ -50,82 +75,53 @@
     .day
     {
         height: 80px;
-	padding: 0px;
-	padding-bottom: 5px;
-	    
-	transition: all .2s linear 0s;
-	    
-	.calDate, .calDate:focus
-	{
-		padding: 3px 5px;
-		font-weight: normal;
-		text-decoration: none;
-		color: #333;
-		
-		transition: all .2s linear 0s;
-	}
-	
-	.eventHolder
-	{
-		width: 100%;
-		padding: 0px;
-		margin: 0px;
+        padding: 0px;
+        padding-bottom: 5px;
+
+        transition: all .2s linear 0s;
+
+        .calDate, .calDate:focus
+        {
+            padding: 3px 5px;
+            font-weight: normal;
+            text-decoration: none;
+            color: #333;
+
+            transition: all .2s linear 0s;
+        }
+
+        .eventHolder
+        {
+            width: 100%;
+            padding: 0px;
+            margin: 0px;
 
 
-		.calEvent, .calEvent:focus
-		{
-			text-decoration: none;
-			width: 100%;
-			display: inline-block;
-			padding: 0px 5px;
-			margin: 5px 0px 0px 0px;
+            .calEvent, .calEvent:focus
+            {
+                text-decoration: none;
+                width: 100%;
+                display: inline-block;
+                padding: 0px 5px;
+                margin: 5px 0px 0px 0px;
 
-			background-color: #bfb;
-			border-style: solid;
-			border-color: #080;
-			border-width: 1px 0px;
-			
-			transition: all .2s linear 0s;
-		}
-		
-		.eventHover, .eventHover:focus
-		{
-			color: #fff;
-			background-color: #080;
-			border-color: #050;
-			
-			transition: all .1s linear 0s;
-		}
-		
-		.modal
-		{
-			.modal-content
-			{
-				background-color: #eee;
-				color: #333;
-				
-				.modal-header
-				{
-					border-color: #ddd;
-				}
-				
-				.modal-description
-				{
-					padding: 15px;
-					
-					p
-					{
-						margin-top: 15px;
-					}
-				}
-				
-				.modal-footer
-				{
-					border-color: #ddd;
-				}
-			}
-		}
-	}
+                background-color: #bfb;
+                border-style: solid;
+                border-color: #080;
+                border-width: 1px 0px;
+
+                transition: all .2s linear 0s;
+            }
+
+            .eventHover, .eventHover:focus
+            {
+                color: #fff;
+                background-color: #080;
+                border-color: #050;
+
+                transition: all .1s linear 0s;
+            }
+        }
     }
 	
 	.day:hover
@@ -184,7 +180,51 @@
     .has-events {}
 }
 
+.modal:before
+{
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
 
+.modal
+{
+    text-align: center;
+    padding: 0 !important;
+
+    .modal-dialog
+    {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+        border-radius: 5px;
+
+        background-color: #eee;
+        color: #333;
+
+        .modal-header
+        {
+            border-color: #ddd;
+        }
+
+        .modal-description
+        {
+            padding: 15px;
+
+            p
+            {
+                margin-top: 15px;
+            }
+        }
+
+        .modal-footer
+        {
+            border-color: #ddd;
+        }
+    }
+}
 
 
 
