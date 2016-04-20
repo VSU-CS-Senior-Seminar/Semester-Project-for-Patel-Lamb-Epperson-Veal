@@ -260,6 +260,18 @@
 
 
 		<div class="row">
+			
+			
+			<!--
+
+				I need to (SELECT id FROM CHATS WHERE sender_id EQUALS current_user OR recipient_id EQUALS current_user)
+
+				% @chats.each_with_index do |chat| % -->
+			
+				<%= subscribe_to chat_path(1) %>
+			
+			<!--% end %-->
+			
   			<!--% @users = User.all %-->
 			<% @users = User.all.where(:neighborhood_id => current_user.neighborhood_id) %>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 users">
