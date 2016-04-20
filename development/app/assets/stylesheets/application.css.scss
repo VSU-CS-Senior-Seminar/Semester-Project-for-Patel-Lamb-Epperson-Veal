@@ -498,3 +498,18 @@ body {
 .disliked {
 	color: red;
 }
+
+.pingChat
+{
+	background-image: linear-gradient(red, red);
+	background-color: red;
+	color: blue;
+	
+	a, a:hover, a:focus, a:visited
+	{
+		background-image: linear-gradient(red, red)!important;
+		background-color: red;
+		
+		color: blue;
+	}
+}

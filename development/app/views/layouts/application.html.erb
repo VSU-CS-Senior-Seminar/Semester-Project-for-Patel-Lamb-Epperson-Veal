@@ -268,7 +268,7 @@
 
 				% @chats.each_with_index do |chat| % -->
 			
-				<%= subscribe_to chat_path(1) %>
+				<!--%= subscribe_to main_app.chat_path(1) %-->
 			
 			<!--% end %-->
 			
@@ -282,7 +282,7 @@
 				<li>
       					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
       				</li>
-				<li>
+				<li id="selectMe" class="">
       					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
       				</li>
       				<li>

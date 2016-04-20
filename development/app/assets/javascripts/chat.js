@@ -44,8 +44,10 @@ var ready = function () {
 		 */
 
 		notify: function () {
-			var audioplayer = $('#chatAudio')[0];
-			audioplayer.play();
+			//var audioplayer = $('#chatAudio')[0];
+			//audioplayer.play();
+			
+			$('#selectMe').addClass("pingChat");
 		},
 
 		/**
