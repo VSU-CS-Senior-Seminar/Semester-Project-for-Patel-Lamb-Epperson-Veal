@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-protect_from_forgery with: :exception
+    protect_from_forgery with: :exception
   helper_method :mailbox, :conversation
 
   private
@@ -19,4 +19,13 @@ protect_from_forgery with: :exception
   def conversation
     @conversation ||= mailbox.conversations.find(params[:id])
   end
+    
+Warden::Manager.after_authentication do |user,auth,opts|
+    user.update_attribute(:logged_in, true)
+end
+
+Warden::Manager.before_logout do |user,auth,opts|
+    user.update_attribute(:logged_in, false)
+end
+    
 end
