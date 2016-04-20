@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
       resource.update_attribute(:forem_admin, true)
       resource.update_attribute(:confirmed_at, Time.now)
     else
-
+        resource.update_attribute(:forem_state, "approved")
     end
   end
     

@@ -35,3 +35,116 @@
     transition: all .1s linear;
     }
 }
+
+.contents
+{
+    .row
+    {   
+        border-style: solid;
+        border-color: #333;
+        border-width: 0px 0px 1px 0px;
+        
+        &:last-child
+        {
+            border-bottom: 0px;
+        }
+        
+        .usernameContent
+        {
+            padding: 5px 15px 3px 15px;
+            
+            .likes
+            {
+                padding: 0px 3px 0px 5px;
+                margin: 0px;
+                font-weight: normal;
+            }
+            
+            .usernameLeft
+            {                
+                a
+                {
+                    background-color: #ccc;
+                    color: #333;
+
+                    &:hover, &:focus
+                    {
+                        text-decoration: none;
+                    }
+                }
+            }
+            
+            .posterName
+            {
+                padding: 0px 5px 0px 15px;
+            }
+            
+            .timeStampForem
+            {
+                padding: 0px 5px;
+                font-weight: normal;
+            }
+            
+            .btn-group
+            {
+                float: right;
+            }
+        }
+        
+        .postText
+        {
+            padding: 5px 15px;
+        }
+    }
+    
+    .foremPosts
+    {
+        border-style: solid;
+        border-color: #333;
+        border-width: 0px 1px;
+        background-color: #eee;
+        
+        blockquote
+        {
+            font-weight: normal;
+            font-size: 1em;
+            border-style: solid;
+            border-width: 0px 1px;
+            border-color: #555;
+            padding: 15px;
+            background-color: #eee;
+            margin: 10px 15px;
+        }
+    }
+    
+    
+    .user
+    {
+        background-color:#fff;
+        //margin: 0px;
+        padding: 0px 15px 15px 15px;
+        
+        .username
+        {
+            background-color: #ccc;
+        }
+    }
+    
+    .in-reply-to
+    {
+        background-color: lightgoldenrodyellow;
+    }
+}
+
+.replyPage
+{
+    .header
+    {
+        background-color: red;
+    }
+    
+    .body
+    {
+        background-color: green;
+    }
+}

@@ -1,100 +1,113 @@
 <a name='post-<%= post.id %>'></a>
 <div class="row">
-  <div id='post_<%= post_counter + 1 %>' class='post <%= cycle('odd', 'even') -%> col-md-12'>
-    <% if post.pending_review? %>
-      <div class='moderation alert'>
-        <%= t(".pending_review") %>
-        <% if forem_admin_or_moderator?(post.topic.forum) %>
-          <% if local_assigns[:mass_moderation] %>
-            <%= render "/forem/posts/moderation_tools", :post => post %>
-          <% else %>
-            <%= form_tag forem.forum_moderate_posts_path(post.topic.forum), :method => :put do %>
-              <%= render "/forem/posts/moderation_tools", :post => post %>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-
-    <div class='contents'>
-      <div class='user col-md-2'>
-        <div class='username'>
-          <% if post.user.is_a?(Forem::NilUser) %>
-            <%= t(:deleted) %>
-          <% else %>
-
-            <%= link_to_if Forem.user_profile_links, post.user.forem_name, [main_app, post.user] %>
-            <% if ((Posts_Liked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 0) &&
-                  (Posts_Disliked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 0)) %>
-
-              <%= link_to main_app.repup_path(post.user.id, post.id) do %>
-                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-              <% end %>
-
-              <%= link_to main_app.repdown_path(post.user.id, post.id) do %>
-                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-              <% end %>
-
-            <% elsif ((Posts_Liked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 1) &&
-                  (Posts_Disliked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 0)) %>
-
-                  <%= link_to main_app.repup_path(post.user.id, post.id) do %>
-                    <span class="glyphicon glyphicon-thumbs-up liked" aria-hidden="true"></span>
-                  <% end %>
-
-                  <%= link_to main_app.repdown_path(post.user.id, post.id) do %>
-                    <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-                  <% end %>
-
-
-            <% elsif ((Posts_Liked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 0) &&
-                      (Posts_Disliked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 1)) %>
-
-                      <%= link_to main_app.repup_path(post.user.id, post.id) do %>
-                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                      <% end %>
-
-                      <%= link_to main_app.repdown_path(post.user.id, post.id) do %>
-                        <span class="glyphicon glyphicon-thumbs-down disliked" aria-hidden="true"></span>
-                      <% end %>
-            <% end %>
-
-          <% end %>
+    <div id='post_<%= post_counter + 1 %>' class='post <%= cycle('odd', 'even') -%> col-md-12'>
+        <!--% if post.pending_review? %>
+        <div class='moderation alert'>
+        < %= t(".pending_review") %>
+        < % if forem_admin_or_moderator?(post.topic.forum) %>
+        < % if local_assigns[:mass_moderation] %>
+        < %= render "/forem/posts/moderation_tools", :post => post %>
+        < % else %>
+        < %= form_tag forem.forum_moderate_posts_path(post.topic.forum), :method => :put do %>
+        < %= render "/forem/posts/moderation_tools", :post => post %>
+        < % end %>
+        < % end %>
+        < % end %>
         </div>
-        <!-- <div class='icon'><%= forem_avatar(post.user, :size => 60) %></div> -->
-      </div>
+        < % end %-->
 
-      <div class='contents col-md-7'>
-        <a href='#post-<%= post.id %>'>
-          <%= post_time_tag(post) %>
-        </a>
-        <%= forem_format(post.text) %>
+        <div class='contents container'>
+            <div class="row foremPosts">
+                    <% if post.reply_to %>
+                        <div class='user col-md-11 col-md-offset-1'>
+                    <% else %>
+                        <div class="user col-md-12">        
+                    <% end %>
+                
+                <!--div class='user col-md-12'-->
+                    <div class='username row'>
+                        <div class="col-md-12 usernameContent">
+                            <span class="usernameLeft">
+                                <% if post.user.is_a?(Forem::NilUser) %>
+                                    <%= t(:deleted) %>
+                                <% else %>
 
-        <% if post.reply_to %>
-          <div class='in-reply-to'>
-            <%= link_to "#{t("forem.post.in_reply_to")} #{post.reply_to.user.forem_name}", "#post-#{post.reply_to.id}" %>
-          </div>
-        <% end %>
+                                <% @likes = Posts_Liked.all.where(:post_id => post.id).count %>
+                                <% @disliked = Posts_Disliked.all.where(:post_id => post.id).count %>
 
-        <% if forem_user %>
-          <div class='btn-group'>
-            <% if can?(:reply, post.topic) %>
-              <% if post.topic.can_be_replied_to? %>
-                <%= link_to t('reply', :scope => 'forem.topic'), forem.new_forum_topic_post_path(post.forum, post.topic, :reply_to_id => post.id), :class => "btn btn-primary" %>
-                <%= link_to t('quote', :scope => 'forem.topic'), forem.new_forum_topic_post_path(post.forum, post.topic, :reply_to_id => post.id, :quote => true), :class => "btn btn-success" %>
-              <% end %>
-            <% end %>
-            <% if post.owner_or_admin?(forem_user) %>
-              <% if can?(:edit_post, post.topic.forum) %>
-                <%= link_to t('edit', :scope => 'forem.post'), forem.edit_forum_topic_post_path(post.forum, post.topic, post), :class => "btn btn-info" %>
-              <% end %>
-              <% if can?(:destroy_post, post.topic.forum) %>
-                <%= link_to t('delete', :scope => 'forem.topic'), forem.forum_topic_post_path(post.forum, post.topic, post), :method => :delete, data: { :confirm => t("are_you_sure") }, :class => "btn btn-danger" %>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+                                    <% if ((Posts_Liked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 0) && (Posts_Disliked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 0)) %>
+                                        <%= link_to main_app.repup_path(post.user.id, post.id) do %>
+                                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                        <% end %>
+
+                                        <label class="likes">
+                                            <%= @likes.to_i-@dislikes.to_i %>
+                                        </label>
+
+                                        <%= link_to main_app.repdown_path(post.user.id, post.id) do %>
+                                            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                                        <% end %>
+                                    <% elsif ((Posts_Liked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 1) && (Posts_Disliked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 0)) %>
+                                        <%= link_to main_app.repup_path(post.user.id, post.id) do %>
+                                            <span class="glyphicon glyphicon-thumbs-up liked" aria-hidden="true"></span>
+                                        <% end %>
+
+                                        <label class="likes">
+                                            <%= @likes.to_i-@dislikes.to_i %>
+                                        </label>
+
+                                        <%= link_to main_app.repdown_path(post.user.id, post.id) do %>
+                                            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                                        <% end %>
+                                    <% elsif ((Posts_Liked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 0) && (Posts_Disliked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 1)) %>
+                                        <%= link_to main_app.repup_path(post.user.id, post.id) do %>
+                                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                        <% end %>
+
+                                        <label class="likes">
+                                            <%= @likes.to_i-@dislikes.to_i %>
+                                        </label>
+
+                                        <%= link_to main_app.repdown_path(post.user.id, post.id) do %>
+                                            <span class="glyphicon glyphicon-thumbs-down disliked" aria-hidden="true"></span>
+                                        <% end %>
+                                    <% end %>
+
+                                <span class="posterName">
+                                    <%= link_to_if Forem.user_profile_links, post.user.forem_name, [main_app, post.user] %>
+                                </span>
+
+                                    <label class="timeStampForem"><%= post_time_tag(post) %></label>
+                                <% end %>
+
+                            </span>
+                            <% if forem_user %>
+                                <div class='btn-group btn-group-default btn-group-xs'>
+                                    <% if can?(:reply, post.topic) %>
+                                        <% if post.topic.can_be_replied_to? %>
+                                            <%= link_to t('reply', :scope => 'forem.topic'), forem.new_forum_topic_post_path(post.forum, post.topic, :reply_to_id => post.id), :class => "btn btn-default" %>
+                                            <%= link_to t('quote', :scope => 'forem.topic'), forem.new_forum_topic_post_path(post.forum, post.topic, :reply_to_id => post.id, :quote => true), :class => "btn btn-default" %>
+                                        <% end %>
+                                    <% end %>
+                                    <% if post.owner_or_admin?(forem_user) %>
+                                        <% if can?(:edit_post, post.topic.forum) %>
+                                    <%= link_to t('edit', :scope => 'forem.post'), forem.edit_forum_topic_post_path(post.forum, post.topic, post), :class => "btn btn-default" %>
+                                        <% end %>
+                                        <% if can?(:destroy_post, post.topic.forum) %>
+                                            <%= link_to t('delete', :scope => 'forem.topic'), forem.forum_topic_post_path(post.forum, post.topic, post), :method => :delete, data: { :confirm => t("are_you_sure") }, :class => "btn btn-default" %>
+                                        <% end %>
+                                    <% end %>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 postText">
+                            <%= forem_format(post.text) %>
+                        </div>        
+                    </div>     
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

@@ -33,13 +33,13 @@
               <br>
               <span class='moderators'>
                 <strong><%= t('.moderators') %>:</strong>
-                <% if forum.moderators.exists? %>
-                  <% forum.moderators.map do |moderator| %>
-                    <%= link_to moderator, [forem, :admin, moderator] %>
-                  <% end.to_sentence %>
-                <% else %>
-                  <%= t('.none') %>
-                <% end %>
+                <!--% if forum.moderators.exists? %>
+                  < % forum.moderators.map do |moderator| %>
+                    < %= link_to moderator, [forem, :admin, moderator] %>
+                  < % end.to_sentence %>
+                < % else %>
+                  < %= t('.none') %>
+                < % end %-->
               </span>
             </td>
             <td><%= forum.topics.count %></td>
