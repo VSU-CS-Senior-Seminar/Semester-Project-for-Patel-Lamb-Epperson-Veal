@@ -273,57 +273,42 @@
 			<!--% end %-->
 			
   			<!--% @users = User.all %-->
-			<% @users = User.all.where(:neighborhood_id => current_user.neighborhood_id) %>
+            <% @users = User.all.where(:neighborhood_id => current_user.neighborhood_id, :logged_in => true).where.not(:id => current_user.id) %>
+            
+            
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 users">
           <h4>Online Now:</h4>
     			<ul class="userList">
 				<br />
       			<% @users.each_with_index do |user, index| %>
-				<li>
+                    
+                    <!-- % @chat_id = Chat.all.where(:sender_id => current_user.id).OR(:reciever_id => current_user.id) %-->
+                    
+                    
+                    <% @string = "sender_id = " + current_user.id.to_s + " AND recipient_id = " + user.id.to_s + " OR sender_id = " + user.id.to_s + " AND recipient_id = " + current_user.id.to_s %>
+                    
+                    <% @chats = Chat.where(@string) %>
+
+                    <% @chats.each_with_index do |chat, index| %>
+                    
+                    <li id="chat_<%= chat.id %>" class="">
       					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
       				</li>
-				<li id="selectMe" class="">
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
-      				<li>
-      					<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-      				</li>
+                    
+                    <script>
+                        $("#chat_<%= chat.id %>").click(function(e) {
+                            $(this).removeClass();
+                            $("#chatbox_<%= chat.id %>").removeClass("pingChatbox");
+                        });
+                        
+                        $("#chatbox_<%= chat.id %>").click(function(e) {
+                            $("#chat_<%= chat.id %>").removeClass();
+                            $(this).removeClass("pingChatbox");
+                        });
+                    </script>
+                    
+                    <% end %>
+                    
       			<% end %>
             <br />
             <br />

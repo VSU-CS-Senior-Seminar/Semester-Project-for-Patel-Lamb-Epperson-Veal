@@ -43,11 +43,12 @@ var ready = function () {
 		 * Plays a notification sound when a new chat message arrives
 		 */
 
-		notify: function () {
-			//var audioplayer = $('#chatAudio')[0];
-			//audioplayer.play();
+		notify: function (chat_id) {
+			var audioplayer = $('#chatAudio')[0];
+			audioplayer.play();
 			
-			$('#selectMe').addClass("pingChat");
+			$('#chat_' + chat_id).addClass("pingChat");
+            $('#chatbox_' + chat_id).addClass("pingChatbox")
 		},
 
 		/**
