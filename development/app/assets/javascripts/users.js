@@ -27,7 +27,7 @@ var ready = function () {
         var id = $(this).data('cid');
         chatBox.toggleChatBoxGrowth(id);
     });
-
+	
     /**
      * Used to close the chatbox
      */

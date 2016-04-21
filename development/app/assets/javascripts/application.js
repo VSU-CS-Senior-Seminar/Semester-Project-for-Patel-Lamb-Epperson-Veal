@@ -26,7 +26,7 @@
 
 (function($){
 	$(window).load(function(){
-		$(".userList, .tab-pane").mCustomScrollbar(
+		$().mCustomScrollbar(
 			{
 				scrollInertia:200,
 				autoHideScrollbar: 'true',

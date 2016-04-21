@@ -32,7 +32,7 @@ body {
 	.btn-default
 	{
 		background-color: #f60;
-		border-syle: solid;
+		border-style: solid;
 		border-width: 0px;
 		border-color: #f60;
 		border-radius: 3px;
@@ -57,22 +57,26 @@ body {
 }
 
 .logoLink {
-	background-image: linear-gradient(to right, transparent, transparent 50%, #f60 50%, #f60);
-	background-position: 100% 0px;
-	background-size: 200% 100%;
-	transition: all .2s linear;
-	height: 50px;
-	padding: 15px 5px 17px 5px;
-	.logo {
-		margin: 5px 15px 5px 15px;
-	}
+    .logo
+    {
+        background-image: linear-gradient(to right, transparent, transparent 50%, #f60 50%, #f60);
+        background-position: 100% 0px;
+        background-size: 200% 100%;
+        transition: all .2s linear;
+        //margin: 5px 15px 5px 15px;
+        padding: 5px 15px;
+        height: 50px;
+        width: 80px;
+    
+        &:hover
+        {
+            background-color: #555;
+            background-position: 0% -100%;
+            transition: all .1s linear;
+        }
+    }
 }
 
-.logoLink:hover {
-	background-color: #555;
-	background-position: 0% -100%;
-	transition: all .1s linear;
-}
 
 .topSpace {
 	height: 50px;
@@ -93,9 +97,9 @@ body {
 	border-color: #333;
 	border-width: 0px 0px 3px 0px;
 	margin-bottom: 0px;
-	.logoLink {
+	/*.logoLink {
 		padding: 18px 5px;
-	}
+	}*/
 	.navbar-nav {
 		li {
 			a {
@@ -343,15 +347,19 @@ body {
 		padding-left: 15px;
 		ul.userList {
 			height: 100%;
-			overflow: scroll;
+			overflow: auto;
 			list-style: none;
 			padding: 0px;
 			margin: 0px;
-			width: unquote("-webkit-calc(100% + 15px)");
-			width: unquote("-moz-calc(100% + 13px)");
-			width: unquote("-calc(100% + 15px)");
+			//width: unquote("-webkit-calc(100% + 15px)");
+			//width: unquote("-moz-calc(100% + 13px)");
+			//width: unquote("-calc(100% + 15px)");
+            
+            width: 90%;
+            
 			li {
 				margin: 0px;
+                margin-right: 5%;
 				a {
 					display: inline-block;
 					width: 100%;
@@ -372,19 +380,6 @@ body {
             
             .pingChat a:before
             {
-                //content: '';
-                //border-style: solid;
-                //border-width: 0px 6px;
-                //border-radius: 50%;
-                //border-color: #f60;
-                
-                //position: relative;
-                //left: -15px;
-                //top: -1px;
-                
-                //margin-right: -12px;
-                
-                
                 display: inline-block;
                 width: 5px;
                 height: 5px;
@@ -545,10 +540,10 @@ body {
 	color: red;
 }
 
-.pingChatbox
+/*.pingChatbox
 {
     .chatboxhead
     {
         background-color: #f60;
     }
-}
+}*/

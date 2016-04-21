@@ -130,10 +130,6 @@
         }
     }
     
-    .in-reply-to
-    {
-        background-color: lightgoldenrodyellow;
-    }
 }
 
 .replyPage
@@ -202,4 +198,17 @@
 .input
 {
 	overflow-x: auto;
+}
+
+.in_reply_to
+{
+    a
+    {
+        color: #f60;
+
+        &:hover
+        {
+            color: #e40;
+        }
+    }
 }

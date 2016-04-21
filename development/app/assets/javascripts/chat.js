@@ -47,10 +47,11 @@ var ready = function () {
 			var audioplayer = $('#chatAudio')[0];
 			audioplayer.play();
 			
-			$('#chat_' + chat_id).addClass("pingChat");
-            $('#chatbox_' + chat_id).addClass("pingChatbox")
+			//$('#chat_' + chat_id).addClass("pingChat");
+            //$('#chatbox_' + chat_id).addClass("chatboxblink")
 		},
-
+		
+		
 		/**
 		 * Handles 'smart layouts' of the chatboxes. Like when new chatboxes are
 		 * added or removed from the view, it restructures them so that they appear
