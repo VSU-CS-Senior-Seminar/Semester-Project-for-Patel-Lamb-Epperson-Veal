@@ -1,5 +1,9 @@
+<!-- STYLED -->
+
+
+
 <a name='post-<%= post.id %>'></a>
-<div id='post_<%= post.id %>' class='reply_to_post post <%= cycle('odd', 'even') -%> col-md-10' >
+<div id='post_<%= post.id %>' class='reply_to_post post <%= cycle('odd', 'even') -%> col-md-12' >
     <div class="container replyPage">
         <div class="row">
             <div class='col-md-12'>
@@ -14,7 +18,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2 body">
+                    <div class="col-md-12 replyBody">
                         <%= forem_format(post.text) %>
                         <% if post.reply_to %>
                             <span class='in_reply_to'>

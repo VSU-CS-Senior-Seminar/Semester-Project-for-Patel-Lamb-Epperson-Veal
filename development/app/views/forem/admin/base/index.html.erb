@@ -1,40 +1,39 @@
+<!-- STYLED -->
+
+
+
 <h1><%= t('forem.admin.area') %></h1>
 
-<p>
-  <%= t('forem.admin.welcome') %>
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-2 manageLinks">
+			<ul>
+				<li><%= link_to t('forem.admin.forum.index'), forem.admin_forums_path %> </li>
+				<li><%= link_to t('forem.admin.category.index'), forem.admin_categories_path %></li>
+				<li><%= link_to t('forem.admin.group.index'), forem.admin_groups_path %></li>
+			</ul>
+		</div>
+		<div class="col-md-10">
+			<%= render :partial => '/forem/admin/base/approve'%>
+		</div>
+	</div>
 
-<ul>
-  <li><%= link_to t('forem.admin.forum.index'), forem.admin_forums_path %> </li>
-  <li><%= link_to t('forem.admin.category.index'), forem.admin_categories_path %></li>
-  <li><%= link_to t('forem.admin.group.index'), forem.admin_groups_path %></li>
-</ul>
-<%= render :partial => '/forem/admin/base/approve'%>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
 
-<br>
-<footer id='admin_link'>
-  <%= link_to t(:back_to_forums, :scope => 'forem.admin'), forem.root_path %>
-</footer>
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Approve new users</h4>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Approve new users</h4>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

@@ -1,13 +1,12 @@
 <%= simple_form_for [forem, :admin, @topic.forum, @topic] do |f| %>
-  <%= f.input :subject %>
-  <%= f.association :forum , :label => "Forum" %>
-  <%= f.label :locked %>
-  <%= f.check_box :locked %>
-  <%= f.label :pinned %>
-  <%= f.check_box :pinned %>
-  <%= f.label :hidden %>
-  <%= f.check_box :hidden %>
-
-  <br />
-  <%= f.submit :class => "btn btn-primary" %>
+	<%= f.input :subject %><br />
+	<%= f.association :forum , :label => "Forum" %><br />
+	<%= f.check_box :locked %>
+	<%= f.label :locked %><br />
+	<%= f.check_box :pinned %>
+	<%= f.label :pinned %><br />
+	<%= f.check_box :hidden %>
+	<%= f.label :hidden %><br />
+	<br />
+	<%= f.submit :class => "btn btn-default btn-sm" %>
 <% end %>

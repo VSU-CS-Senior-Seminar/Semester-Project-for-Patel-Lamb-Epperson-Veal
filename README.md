@@ -8,3 +8,8 @@ To start with chat functionality
 
 
 For production visit /config/private_pub.yml
+
+
+Bugs:
+
+Can't edit account

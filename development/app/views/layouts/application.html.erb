@@ -274,13 +274,18 @@
 			
   			<!--% @users = User.all %-->
             <% @users = User.all.where(:neighborhood_id => current_user.neighborhood_id, :logged_in => true).where.not(:id => current_user.id) %>
+			<% @userCounter = 0 %>
             
-            
+      			<% @users.each_with_index do |user, index| %>
+				<% @userCounter = @userCounter+1 %>
+				<% if(@userCounter == 1) %>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 users">
           <h4>Online Now:</h4>
     			<ul class="userList">
 				<br />
-      			<% @users.each_with_index do |user, index| %>
+				<% else %>
+				<% end  %>
+
                     
                     <!-- % @chat_id = Chat.all.where(:sender_id => current_user.id).OR(:reciever_id => current_user.id) %-->
                     
