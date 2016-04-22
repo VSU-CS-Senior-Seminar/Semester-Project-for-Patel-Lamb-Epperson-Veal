@@ -6,6 +6,7 @@ var ready = function () {
      * recipient_id
      */
 
+//    $('.start-chat').click(function (e) {
     $('.start-chat').click(function (e) {
         e.preventDefault();
 
@@ -26,6 +27,14 @@ var ready = function () {
 
         var id = $(this).data('cid');
         chatBox.toggleChatBoxGrowth(id);
+    });
+    
+    $(document).on('click', '.chatbox *, .chatboxhead', function (e) {
+        e.preventDefault();
+
+        var id = $(this).data('cid');
+        //chatBox.toggleChatBoxGrowth(id);
+        chatBox.unmask(id);
     });
 	
     /**

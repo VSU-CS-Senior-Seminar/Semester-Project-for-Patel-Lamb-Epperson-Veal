@@ -72,13 +72,14 @@
 
 					<% if user_signed_in? %>
 						<% @counter = 0 %>
-						<ul class="eventList">
 							<% @today = Event.joins(:user).where(users: {:neighborhood_id => current_user.neighborhood_id}) %>
 							<% @today.each do |event| %>                    
 							<% if((event.start_time.strftime('%Y-%m-%d') <= Date.today.to_s) && (event.end_time.strftime('%Y-%m-%d') >= Date.today.to_s)) %>
 								<% @counter = @counter+1 %>
 								<% if(@counter == 1) %>
 									<h2>Today:</h2>
+									<ul class="eventList">
+									<br />
 								<% else %>
 								<% end %>
 
@@ -240,7 +241,7 @@
 
 										<li id="user_<%= user.id %> chatUser_<% user.id %>" class="">
 												<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
-											</li>
+										</li>
 
 											<!--script>
 												$("#chat_< %= user.id %>").click(function(e) {

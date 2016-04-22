@@ -48,8 +48,12 @@ var ready = function () {
 			audioplayer.play();
 			
 			//$('#chat_' + chat_id).addClass("pingChat");
-            //$('#chatbox_' + chat_id).addClass("chatboxblink")
+            $('#chatbox_' + chat_id).addClass("pingChatbox");
 		},
+        
+        unmask: function (chat_id) {
+              $('#chatbox_' + chat_id).removeClass("pingChatbox");
+        },
 		
 		
 		/**
