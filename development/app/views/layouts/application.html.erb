@@ -79,7 +79,6 @@
 								<% if(@counter == 1) %>
 									<h2>Today:</h2>
 									<ul class="eventList">
-									<br />
 								<% else %>
 								<% end %>
 
@@ -239,8 +238,11 @@
 
 										< % @chats.each_with_index do |chat, index| %-->
 
-										<li id="user_<%= user.id %> chatUser_<% user.id %>" class="">
+										<li id="user_<%= user.id %> chatUser_<%= user.id %>" class="launchChat">
 												<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+											<script>
+												chatties(<%= current_user.id %>, <%= user.id %>);
+											</script>
 										</li>
 
 											<!--script>

@@ -6,14 +6,18 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-2 manageLinks">
-			<ul>
-				<li><%= link_to t('forem.admin.forum.index'), forem.admin_forums_path %> </li>
-				<li><%= link_to t('forem.admin.category.index'), forem.admin_categories_path %></li>
-				<li><%= link_to t('forem.admin.group.index'), forem.admin_groups_path %></li>
-			</ul>
+		<div class="col-md-4 manageLinks">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<ul>
+						<li><%= link_to t('forem.admin.forum.index'), forem.admin_forums_path %> </li>
+						<li><%= link_to t('forem.admin.category.index'), forem.admin_categories_path %></li>
+						<li><%= link_to t('forem.admin.group.index'), forem.admin_groups_path %></li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		<div class="col-md-10">
+		<div class="col-md-8">
 			<%= render :partial => '/forem/admin/base/approve'%>
 			<%= render :partial => '/forem/admin/base/approveleads'%>
 		</div>
