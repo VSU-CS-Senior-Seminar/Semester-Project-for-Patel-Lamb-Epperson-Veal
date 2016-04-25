@@ -1,0 +1,11 @@
+<h1>Account Type</h1>
+<div class="row typeGlyph">
+    <div class="col-xs-6">
+        <!--%= link_to new_registration_path(:user), :data => { :no_turbolink => true } do %-->
+	    <%= link_to(image_tag("user.svg", class:"accountPic", title:"User"), new_registration_path(:user), :data => { :no_turbolink => true })%>
+        <!--% end %-->
+    </div>
+    <div class="col-xs-6">
+	    <%= link_to(image_tag("business.svg", class:"accountPic", title:"Business"), new_registration_path(:user), :data => { :no_turbolink => true })%>
+    </div>
+</div>

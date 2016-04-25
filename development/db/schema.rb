@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408161459) do
+ActiveRecord::Schema.define(version: 20160419055329) do
+
+  create_table "chats", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "chats", ["recipient_id"], name: "index_chats_on_recipient_id"
+  add_index "chats", ["sender_id"], name: "index_chats_on_sender_id"
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160408161459) do
     t.datetime "end_time"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   create_table "forem_categories", force: :cascade do |t|
@@ -183,6 +194,17 @@ ActiveRecord::Schema.define(version: 20160408161459) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "chat_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "messages", ["chat_id"], name: "index_messages_on_chat_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+
   create_table "neighborhoods", primary_key: "zip", force: :cascade do |t|
     t.string  "name"
     t.integer "id",        default: 0
@@ -190,7 +212,7 @@ ActiveRecord::Schema.define(version: 20160408161459) do
     t.float   "longitude"
   end
 
-  add_index "neighborhoods", ["name"]
+  add_index "neighborhoods", ["name"], name: "index_neighborhoods_on_name"
 
   create_table "posts_dislikeds", force: :cascade do |t|
     t.integer "post_id", null: false

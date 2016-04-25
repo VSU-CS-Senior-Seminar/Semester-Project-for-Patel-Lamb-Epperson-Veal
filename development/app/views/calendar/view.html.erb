@@ -1,13 +1,54 @@
-<div class="row">
+<div class="row first">
     <div class="spacer"></div>
     <div class="col-md-12">
-        <%= button_to "New Event", new_event_path, :id => "open-contacts-dialog-btn", :class => "btn btn-info btn-lg", :method => :get %>
-        <%= month_calendar events: @events do |date, events| %>
-        <%= date %>
-        <% events.each do |event| %>
-        <div>
+        
+
+        <% @events = Event.joins(:user).where(users: {:neighborhood_id => current_user.neighborhood_id}) %>
+        
+        <!--%= button_to "New Event", new_event_path, :id => "open-contacts-dialog-btn", :class => "btn btn-default btn-sm", :method => :get %-->
+        
+        <!-- #modal_< %= date.strftime('%d') %> -->
+        <%= month_calendar do |date| %>
+	    <a href="#" class="calDate" type="button" data-toggle="modal" data-target="#newEvent"><%= date.strftime('%d') %></a>
+	    
+	    
+		<!--div id="modal_< %= date.strftime('%d') %>" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<!--div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">New Event</h4>
+				</div>
+				<div class="modal-description">
+					< %= render :partial => '/events/form', :event => @event = Event.new %>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+				</div>
+				</div>
+			</div>
+		</div-->
+	    
+        
+        <% @events.each do |event| %>
+        
+        <% if((event.start_time.strftime('%Y-%m-%d') <= date.strftime('%Y-%m-%d')) && (event.end_time.strftime('%Y-%m-%d') >= date.strftime('%Y-%m-%d'))) %>
+            <div class="eventHolder">
             <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal_<%=event.id%>"><%= event.name %></button>
+		    <a href="#" type="button" class="calEvent event_<%=event.id%>" data-toggle="modal" data-target="#modal_<%=event.id%>"><%= event.name %></a>
+		    
+		    <script>
+			$(document).ready(function() {     
+				$('.event_<%=event.id%>').hover(function(){     
+					$('.event_<%=event.id%>').addClass('eventHover');    
+				},     
+				function(){    
+					$('.event_<%=event.id%>').removeClass('eventHover');     
+				});
+			}); 
+		    </script>
 
             <!-- Modal -->
             <div id="modal_<%=event.id%>" class="modal fade" role="dialog">
@@ -17,18 +58,29 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Event: <%=event.name%></h4>
+                            <h4 class="modal-title"><%=event.name%><small> - <%= event.user.fname %></small></h4>
                         </div>
                         <div class="modal-description">
+				<% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
+				    <%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
+				<% else %>
+				    <%= event.start_time.strftime('%B %e, %I:%M %p') %> - 
+				    <%= event.end_time.strftime('%B %e, %I:%M %p') %>
+				<% end %>
                             <p><%= event.description %></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <div class="btn-group">
+                                <!--button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-thumbs-up" title="I'll be there"></span></button>
+                                <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-thumbs-down" title="I can't make it"></span></button-->
+                                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <% end %>
         <% end %>
         <% end %>
     </div>

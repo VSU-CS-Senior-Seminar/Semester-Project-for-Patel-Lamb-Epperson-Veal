@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require private_pub
+//= require chat
+//= require users
 //= require turbolinks
 //= require underscore
 //= require gmaps/google
@@ -20,3 +23,16 @@
 //= require chosen-jquery
 //= require scaffold
 //= require_tree .
+
+(function($){
+	$(window).load(function(){
+		$().mCustomScrollbar(
+			{
+				scrollInertia:200,
+				autoHideScrollbar: 'true',
+				scrollTo: 'bottom',
+				scrollbarPosition: "inside"
+			}
+		);
+	});
+})(jQuery);

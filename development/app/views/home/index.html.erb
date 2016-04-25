@@ -1,15 +1,14 @@
+<h1>Welcome to Gazebo</h1>
 
-<div class="alert2" id="post1">
-  <h2>Welcome to Gazebo</h2>
-  <a href="#" onclick="document.getElementById('post1').className = 'none';" class="alertClose">x</a>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi facilisis odio et urna commodo, et rhoncus justo euismod. Phasellus ultrices sapien mi. Integer et dictum lectus. Pellentesque purus tellus, tempus ut posuere ac, pretium sit amet enim. Phasellus non laoreet augue. Quisque accumsan id arcu ultrices scelerisque. Vestibulum sed nibh egestas, fermentum nisi ultrices, mollis ante. Maecenas rutrum enim eu elementum feugiat. Vestibulum at purus tincidunt, condimentum risus vel, tempus magna. Suspendisse posuere tincidunt dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer maximus purus quis dignissim tincidunt. Nullam elit metus, sodales et tempor in, posuere ac mauris.
-  </p>
-  <p>
-    Nunc blandit sagittis massa, eu tempus ante maximus in. Ut lorem augue, aliquet nec felis eget, accumsan auctor lectus. Donec malesuada eu odio nec rutrum. Maecenas mattis neque erat, ut tincidunt lorem vehicula et. Nulla vitae mauris vitae mauris dignissim varius. Sed et viverra neque, in luctus leo. Praesent interdum enim metus, ullamcorper viverra eros gravida eget. Aenean ultricies lorem nec tortor ultrices rutrum. Duis gravida justo vel tellus ullamcorper malesuada. Aliquam erat volutpat. Cras blandit purus non dolor auctor scelerisque. Integer bibendum lacus pulvinar euismod porta.
-  </p>
-  <div class="footer">
-    <%= Time.now %>
-    <a href="#" id="alertPoster">John Davis</a>
-  </div>
-</div>
+<p>
+	Gazebo is a social media website which focuses on your neighborhood.  Anything from lost items or yard sales to your favorite sports or computers can be talked about.
+</p>
+
+<% if user_signed_in? %>
+<% else %>
+	<p>
+		Why don't you <%= link_to 'sign up', account_accttype_path, :data => { :no_turbolink => true }%> and poke around.  We're sure you'll enjoy your stay.
+	</p>
+<% end %>
+
+<span class="footerSend">~ The Management</span>

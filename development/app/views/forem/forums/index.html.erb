@@ -1,12 +1,8 @@
-<div id='forums_container'>
-  <h1 id='forums_title'><%= t('.title') %></h1>
-  <% @categories = Forem::Category.where(:name => current_user.neighborhood_id) %>
-  <%= render @categories %>
-</div>
+<!-- STYLED -->
 
-<br>
-<footer id='admin_link'>
-  <% if forem_admin? %>
-    <%= link_to t("area", :scope => "forem.admin"), forem.admin_root_path %>
-  <% end %>
-</footer>
+
+
+<div id='forums_container'>
+  <% @categories = Forem::Category.where(:name => current_user.neighborhood_id) %>
+  <%= render @categories %><!-- /categories/show.html.erb -->
+</div>

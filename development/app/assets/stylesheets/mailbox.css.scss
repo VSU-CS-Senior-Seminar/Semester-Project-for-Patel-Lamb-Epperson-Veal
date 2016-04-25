@@ -1,3 +1,170 @@
 // Place all the styles related to the mailbox controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#noMail
+{
+    text-align: center;
+    color: #ddd;
+    padding-top: 0px;
+    margin-top: 15px;
+}
+
+.inboxFunctions
+{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	
+	li
+	{	
+		padding: 4px 0px;
+		
+		a
+		{
+			color: #555;
+			font-size: 1.5em;
+			padding: 5px 15px;
+			display: inline-block;
+			width: 115px;
+			text-align: center;
+			transition: all .2s linear 0s;
+			
+			&:hover
+			{
+				color: #eee;
+				background-color: #f60;
+				text-decoration: none;
+				
+				transition: all .1s linear 0s;
+			}
+		}
+		
+		&:first-child
+		{
+			margin-top: 15px;
+		}
+	}
+}
+
+.fleft
+{
+	float: left;
+}
+
+.fright
+{
+	float: right;
+}
+
+.flear
+{
+	clear: both;
+}
+
+.mailFunctions
+{
+	.glyphicon
+	{
+		background-color: rgba(0,0,0,0);
+		border-style: solid;
+		border-width: 0px;
+		border-color: rgba(0,0,0,0);
+		color: #333;
+		font-size: 1.25em;
+
+		&:hover
+		{
+			color: #f60;
+		}
+	}
+	
+	a:hover, a:focus
+	{
+		text-decoration: none;
+	}
+}
+
+.glyphButton
+{
+	background-color: rgba(0,0,0,0);
+	border-style: solid;
+	border-width: 0px;
+	border-color: rgba(0,0,0,0);
+	color: #333;
+	font-size: 1.5em;
+	float: right;
+	
+	&:hover
+	{
+		color: #f60;
+	}
+}
+
+#replyFooter
+{
+	display: none;
+}
+
+#toField
+{
+	height: 100%;
+	
+	.form-group
+	{
+		height: 100%;
+		
+		#conversation_recipients
+		{
+			height: 175px;
+		}
+	}
+}
+
+.media
+{
+    margin: 0px;
+    margin-bottom: 5px;
+    
+    &:last-child
+    {
+        margin-bottom: 0px;
+    }
+    
+    .inbod
+    {
+        color: #333;
+        padding: 5px 15px;
+        border-style: solid;
+        border-width: 0px 0px 0px 3px;
+        border-color: #eee;
+
+        transition: all .2s linear 0s;
+
+        &:hover
+        {
+            color: #333;
+            background-color: #eee;
+
+            border-color: #f60;
+            transition: all .1s linear 0s;
+        }
+
+        .media-heading
+        {
+
+
+            h4
+            {
+                display: inline;
+                padding: 5px 15px 5px 0px;
+            }
+
+            h5
+            {
+                display: inline;
+                padding: 5px 15px 5px 0px;
+            }
+        }
+    }
+}

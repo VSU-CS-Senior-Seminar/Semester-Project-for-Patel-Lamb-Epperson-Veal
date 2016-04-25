@@ -7,11 +7,11 @@ class RegistrationsController < Devise::RegistrationsController
       resource.update_attribute(:forem_admin, true)
       resource.update_attribute(:confirmed_at, Time.now)
     else
-
+        #resource.update_attribute(:forem_state, "approved")
     end
   end
-
-  private
+    
+ private
 
   def sign_up_params
     params.require(:user).permit(:fname, :mname, :lname, :nickname,:address, :city, :zip, :email, :neighborhood_id, :password, :password_confirmation, :current_password)

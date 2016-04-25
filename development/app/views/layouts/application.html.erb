@@ -1,225 +1,296 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Gazebo</title>
+	<head>
+		<title>Gazebo</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
+		
+		<%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
+		<%= csrf_meta_tags %>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<%= stylesheet_link_tag    'application', :media => "all", 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	
+	<body class="<%= controller.controller_name %>">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">
+						<%= link_to(image_tag("gazebo.svg", height: "40px", width: "40px", class: "logo"), main_app.root_path, class: "logoLink")%>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<% if user_signed_in? %>
+							<li><%= link_to 'Forums', forem.forums_path %>  </li>
+							<li><%= link_to "Inbox", main_app.mailbox_inbox_path %></li>
+							<li><%= link_to "Calendar", main_app.calendar_view_path %></li>
+							<% if current_user.forem_admin %>
+								<li><%= link_to "Administrate", forem.admin_root_url %></li>
+							<%  end %>
+						<% else %>
+						<% end %>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<% if user_signed_in? %>
+							<li>
+								<%= link_to "Welcome back, #{current_user.nickname}" + " " + "#{current_user.lname}", main_app.account_account_path, :data => { :no_turbolink => true }%>
+							</li>
+							<li>
+								<%= link_to 'Log out', main_app.destroy_user_session_path, method: :delete %>
+							</li>
+						<% else %>
+							<li>
+								<%= link_to 'Welcome, join a community!', account_accttype_path, :data => { :no_turbolink => true }  %>
+							</li>
+							<li>
+								<%= link_to 'Log In', new_user_session_path %>
+							</li>
+						<%end%>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="topSpace"></div>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 leftDiv">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+					<% if user_signed_in? %>
+						<% @counter = 0 %>
+							<% @today = Event.joins(:user).where(users: {:neighborhood_id => current_user.neighborhood_id}) %>
+							<% @today.each do |event| %>                    
+							<% if((event.start_time.strftime('%Y-%m-%d') <= Date.today.to_s) && (event.end_time.strftime('%Y-%m-%d') >= Date.today.to_s)) %>
+								<% @counter = @counter+1 %>
+								<% if(@counter == 1) %>
+									<h2>Today:</h2>
+									<ul class="eventList">
+								<% else %>
+								<% end %>
 
-    <!-- Optional theme -->
-    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"-->
+							<li id="<%= event.id %>">
+								&bull; <%= event.name %>
+							</li>
 
-    <!-- Latest compiled and minified JavaScript -->
+							<!-- Detailer -->
+							<span id="detailer_<%=event.id%>" class="detailer" style="display: none;">
+								<span class="detailer-content">
+									<p>
+										<%= event.description %>
+									</p>
+									<% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
+										<%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
+									<% else %>
+										<%= event.start_time.strftime('%B %e, %I:%M %p') %>
+										<br />
+										<%= event.end_time.strftime('%B %e, %I:%M %p') %>
+									<% end %>
+								</span>
+							</span>
 
-    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+							<script>
+								$(document).ready(function(){
+									$("#<%= event.id %>").click(function(){
+										$("#detailer_<%= event.id %>").slideToggle(100, "linear");
+									});
+								});
+							</script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script-->
+							<% else %>
+							<% end %>
+					<% end %>
+						</ul>
 
-    <%= stylesheet_link_tag    'application', :media => "all", 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body class="<%= controller.controller_name %>">
+					<!--div class="chatter row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<ul class="nav nav-tabs">
+					<li class="active" title="Neighborhood"><a data-toggle="tab" href="#neighborhood">Neighborhood</a></li>
+					<li title="Joe"><a data-toggle="tab" href="#joe">Joe</a></li>
+					<li title="Hank"><a data-toggle="tab" href="#hank">Hank</a></li>
+					</ul>
+
+					<div class="tab-content">
+					<div id="neighborhood" class="tab-pane fade in active">
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Mr. Jones lost his cat</div>
+					</div>
+					<div class="row">
+					<div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">Lol, sucks for him</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Rude!</div>
+					</div>
+					</div>
+					<div id="joe" class="tab-pane fade">
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+					</div>
+					<div class="row">
+					<div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+					</div>
+					<div class="row">
+					<div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+					</div>
+					<div class="row">
+					<div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+					</div>
+					<div class="row">
+					<div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+					</div>
+					<div class="row">
+					<div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Hi</div>
+					</div>
+					<div class="row">
+					<div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I stubbed my toe</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">Ouch!</div>
+					</div>
+					</div>
+					<div id="hank" class="tab-pane fade">
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">;)</div>
+					</div>
+					<div class="row">
+					<div class="send col-xs-10 col-sm-10 col-md-10 col-lg-10">I have a 1150000 hour drive tomorrow</div>
+					</div>
+					<div class="row">
+					<div class="receive col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">I doubt its that long.</div>
+					</div>
+					</div>
+					</div>
+					<input id="chatMessage" type="text" name="message" />
+					</div>
+					</div-->
 
 
+					<div class="row">
+						<!--
 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <%= link_to(image_tag("gazebo.svg", height: "40px", width: "40px", class: "logo"), main_app.root_path, class: "logoLink")%>
-                </a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <% if user_signed_in? %>
-                        <li><%= link_to 'Forums', forem.forums_path %>  </li>
-                        <li><%= link_to "Inbox", main_app.mailbox_inbox_path %></li>
-                        <li><%= link_to "Calendar", main_app.calendar_view_path %></li>
-                        <% if current_user.forem_admin %>
-                        <li><%= link_to "Administrate", forem.admin_root_url %></li>
-                        <%  end %>
-                    <% else %>
-                    <% end %>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <!--li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li-->
+						I need to (SELECT id FROM CHATS WHERE sender_id EQUALS current_user OR recipient_id EQUALS current_user)
 
-                    <% if user_signed_in? %>
-                        <li>
-                            <%= link_to "Welcome back, #{current_user.nickname}" + " " + "#{current_user.lname}", main_app.account_account_path %>
-                        </li>                        <li>
-                            <%= link_to 'Log out', main_app.destroy_user_session_path, method: :delete %>
-                        </li>
-                    <% else %>
-                        <li>
-                            <%= link_to 'Welcome, join a community!', new_registration_path(:user), :data => { :no_turbolink => true }  %>
-                        </li>
-                        <li>
-                            <%= link_to 'Log In', new_user_session_path %>
-                        </li>
-                    <%end%>
+						% @chats.each_with_index do |chat| % -->
 
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="topSpace"></div>
+						<!--%= subscribe_to main_app.chat_path(1) %-->
 
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 leftDiv">
-                
-                <% @counter = 0 %>                
-                <!--%= calendar events: @events, number_of_days: 1 do |date, events| %>
-                    < % date %-->
-                <ul class="eventList">
-                <% @today = Event.all %>
-                        <% @today.each do |event| %>
-                            <!--li onclick="details('detailer_< %=event.id%>', 1)"-->
-                        <% if(event.start_time.strftime('%Y-%m-%d') == Date.today.to_s) %>
-                            <% @counter = @counter+1 %>
-                                <% if(@counter == 1) %>
-                                    <h2>Today:</h2>
-                                <% else %>
-                                <% end %>
+						<!--% end %-->
 
-                                <li id="<%= event.id %>">
-                                    <!--span class="glyphicon glyphicon-triangle-right"></span-->
-                                    &bull; <%= event.name %>
-                                </li>
+						<!-- This gets me all users who are not me, are logged in, and in my neighborhood -->
+						<% @users = User.all.where(:neighborhood_id => current_user.neighborhood_id, :logged_in => true).where.not(:id => current_user.id) %>
+						<% @userCounter = 0 %>
 
+						<% @users.each_with_index do |user, index| %>
+							<% @userCounter = @userCounter+1 %>
+							<% if(@userCounter == 1) %>
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 users">
+									<h4>Online Now:</h4>
+									<ul class="userList">
+									<br />
+							<% else %>
+							<% end  %>
+										<!-- This gets me all active chats involving users which also fulfill the above condition -->
+										<!--% @string = "sender_id = " + current_user.id.to_s + " AND recipient_id = " + user.id.to_s + " OR sender_id = " + user.id.to_s + " AND recipient_id = " + current_user.id.to_s %>
+										< % @chats = Chat.where(@string) %>
 
-                                <!-- Detailer -->
-                                <span id="detailer_<%=event.id%>" class="detailer" style="display: none;">
-                                    <span class="detailer-content">
-                                        <p>
-                                            <%= event.description %>
-                                        </p>
-                                        <%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
-                                    </span>
-                                </span>
+										< % @chats.each_with_index do |chat, index| %-->
 
-                                <script>
-                                    $(document).ready(function(){
-                                        $("#<%= event.id %>").click(function(){
-                                            $("#detailer_<%= event.id %>").toggle(100, "linear");
-                                        });
-                                    });
-                                </script>
+										<li id="user_<%= user.id %> chatUser_<%= user.id %>" class="launchChat">
+												<%= link_to user.fname, "#", class: "start-chat", "data-sid" => current_user.id, "data-rip" => user.id %>
+											<script>
+												chatties(<%= current_user.id %>, <%= user.id %>);
+											</script>
+										</li>
 
-                            <% else %>
-                            <% end %>
-                        <% end %>
-                    </ul>
-                <!--% end %-->
-                
-                <div class="chatter">
-                    <!--table>
-                        <thead>
-                            <th>
-                                Sussy Q.
-                            </th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    This is a message, you punk Bitch!
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table-->
-                    
-                    <ul class="nav nav-tabs">
-                        <li class="active" title="Neighborhood"><a data-toggle="tab" href="#neighborhood">Neighborhood</a></li>
-                        <li title="Joe"><a data-toggle="tab" href="#joe">Joe</a></li>
-                        <li title="Hank"><a data-toggle="tab" href="#hank">Hank</a></li>
-                    </ul>
-                    
-                    <div class="tab-content">
-                        <div id="neighborhood" class="tab-pane fade in active container">
-                            <div class="row">
-                                <div class="send col-lg-10">Mr. Jones lost his cat</div>
-                            </div>
-                            <div class="row">
-                                <div class="receive col-lg-10 col-lg-offset-2">Lol, sucks for him</div>
-                            </div>
-                            <div class="row">
-                                <div class="send col-lg-10">Rude!</div>
-                            </div>
-                        </div>
-                        <div id="joe" class="tab-pane fade container">
-                            <div class="row">
-                                <div class="send col-lg-10">Hi</div>
-                            </div>
-                            <div class="row">
-                                <div class="receive col-lg-10 col-lg-offset-2">I stubbed my toe</div>
-                            </div>
-                            <div class="row">
-                                <div class="send col-lg-10">Ouch!</div>
-                            </div>
-                        </div>
-                        <div id="hank" class="tab-pane fade container">
-                            <div class="row">
-                                <div class="send col-lg-10">;)</div>
-                            </div>
-                            <div class="row">
-                                <div class="send col-lg-10">I have a 1150000 hour drive tomorrow</div>
-                            </div>
-                            <div class="row">
-                                <div class="receive col-lg-10 col-lg-offset-2">I doubt its that long.</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
+											<!--script>
+												$("#chat_< %= user.id %>").click(function(e) {
+													$(this).removeClass();
+													$("#chatbox_< %= user.id %>").removeClass("pingChatbox");
+												});
 
-                
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2 centerDiv">
-                <div id="alertTicker" class="none">
-                  <marquee>
-                      <h2></h2>
-                  </marquee>
-                  <a href="#" onclick="document.getElementById('alertTicker').className = 'none';" class="close">
-                    <!--%= image_tag("close.png", height: "25px", width: "25px")%-->x
-                  </a>
-                </div>
-                <%= yield %>
-            </div>
-        </div>
-    </div>
-    <!--div class="leftSpace"></div-->
+												$("#chatbox_< %= user.id %>").click(function(e) {
+													$("#chat_< %= user.id %>").removeClass();
+													$(this).removeClass("pingChatbox");
+												});
+											</script-- >
 
-    <!--div class="center">
-        <div id="alertTicker" class="none">,
-          <marquee>
-              <h2></h2>
-          </marquee>
-          <a href="#" onclick="document.getElementById('alertTicker').className = 'none';" class="close"-->
-            <!--%= image_tag("close.png", height: "25px", width: "25px")%-->
-      <!--x
-          </a>
-        </div>
+										<!--% end %-->
 
-    </div>
+							<% end %>
+									<br />
+									<br />
+									<br />
+								</ul>
+							</div>
+						<audio id="chatAudio"><source src="/assets/notification.mp3" type="audio/mpeg"></audio>
+					</div>
+					<% else %>
+						<div class="big">
+							<h2><%= link_to 'Log In', new_user_session_path %></h2>
+							<p>
+								Log in to see Neighborhood events and chat with friends.
+							</p>
+						</div>
+					<% end %>
 
-    <div class="right">
-      <h2>All 3 of your friends:</h2>
-      <ul>
-        <li>Jim</li>
-        <li>Sue</li>
-        <li>Sue's Sister</li>
-      </ul>
-    </div-->
-  </body>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2 centerDiv">
+					<div id="alertTicker" class="none">
+						<marquee>
+							<h2></h2>
+						</marquee>
+						<a href="#" onclick="document.getElementById('alertTicker').className = 'none';" class="close">
+							<!--%= image_tag("close.png", height: "25px", width: "25px")%-->x
+						</a>
+					</div>
+
+					<%= yield %>
+
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
