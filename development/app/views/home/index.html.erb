@@ -10,7 +10,7 @@
 
 	
 	<!-- EVENTS -->
-	<% if (!current_user.business?) %>
+	<!--% if (!current_user.business?) %-->
 		<% @counter = 0 %>
 		<% @today = Event.joins(:user).where(users: {:neighborhood_id => current_user.neighborhood_id}) %>
 		<% @today.each do |event| %>
@@ -47,7 +47,7 @@
 		</div>
 		</div>
 		</div>
-	<% end %>
+	<!--% end %-->
 
 		<div class="row">
 			<div class="col-xs-12">
