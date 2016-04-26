@@ -29,7 +29,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="#">
-						<%= link_to(image_tag("gazebo.svg", height: "40px", width: "40px", class: "logo"), main_app.root_path, class: "logoLink")%>
+						<%= link_to(image_tag("gazebo.svg", height: "40px", width: "40px", class: "logo"), main_app.root_path, :data => { :no_turbolink => true }, class: "logoLink") %>
 					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
@@ -271,7 +271,7 @@
 						<audio id="chatAudio"><source src="/assets/notification.mp3" type="audio/mpeg"></audio>
 					</div>
 					<% else %>
-						<% if current_user.business? %>
+						<% if ((user_signed_in?) && (current_user.business?)) %>
 							<div class="big">
 								<h2>Business</h2>
 								<p>
