@@ -62,7 +62,7 @@
 									<h4 class="modal-title"><%=event.name%><small> - <%= event.user.nickname %></small></h4>
 								</div>
 								<div class="col-md-4">
-									<% @rsvps = Rsvp.all.where(:event_id => event.id, :user_id => current_user.id) %>
+									<% @rsvps = Rsvp.all.where(:event_id => event.id) %>
 									<% @attend = 0 %>
 									<% @dettend = 0 %>
 									<% @rsvps.each do |rsvp| %>
