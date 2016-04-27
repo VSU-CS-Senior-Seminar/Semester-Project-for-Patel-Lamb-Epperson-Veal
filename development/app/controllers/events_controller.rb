@@ -43,7 +43,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1.json
   def update
 	  
-	  @event.update_attribute(:user_id, current_user.id)
+	  @event.update_attribute(:updated_id, current_user.id)
 	  
     respond_to do |format|
       if @event.update(event_params)
@@ -55,6 +55,10 @@ class EventsController < ApplicationController
       end
     end
   end
+	
+	def rsvp
+		@rsvp = Rsvp.find(params[:id]);
+	end
 
   # DELETE /events/1
   # DELETE /events/1.json
