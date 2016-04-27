@@ -8,16 +8,13 @@
 <div class="row">
 	<div class="col-xs-12 col-md-6">
 
-	
-	<!-- EVENTS -->
-	<!--% if (!current_user.business?) %-->
 		<% @counter = 0 %>
 		<% @today = Event.joins(:user).where(users: {:neighborhood_id => current_user.neighborhood_id}) %>
 		<% @today.each do |event| %>
 			<% if((event.start_time.strftime('%Y-%m-%d') <= Date.today.to_s) && (event.end_time.strftime('%Y-%m-%d') >= Date.today.to_s)) %>
 				<% @counter = @counter+1 %>
 				<% if(@counter == 1) %>
-					<div class="row">			
+					<div class="row">
 					<div class="col-xs-12">
 					<div class="postIt">
 					<h3>Events</h3>
@@ -41,8 +38,6 @@
 			<% else %>
 			<% end %>
 		<% end %>
-	<% end %>
-	<% if @counter != 0 %>
 		</ul>
 		</div>
 		</div>
@@ -70,7 +65,7 @@
 	</div>
 
 	<div class="col-xs-12 col-md-6">
-		
+
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="postIt">
@@ -79,7 +74,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="postIt">
@@ -99,7 +94,6 @@
 		</div>
 	</div>
 </div>
-
 <% else %>
 	<p>
 		Gazebo is a social media website which focuses on your neighborhood.  Anything from lost items or yard sales to your favorite sports or computers can be talked about.
