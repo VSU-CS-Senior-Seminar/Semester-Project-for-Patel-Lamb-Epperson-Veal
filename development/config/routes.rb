@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 	resources :chats do
 		resources :messages
 	end
+	
+	get '/events/a/:id', to: 'events#attend', as: 'rsvp'
+	get '/events/ab/:id', to: 'events#absent', as: 'rsvpb'
 
   get '/administrates/:id', to: 'administrates#approve', as: 'admin'
   get '/administrates/l/:id', to: 'administrates#approveleads', as: 'leads'
