@@ -2,14 +2,14 @@
 <html>
 	<head>
 		<title>Gazebo</title>
-		
+
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
-		
+
 		<%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
 		<%= csrf_meta_tags %>
 		<!-- Latest compiled and minified CSS -->
@@ -18,7 +18,7 @@
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
 	</head>
-	
+
 	<body class="<%= controller.controller_name %>">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
@@ -29,14 +29,17 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="#">
-						<%= link_to(image_tag("gazebo.svg", height: "40px", width: "40px", class: "logo"), main_app.root_path, class: "logoLink")%>
+						<%= link_to(image_tag("gazebo.svg", height: "40px", width: "40px", class: "logo"), main_app.root_path, :data => { :no_turbolink => true }, class: "logoLink") %>
 					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
 						<% if user_signed_in? %>
 							<li><%= link_to 'Forums', forem.forums_path %>  </li>
+							<% if current_user.business? %>
+							<% else %>
 							<li><%= link_to "Inbox", main_app.mailbox_inbox_path %></li>
+							<% end %>
 							<li><%= link_to "Calendar", main_app.calendar_view_path %></li>
 							<% if current_user.forem_admin %>
 								<li><%= link_to "Administrate", forem.admin_root_url %></li>
@@ -70,10 +73,10 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 leftDiv">
 
-					<% if user_signed_in? %>
+					<% if ((user_signed_in?) && (!current_user.business?)) %>
 						<% @counter = 0 %>
 							<% @today = Event.joins(:user).where(users: {:neighborhood_id => current_user.neighborhood_id}) %>
-							<% @today.each do |event| %>                    
+							<% @today.each do |event| %>
 							<% if((event.start_time.strftime('%Y-%m-%d') <= Date.today.to_s) && (event.end_time.strftime('%Y-%m-%d') >= Date.today.to_s)) %>
 								<% @counter = @counter+1 %>
 								<% if(@counter == 1) %>
@@ -220,7 +223,7 @@
 						<!--% end %-->
 
 						<!-- This gets me all users who are not me, are logged in, and in my neighborhood -->
-						<% @users = User.all.where(:neighborhood_id => current_user.neighborhood_id, :logged_in => true).where.not(:id => current_user.id) %>
+						<% @users = User.all.where(:neighborhood_id => current_user.neighborhood_id, :logged_in => true).where.not(:id => current_user.id, :business => true) %>
 						<% @userCounter = 0 %>
 
 						<% @users.each_with_index do |user, index| %>
@@ -268,12 +271,21 @@
 						<audio id="chatAudio"><source src="/assets/notification.mp3" type="audio/mpeg"></audio>
 					</div>
 					<% else %>
-						<div class="big">
-							<h2><%= link_to 'Log In', new_user_session_path %></h2>
-							<p>
-								Log in to see Neighborhood events and chat with friends.
-							</p>
-						</div>
+						<% if ((user_signed_in?) && (current_user.business?)) %>
+							<div class="big">
+								<h2>Business</h2>
+								<p>
+									With a business account you can post promotions or other information in the Business forum for your neighborhood or schedule events on your calendar.
+								</p>
+							</div>
+						<% else %>
+							<div class="big">
+								<h2><%= link_to 'Log In', new_user_session_path %></h2>
+								<p>
+									Log in to see Neighborhood events and chat with friends.
+								</p>
+							</div>
+						<% end %>
 					<% end %>
 
 				</div>
