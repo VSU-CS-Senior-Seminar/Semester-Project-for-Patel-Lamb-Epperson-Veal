@@ -37,7 +37,8 @@
                                 <% else %>
 
                                 <% @likes = Posts_Liked.all.where(:post_id => post.id).count %>
-                                <% @disliked = Posts_Disliked.all.where(:post_id => post.id).count %>
+                                <% @dislikes = Posts_Disliked.all.where(:post_id => post.id).count %>
+								<% @score = @likes.to_i - @dislikes.to_i %>
 
                                     <% if ((Posts_Liked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 0) && (Posts_Disliked.all.where(:post_id => post.id, :user_id => current_user.id).count(:all) == 0)) %>
                                         <%= link_to main_app.repup_path(post.user.id, post.id) do %>
@@ -45,7 +46,7 @@
                                         <% end %>
 
                                         <label class="likes">
-                                            <%= @likes.to_i-@dislikes.to_i %>
+											<%= @score %>
                                         </label>
 
                                         <%= link_to main_app.repdown_path(post.user.id, post.id) do %>
@@ -57,7 +58,7 @@
                                         <% end %>
 
                                         <label class="likes">
-                                            <%= @likes.to_i-@dislikes.to_i %>
+											<%= @score %>
                                         </label>
 
                                         <%= link_to main_app.repdown_path(post.user.id, post.id) do %>
@@ -69,7 +70,7 @@
                                         <% end %>
 
                                         <label class="likes">
-                                            <%= @likes.to_i-@dislikes.to_i %>
+											<%= @score %>
                                         </label>
 
                                         <%= link_to main_app.repdown_path(post.user.id, post.id) do %>
