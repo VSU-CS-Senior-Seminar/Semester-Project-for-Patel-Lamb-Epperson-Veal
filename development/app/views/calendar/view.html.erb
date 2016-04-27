@@ -79,13 +79,27 @@
 							
                         </div>
                         <div class="modal-description">
-				<% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
-				    <%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
-				<% else %>
-				    <%= event.start_time.strftime('%B %e, %I:%M %p') %> -
-				    <%= event.end_time.strftime('%B %e, %I:%M %p') %>
-				<% end %>
-                            <p><%= event.description %></p>
+							<div class="row">
+								<div class="col-md-4">
+									<% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
+										<%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
+									<% else %>
+										<%= event.start_time.strftime('%B %e, %I:%M %p') %> -
+										<%= event.end_time.strftime('%B %e, %I:%M %p') %>
+									<% end %>
+									<p>
+										<%= event.address %>
+										<br />
+										<% if(event.address == current_user.neighborhood) %>
+										<% else %>
+											<%= event.zip %>
+										<% end %>
+									</p>
+								</div>
+								<div class="col-md-8">
+									<%= event.description %>
+								</div>
+							</div>
                         </div>
                         <div class="modal-footer">
                             <div class="btn-group">

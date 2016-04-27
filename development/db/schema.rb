@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20160419055329) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.integer  "updated_id"
+    t.string   "address"
+    t.integer  "zip"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "forem_categories", force: :cascade do |t|
