@@ -1,0 +1,50 @@
+<!-- STYLED -->
+
+<h1><%= t('forem.admin.group.members', :group => forem_emojify(@group.name)) %></h1>
+<div class="row">
+	<div class="col-md-4">
+		<label><%= t('.add_a_new_member') %></label>
+		<%= form_tag add_group_members_url(@group) do %>
+		<p>
+			<%= text_field_tag "user_id" %>
+		</p>
+		<p class="col-md-1">
+			<%= submit_tag ("Add Member"), :class => "btn btn-default btn-sm" %>
+		</p>
+	<% end %>
+</div>
+
+	<% if @group.members.any? %>
+		<h3><%= t('.current_members') %></h3>
+		<div class="col-md-4">
+			<ul id='members'>
+				<% @group.members.each do |member| %>
+					<li><%= member.forem_name %> 
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+</div>
+
+
+<script>
+	$("#user_id").select2({
+		containerCssClass: "col-md-5",
+		ajax: {
+			url: "<%= forem.admin_user_autocomplete_url %>",
+			data: function(term, page) {
+				return { "term": term }
+			},
+			results: function(data, page) {
+				return { results: data };
+			}
+		},
+		formatResult: function(result) {
+			return result.identifier;
+		},
+		formatSelection: function(result) {
+			return result.identifier;
+		}
+	});
+</script>

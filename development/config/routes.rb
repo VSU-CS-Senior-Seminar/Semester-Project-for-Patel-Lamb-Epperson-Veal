@@ -12,10 +12,18 @@ Rails.application.routes.draw do
 
   resources :neighborhoods
 
+  resources :groups do
+    resources :members, only: [:destroy] do
+      collection do
+        post :add
+      end
+    end
+  end
+
 	resources :chats do
 		resources :messages
 	end
-	
+
 	get '/events/a/:id', to: 'events#attend', as: 'rsvp'
 	get '/events/ab/:id', to: 'events#absent', as: 'rsvpb'
 
