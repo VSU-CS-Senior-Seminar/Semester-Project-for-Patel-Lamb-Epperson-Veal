@@ -57,22 +57,60 @@
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><%=event.name%><small> - <%= event.user.nickname %></small></h4>
+							<div class="row">
+								<div class="col-md-8">
+									<h4 class="modal-title"><%=event.name%><small> - <%= event.user.nickname %></small></h4>
+								</div>
+								<div class="col-md-4">
+									<% @rsvps = Rsvp.all.where(:event_id => event.id) %>
+									<% @attend = 0 %>
+									<% @dettend = 0 %>
+									<% @rsvps.each do |rsvp| %>
+										<% if rsvp.status == true %>
+											<% @attend = @attend + 1 %>
+										<% else %>
+											<% @dettend = @dettend + 1 %>
+										<% end %>
+									<% end %>
+
+									<p class="headP">Attending: <%= @attend %> / Absent: <%= @dettend %></p>
+								</div>
+							</div>
+							
                         </div>
                         <div class="modal-description">
-				<% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
-				    <%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
-				<% else %>
-				    <%= event.start_time.strftime('%B %e, %I:%M %p') %> -
-				    <%= event.end_time.strftime('%B %e, %I:%M %p') %>
-				<% end %>
-                            <p><%= event.description %></p>
+							<div class="row">
+								<div class="col-md-4">
+									<% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
+										<%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
+									<% else %>
+										<%= event.start_time.strftime('%B %e, %I:%M %p') %> -
+										<%= event.end_time.strftime('%B %e, %I:%M %p') %>
+									<% end %>
+									<p>
+										<%= event.address %>
+										<br />
+										<% if(event.address == current_user.neighborhood) %>
+										<% else %>
+											<%= event.zip %>
+										<% end %>
+									</p>
+								</div>
+								<div class="col-md-8">
+									<%= event.description %>
+								</div>
+							</div>
                         </div>
                         <div class="modal-footer">
                             <div class="btn-group">
-                                <!--button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-thumbs-up" title="I'll be there"></span></button>
-                                <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-thumbs-down" title="I can't make it"></span></button-->
+				    
+								<%= link_to rsvp_path(event.id), :class => "btn btn-default btn-sm" do %>
+									<span class="glyphicon glyphicon-thumbs-up" title="I'll be there"></span>
+								<% end %>
+								<%= link_to rsvpb_path(event.id), :class => "btn btn-default btn-sm" do %>
+									<span class="glyphicon glyphicon-thumbs-down" title="I can't make it"></span>
+								<% end %>
+									
                                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                             </div>
                         </div>

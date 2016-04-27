@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(version: 20160419055329) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.integer  "updated_id"
+    t.string   "address"
+    t.integer  "zip"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "forem_categories", force: :cascade do |t|
@@ -222,6 +227,12 @@ ActiveRecord::Schema.define(version: 20160419055329) do
   create_table "posts_likeds", force: :cascade do |t|
     t.integer "post_id", limit: 50, null: false
     t.integer "user_id", limit: 50, null: false
+  end
+
+  create_table "rsvps", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+    t.boolean "status",   default: false
   end
 
   create_table "users", force: :cascade do |t|
