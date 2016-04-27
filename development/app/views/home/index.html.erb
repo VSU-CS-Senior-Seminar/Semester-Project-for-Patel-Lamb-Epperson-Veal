@@ -11,38 +11,41 @@
 		<% @counter = 0 %>
 		<% @today = Event.joins(:user).where(users: {:neighborhood_id => current_user.neighborhood_id}) %>
 		<% @today.each do |event| %>
-			<% if((event.start_time.strftime('%Y-%m-%d') <= Date.today.to_s) && (event.end_time.strftime('%Y-%m-%d') >= Date.today.to_s)) %>
-				<% @counter = @counter+1 %>
-				<% if(@counter == 1) %>
-					<div class="row">
-					<div class="col-xs-12">
-					<div class="postIt">
-					<h3>Events</h3>
-					<ul class="eventList">
-				<% else %>
-				<% end %>
-
-				<li id="<%= event.id %>">
-					<strong><%= event.name %>: </strong>
-					<%= event.description %>
-					<br />
-					<% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
-						<%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
-					<% else %>
-						<%= event.start_time.strftime('%B %e, %I:%M %p') %>
-						<br />
-						<%= event.end_time.strftime('%B %e, %I:%M %p') %>
-					<% end %>
-				</li>
-
+		<% if((event.start_time.strftime('%Y-%m-%d') <= Date.today.to_s) && (event.end_time.strftime('%Y-%m-%d') >= Date.today.to_s)) %>
+			<% @counter = @counter+1 %>
+			<% if(@counter == 1) %>
+				<div class="row">
+				<div class="col-xs-12">
+				<div class="postIt">
+				<h3>Events</h3>
+				<ul class="eventList">
 			<% else %>
 			<% end %>
+
+			<li id="<%= event.id %>">
+				<strong><%= event.name %>: </strong>
+				<%= event.description %>
+				<br />
+				<% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
+					<%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
+				<% else %>
+					<%= event.start_time.strftime('%B %e, %I:%M %p') %>
+					<br />
+					<%= event.end_time.strftime('%B %e, %I:%M %p') %>
+				<% end %>
+			</li>
+
+		<% else %>
 		<% end %>
+
+		<% if @counter != 0 %>
 		</ul>
 		</div>
 		</div>
 		</div>
-	<!--% end %-->
+		<% else %>
+		<% end %>
+		<% end %>
 
 		<div class="row">
 			<div class="col-xs-12">
@@ -53,9 +56,9 @@
 							circle = [{lng: <%=current_user.neighborhood.longitude%>, lat: <%=current_user.neighborhood.latitude%>, radius: 25000, strokeColor: "#FF0000"}]
 							handler = Gmaps.build('Google');
 							handler.buildMap({ internal: {id: 'map'}}, function(){
-								var kmls = handler.addKml(
-									{ url: "http://phonologicalfun.com/kml/<%=current_user.neighborhood.zip%>.kml" }
-								);
+							var kmls = handler.addKml(
+							{ url: "http://phonologicalfun.com/kml/<%=current_user.neighborhood.zip%>.kml" }
+							);
 							});
 						</script>
 					</div>

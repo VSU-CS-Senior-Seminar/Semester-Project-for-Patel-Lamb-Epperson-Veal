@@ -41,6 +41,10 @@ class ConversationsController < ApplicationController
     params.require(:conversation).permit(:subject, :body,recipients:[])
   end
 
+  def group_sconversation_params
+    params.require(:conversation).permit(:subject, :body, grecipients:[])
+  end
+
   def message_params
     params.require(:message).permit(:body, :subject)
   end
