@@ -12,6 +12,13 @@ class GroupsController < ApplicationController
    def create
      @group = Forem::Group.new(group_params)
      if @group.save
+       @category = Forem::Category.find_by(name: current_user.neighborhood_id)
+       newSubOne = Forem::Forum.new
+       newSubOne.title = @group.name
+       newSubOne.description = @group.description
+       newSubOne.category_id = @category.id
+       newSubOne.position = 12
+       newSubOne.save
        flash[:notice] = t("forem.admin.group.created")
        redirect_to groups_path
      else
@@ -33,6 +40,6 @@ class GroupsController < ApplicationController
      end
 
      def group_params
-       params.require(:group).permit(:name)
+       params.require(:group).permit(:name, :description)
      end
  end

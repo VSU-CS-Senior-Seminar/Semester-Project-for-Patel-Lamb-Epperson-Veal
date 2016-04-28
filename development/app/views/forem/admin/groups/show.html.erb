@@ -8,7 +8,7 @@
 		<label><%= t('.add_a_new_member') %></label>
 		<%= form_tag add_admin_group_members_url(@group) do %>
 			<p>
-				<%= text_field_tag "user_id" %>
+				<%= select("","user_id", User.all.where(:neighborhood_id => current_user.neighborhood_id).where.not(:business => true).collect {|p| [ p.nickname, p.id ] }) %>
 			</p>
 			<p class="col-md-1">
 				<%= submit_tag t(".add_member"), :class => "btn btn-default btn-sm" %>

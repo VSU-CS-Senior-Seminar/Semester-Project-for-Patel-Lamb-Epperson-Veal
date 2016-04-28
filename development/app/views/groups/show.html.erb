@@ -6,8 +6,16 @@
 		<label><%= t('.add_a_new_member') %></label>
 		<%= form_tag add_group_members_url(@group) do %>
 		<p>
-			<%= text_field_tag "user_id" %>
+			<%= select("","user_id", User.all.where(:neighborhood_id => current_user.neighborhood_id).where.not(:business => true).collect {|p| [ p.nickname, p.id ] }) %>
 		</p>
+
+			<!--%= text_field "user_id", list: "user_id" %>
+		  <datalist id="user_id">
+		    <% User.all.each do |person| %>
+		      <option value="<%= person.id %>"><%= person.fname %></option>
+		    <% end %>
+		  </datalist-->
+
 		<p class="col-md-1">
 			<%= submit_tag ("Add Member"), :class => "btn btn-default btn-sm" %>
 		</p>
@@ -19,7 +27,7 @@
 		<div class="col-md-4">
 			<ul id='members'>
 				<% @group.members.each do |member| %>
-					<li><%= member.forem_name %> 
+					<li><%= member.forem_name %>
 				</li>
 				<% end %>
 			</ul>
