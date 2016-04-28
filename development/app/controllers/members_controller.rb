@@ -15,7 +15,7 @@ class MembersController < ApplicationController
           else
             flash[:alert] = t("forem.admin.groups.show.no_member_to_remove")
           end
-        redirect_to [group]
+        redirect_to groups_path
       end
 
       private

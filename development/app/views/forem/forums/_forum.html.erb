@@ -26,6 +26,8 @@
 <% end %>
 <%end%>
 <%else%>
+<!-- normal users can see this -->
+<%if forum.group_id == -1 %>
 <% if can?(:read, forum) %>
   <tr class="forum <%= cycle("odd", "even") %>">
     <td>
@@ -47,6 +49,29 @@
     <td class="posts-count"><%= posts_count(forum) %></td>
     <td class="views-count"><%= forum.views_count %></td>
   </tr>
-<% end %>
+  <%end%>
+<%elsif Forem::Membership.all.where(:member_id => current_user.id, :group_id => forum.group_id).count() == 1 %>
+<tr class="forum <%= cycle("odd", "even") %>">
+  <td>
+      <h4>
+          <%= link_to forem_emojify(forum.title), forem.forum_path(forum), :class => "title" %>
+          <small><%= forem_format(forum.description) %></small>
+      </h4>
+    <%= t('forem.forums.index.last_post') -%>
+    <span class='last_post'>
+      <% if last_post = forum.last_post_for(forem_user) -%>
+        <%= link_to(forem_emojify(last_post.topic.subject), forem.forum_topic_path(forum, last_post.topic)) -%> <%= t('by') %> <%= last_post.user.forem_name %>
+        <time datetime="< %= last_post.created_at.to_s(:db) -%>"><%= "#{time_ago_in_words(last_post.created_at)} #{t("ago")}" %></time>
+      <% else %>
+        <%= t('forem.forums.index.none') -%>
+      <% end %>
+    </span>
+  </td>
+  <td class="topics-count"><%= topics_count(forum) %></td>
+  <td class="posts-count"><%= posts_count(forum) %></td>
+  <td class="views-count"><%= forum.views_count %></td>
+</tr>
+<%else%>
 
 <%end%>
+<% end %>

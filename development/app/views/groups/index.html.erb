@@ -11,6 +11,7 @@
   </thead>
   <tbody>
     <% @groups.each do |group| %>
+    <%if group.members.exists?(current_user.id)%>
       <tr>
         <td>
           <%= link_to t('edit', :scope => 'groups'), group_path(group), :class => "btn btn-default btn-sm"%>
@@ -19,6 +20,8 @@
           <%= group.name %>
         </td>
       </tr>
+      <%else%>
+      <%end%>
     <% end %>
   </tbody>
 </table>

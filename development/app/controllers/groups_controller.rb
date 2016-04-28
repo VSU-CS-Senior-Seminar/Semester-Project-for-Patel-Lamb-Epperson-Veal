@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
        newSubOne.title = @group.name
        newSubOne.description = @group.description
        newSubOne.category_id = @category.id
+       newSubOne.group_id = @group.id
        newSubOne.position = 12
        newSubOne.save
        flash[:notice] = t("forem.admin.group.created")

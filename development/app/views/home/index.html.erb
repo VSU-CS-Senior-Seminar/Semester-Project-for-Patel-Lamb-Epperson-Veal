@@ -17,13 +17,32 @@
 				<div class="row">
 				<div class="col-xs-12">
 				<div class="postIt">
-				<h3>Events</h3>
+							<h3>Events</h3>
 				<ul class="eventList">
 			<% else %>
 			<% end %>
 
 			<li id="<%= event.id %>">
+				<div class="row">
+					<div class="col-xs-6">
 				<strong><%= event.name %>: </strong>
+			</div>
+				<div class="col-xs-6">
+					<% @rsvps = Rsvp.all.where(:event_id => event.id) %>
+					<% @attend = 0 %>
+					<% @dettend = 0 %>
+					<% @rsvps.each do |rsvp| %>
+						<% if rsvp.status == true %>
+							<% @attend = @attend + 1 %>
+						<% else %>
+							<% @dettend = @dettend + 1 %>
+						<% end %>
+					<% end %>
+
+					<p class="headP">Attending: <%= @attend %> / Absent: <%= @dettend %></p>
+				</div>
+			</div>
+
 				<%= event.description %>
 				<br />
 				<% if(event.start_time.strftime('%Y-%m-%d') == event.end_time.strftime('%Y-%m-%d')) %>
@@ -38,13 +57,13 @@
 		<% else %>
 		<% end %>
 
+		<% end %>
 		<% if @counter != 0 %>
 		</ul>
 		</div>
 		</div>
 		</div>
 		<% else %>
-		<% end %>
 		<% end %>
 
 		<div class="row">
@@ -70,12 +89,26 @@
 	<div class="col-xs-12 col-md-6">
 
 		<div class="row">
+			<%if current_user.business?%>
+			<%else%>
 			<div class="col-xs-12">
 				<div class="postIt">
 					<h3>Groups</h3>
-					<p>Lorem ipsum dolor sit amet</p>
+					<p><%@memberships = Forem::Membership.all.where(:member_id => current_user.id)%>
+						<%@memberships.each do |m|%>
+						<div class="row">
+							<div class="col-xs-6">
+						<%=Forem::Group.find_by(id: m.group_id)%>
+					</div>
+					<div class="col-xs-6">
+						<%= button_to "Leave Group", group_member_path(m.group_id,current_user.id), {class: 'btn btn-default btn-xs', action: "delete", method: :delete}%>
+					</div>
+				</div>
+						<%end%>
+					</p>
 				</div>
 			</div>
+			<%end%>
 		</div>
 
 		<div class="row">
