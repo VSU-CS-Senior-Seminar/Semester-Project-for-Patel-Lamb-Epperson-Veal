@@ -55,12 +55,14 @@ ActiveRecord::Schema.define(version: 20160419055329) do
     t.integer "views_count", default: 0
     t.string  "slug"
     t.integer "position",    default: 0
+    t.integer "group_id",    default: -1
   end
 
   add_index "forem_forums", ["slug"], name: "index_forem_forums_on_slug", unique: true
 
   create_table "forem_groups", force: :cascade do |t|
     t.string "name"
+    t.string "description"
   end
 
   add_index "forem_groups", ["name"], name: "index_forem_groups_on_name"
@@ -213,8 +215,8 @@ ActiveRecord::Schema.define(version: 20160419055329) do
   create_table "neighborhoods", primary_key: "zip", force: :cascade do |t|
     t.string  "name"
     t.integer "id",        default: 0
-    t.float   "latitude"
-    t.float   "longitude"
+    t.float   "latitude", default: 0
+    t.float   "longitude", default: 0
   end
 
   add_index "neighborhoods", ["name"], name: "index_neighborhoods_on_name"
@@ -225,8 +227,8 @@ ActiveRecord::Schema.define(version: 20160419055329) do
   end
 
   create_table "posts_likeds", force: :cascade do |t|
-    t.integer "post_id", limit: 50, null: false
-    t.integer "user_id", limit: 50, null: false
+    t.integer "post_id", limit: 7, null: false
+    t.integer "user_id", limit: 7, null: false
   end
 
   create_table "rsvps", force: :cascade do |t|
@@ -266,7 +268,7 @@ ActiveRecord::Schema.define(version: 20160419055329) do
     t.string   "forem_state",                       default: "approved"
     t.boolean  "forem_auto_subscribe",              default: false
     t.boolean  "approved",                          default: false
-    t.integer  "reputation",             limit: 15, default: 0
+    t.integer  "reputation",             limit: 7, default: 0
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "logged_in",                         default: false

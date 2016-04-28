@@ -2,8 +2,7 @@
 	<div class="col-lg-2" id="toField">
 		<div class="form-group">
 			<%= f.label :"To:" %>
-			<%= f.select(:recipients, User.all.where(:neighborhood_id => current_user.neighborhood_id).collect {|p| [ p.fname, p.id ] }, {}, { multiple: true , class: "form-control" })%>
-			<!-- % = f.select(:grecipients, Forem::Group.all.collect {|p| [ p.name, p.id ] }, {}, { multiple: false , class: "form-control" })% -->
+			<%= f.select(:recipients, User.all.where(:neighborhood_id => current_user.neighborhood_id).where.not(:business =>true).collect {|p| [ p.fname, p.id ] }, {}, { multiple: true , class: "form-control" })%>
 		</div>
 	</div>
 	<div class="col-lg-10">

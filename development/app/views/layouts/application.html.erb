@@ -38,7 +38,7 @@
 							<li><%= link_to 'Forums', forem.forums_path %>  </li>
 							<% if current_user.business? %>
 							<% else %>
-							<%if (current_user.reputation >= 20)%>
+							<%if (current_user.reputation >= 20) || (current_user.forem_admin?)%>
 							<li><%= link_to "Manage Groups", main_app.groups_path %></li>
 							<%else%>
 							<%end%>
