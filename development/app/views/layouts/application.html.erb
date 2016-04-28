@@ -38,6 +38,10 @@
 							<li><%= link_to 'Forums', forem.forums_path %>  </li>
 							<% if current_user.business? %>
 							<% else %>
+							<%if (current_user.reputation >= 20)%>
+							<li><%= link_to "Manage Groups", main_app.groups_path %></li>
+							<%else%>
+							<%end%>
 							<li><%= link_to "Inbox", main_app.mailbox_inbox_path %></li>
 							<% end %>
 							<li><%= link_to "Calendar", main_app.calendar_view_path %></li>

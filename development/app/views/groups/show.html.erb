@@ -1,29 +1,34 @@
 <!-- STYLED -->
 
-
-
 <h1><%= t('forem.admin.group.members', :group => forem_emojify(@group.name)) %></h1>
 <div class="row">
 	<div class="col-md-4">
 		<label><%= t('.add_a_new_member') %></label>
-		<%= form_tag add_admin_group_members_url(@group) do %>
-			<p>
-				<%= select("","user_id", User.all.where(:neighborhood_id => current_user.neighborhood_id).where.not(:business => true).collect {|p| [ p.nickname, p.id ] }) %>
-			</p>
-			<p class="col-md-1">
-				<%= submit_tag t(".add_member"), :class => "btn btn-default btn-sm" %>
-			</p>
-		<% end %>
-	</div>
+		<%= form_tag add_group_members_url(@group) do %>
+		<p>
+			<%= select("","user_id", User.all.where(:neighborhood_id => current_user.neighborhood_id).where.not(:business => true).collect {|p| [ p.nickname, p.id ] }) %>
+		</p>
+
+			<!--%= text_field "user_id", list: "user_id" %>
+		  <datalist id="user_id">
+		    <% User.all.each do |person| %>
+		      <option value="<%= person.id %>"><%= person.fname %></option>
+		    <% end %>
+		  </datalist-->
+
+		<p class="col-md-1">
+			<%= submit_tag ("Add Member"), :class => "btn btn-default btn-sm" %>
+		</p>
+	<% end %>
+</div>
 
 	<% if @group.members.any? %>
 		<h3><%= t('.current_members') %></h3>
 		<div class="col-md-4">
 			<ul id='members'>
 				<% @group.members.each do |member| %>
-					<li><%= member.forem_name %> |
-					<%= link_to t('forem.admin.groups.show.remove_member'), admin_group_member_url(@group, member),
-method: :delete, data: { confirm: t('are_you_sure') }, :class => "btn btn-default btn-xs" %></li>
+					<li><%= member.forem_name %>
+				</li>
 				<% end %>
 			</ul>
 		</div>

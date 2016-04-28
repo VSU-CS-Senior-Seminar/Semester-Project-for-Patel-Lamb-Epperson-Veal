@@ -5,7 +5,7 @@
 p a
 {
 	color: #f60;
-	
+
 	&:hover
 	{
 		color: #d40;
@@ -32,6 +32,12 @@ p a
 	overflow:hidden;
 	float: left;
 
+	.headP
+	{
+		padding: 0px;
+		margin: 0px;
+	}
+
 	&:before
 	{
 		content:"";
@@ -56,7 +62,7 @@ p a
 	{
 		padding-left: 25px;
 	}
-	
+
 	#map
 	{
 		width: 100%;

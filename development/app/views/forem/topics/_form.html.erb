@@ -1,9 +1,13 @@
-<%= simple_form_for [forem, @forum, @topic] do |f| %>
-  <%= f.input :subject %>
+<div class="row">
+  <div class="col-md-8">
+    <%= simple_form_for [forem, @forum, @topic] do |f| %>
+      <%= f.input :subject, :input_html => {:maxlength => 250, :size => 80} %>
 
-  <%= f.simple_fields_for :posts do |post| %>
-    <%= render :partial => "forem/posts/form", :locals => { :f => post }%>
-  <% end %>
-  
-<%= f.submit :class => "btn btn-default btn-sm" %>
-<% end %>
+      <%= f.simple_fields_for :posts do |post| %>
+        <%= render :partial => "forem/posts/form", :locals => { :f => post }%>
+      <% end %>
+
+      <%= f.submit :class => "btn btn-default btn-sm" %>
+    <% end %>
+  </div>
+</div>
