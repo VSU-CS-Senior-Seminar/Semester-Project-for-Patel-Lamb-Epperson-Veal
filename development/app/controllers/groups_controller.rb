@@ -12,6 +12,8 @@ class GroupsController < ApplicationController
    def create
      @group = Forem::Group.new(group_params)
      if @group.save
+       user = Forem.user_class.where(:id => current_user.id).first
+       @group.members << user
        @category = Forem::Category.find_by(name: current_user.neighborhood_id)
        newSubOne = Forem::Forum.new
        newSubOne.title = @group.name
@@ -29,9 +31,10 @@ class GroupsController < ApplicationController
    end
 
    def destroy
+     Forem::Membership.all.where(:group_id => @group.id).destroy_all
      @group.destroy
      flash[:notice] = t("forem.admin.group.deleted")
-     redirect_to groups_path
+     redirect_to  main_app.root_path
    end
 
    private
