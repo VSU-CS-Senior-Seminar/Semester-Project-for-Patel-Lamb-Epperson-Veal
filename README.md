@@ -1,4 +1,4 @@
-# Semester-Project-for-Patel-Lamb-Epperson-Veal
+# Gazebo - Social media website for connecting neighborhoods.
 
 All rails code is located in the development folder. A working version of the project can be found at http://gazebo.herokuapp.com/
 
